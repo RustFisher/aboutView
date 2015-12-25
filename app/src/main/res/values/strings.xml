@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">AboutView</string>
+
+    <string name="scale">按数值缩放</string>
+    <string name="scale_ratio">按比例缩放</string>
+    <string name="crop_effect">裁剪</string>
+    <string name="rotate_effect_CW">顺时针旋转</string>
+    <string name="rotate_effect_CCW">逆时针旋转</string>
+    <string name="skew_effect">偏移效果</string>
+</resources>
