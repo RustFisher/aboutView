@@ -8,15 +8,17 @@
         android:id="@+id/goto_image_processing_activity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="图像处理" />
+        android:text="@string/image_process" />
+
     <Button
         android:id="@+id/goto_resolution_ratio_activity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="屏幕信息" />
+        android:text="@string/device_info" />
+
     <Button
         android:id="@+id/goto_list_activity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="list activity" />
+        android:text="@string/swipe_refresh" />
 </LinearLayout>

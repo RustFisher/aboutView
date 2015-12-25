@@ -33,7 +33,7 @@ public class MainActivity extends Activity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent();
-                i.setClass(getApplicationContext(), MyListActivity.class);
+                i.setClass(getApplicationContext(), MySwipeActivity.class);
                 startActivity(i);
             }
         });
