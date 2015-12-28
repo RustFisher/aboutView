@@ -21,4 +21,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/swipe_refresh" />
+
+    <Button
+        android:id="@+id/goto_drawer_activity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/drawer_activity" />
 </LinearLayout>

@@ -12,4 +12,5 @@
     <string name="image_process">图像处理</string>
     <string name="device_info">设备信息</string>
     <string name="swipe_refresh">下拉刷新 demo</string>
+    <string name="drawer_activity">Drawer Layout</string>
 </resources>

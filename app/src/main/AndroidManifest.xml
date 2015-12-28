@@ -20,8 +20,8 @@
         </activity>
         <activity android:name=".ImageProcessingActivity" />
         <activity android:name=".ResolutionRatioActivity" />
-        <activity android:name=".MySwipeActivity"/>
-
+        <activity android:name=".MySwipeActivity" />
+        <activity android:name=".DrawerActivity" />
     </application>
 
 </manifest>

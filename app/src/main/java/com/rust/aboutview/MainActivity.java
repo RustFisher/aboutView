@@ -37,5 +37,13 @@ public class MainActivity extends Activity {
                 startActivity(i);
             }
         });
+        findViewById(R.id.goto_drawer_activity).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent();
+                i.setClass(getApplicationContext(), DrawerActivity.class);
+                startActivity(i);
+            }
+        });
     }
 }

@@ -1,0 +1,72 @@
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/drawer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <!-- 指定FrameLayout为根视图 -->
+    <FrameLayout
+        android:id="@+id/drawer_activity_root"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <!-- The left navigation drawer -->
+    <RelativeLayout
+        android:id="@+id/left_relative_drawer"
+        android:layout_width="240dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:background="#ffffcc"
+        android:clickable="true"><!-- clickable="true" 防止点击事件穿透 -->
+
+        <ImageButton
+            android:id="@+id/image_btn_left_head"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/littleboygreen"
+            android:scaleType="fitXY" />
+
+        <ListView
+            android:id="@+id/left_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/image_btn_left_head"
+            android:choiceMode="singleChoice"
+            android:divider="@android:color/transparent"
+            android:dividerHeight="10dp"
+            android:paddingTop="5dp"/>
+
+        <Button
+            android:id="@+id/btn_left_exit"
+            android:layout_width="140dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/left_list"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="50dp"
+            android:text="退出应用"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/btn_left_confirm"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/left_list"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="50dp"
+            android:text="退出"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/btn_left_cancel"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/left_list"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="50dp"
+            android:layout_toRightOf="@id/btn_left_confirm"
+            android:text="取消"
+            android:textSize="20sp" />
+
+    </RelativeLayout>
+
+</android.support.v4.widget.DrawerLayout>
