@@ -64,5 +64,14 @@ public class MainActivity extends Activity {
                         startActivity(i);
                     }
                 });
+        findViewById(R.id.goto_clip_children_activity).setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent i = new Intent();
+                        i.setClass(getApplicationContext(), ClipChildrenActivity.class);
+                        startActivity(i);
+                    }
+                });
     }
 }

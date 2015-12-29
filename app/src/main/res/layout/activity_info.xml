@@ -13,4 +13,49 @@
         android:id="@+id/screen_ppi"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
+
+    <com.rust.aboutview.NestRadioGroup
+        android:id="@+id/main_radio"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/radio_button0"
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:checked="true"
+            android:text="bottom_feed" />
+
+        <RadioButton
+            android:id="@+id/radio_button1"
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:text="bottom_square" />
+
+        <RelativeLayout
+            android:layout_width="0dip"
+            android:layout_height="fill_parent"
+            android:layout_weight="1.0"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/radio_button2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="bottom_message" />
+
+            <ImageView
+                android:id="@+id/new_message_tips"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dip"
+                android:layout_toRightOf="@+id/radio_button2"
+                android:src="@drawable/ecology" />
+        </RelativeLayout>
+    </com.rust.aboutview.NestRadioGroup>
 </LinearLayout>

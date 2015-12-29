@@ -8,6 +8,7 @@
     <string name="rotate_effect_CCW">逆时针旋转</string>
     <string name="skew_effect">偏移效果</string>
 
+    <string name="talk_train">train image</string>
     <!-- 首页按钮上的文字 -->
     <string name="image_process">图像处理</string>
     <string name="device_info">设备信息</string>

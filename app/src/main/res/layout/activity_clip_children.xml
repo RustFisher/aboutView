@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clipChildren="false"
+    android:orientation="vertical">
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/view_pager"
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+        android:layout_weight="1.0" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dip"
+        android:background="#B0C4DE"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="0dip"
+            android:layout_height="fill_parent"
+            android:layout_weight="1.0"
+            android:scaleType="fitCenter"
+            android:src="@drawable/sixtraveltransportation" />
+
+        <ImageView
+            android:layout_width="0dip"
+            android:layout_height="fill_parent"
+            android:layout_weight="1.0"
+            android:contentDescription="@string/talk_train"
+            android:scaleType="fitCenter"
+            android:src="@drawable/train" />
+
+        <ImageView
+            android:layout_width="0dip"
+            android:layout_height="64dip"
+            android:layout_gravity="bottom"
+            android:layout_weight="1.0"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ecology" />
+
+        <ImageView
+            android:layout_width="0dip"
+            android:layout_height="fill_parent"
+            android:layout_weight="1.0"
+            android:scaleType="fitCenter"
+            android:src="@drawable/delicious_orange_01" />
+
+        <ImageView
+            android:layout_width="0dip"
+            android:layout_height="fill_parent"
+            android:layout_weight="1.0"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ecologytree" />
+    </LinearLayout>
+
+</LinearLayout>
