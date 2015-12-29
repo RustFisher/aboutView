@@ -55,5 +55,14 @@ public class MainActivity extends Activity {
                 startActivity(i);
             }
         });
+        findViewById(R.id.goto_notification_demo_activity).setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent i = new Intent();
+                        i.setClass(getApplicationContext(), NotificationActivity.class);
+                        startActivity(i);
+                    }
+                });
     }
 }

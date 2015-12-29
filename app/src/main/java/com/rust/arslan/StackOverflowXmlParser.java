@@ -19,9 +19,6 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-/**
- * Created by RustFisher on 15-11-5.
- */
 public class StackOverflowXmlParser {
     private static final String ns = null;
 

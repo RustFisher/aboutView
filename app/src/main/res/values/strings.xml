@@ -14,4 +14,5 @@
     <string name="swipe_refresh">下拉刷新 demo</string>
     <string name="drawer_activity">Drawer Layout</string>
     <string name="arslan_activity">Arslan</string>
+    <string name="notification_activity">notification demo</string>
 </resources>
