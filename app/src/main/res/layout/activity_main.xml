@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:dividerPadding="0dp"
     android:orientation="vertical">
 
     <Button
@@ -27,4 +28,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/drawer_activity" />
+
+    <Button
+        android:id="@+id/goto_arslan_activity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/arslan_activity" />
 </LinearLayout>

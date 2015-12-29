@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.rust.arslan.ArslanActivity;
+
 public class MainActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +44,14 @@ public class MainActivity extends Activity {
             public void onClick(View v) {
                 Intent i = new Intent();
                 i.setClass(getApplicationContext(), DrawerActivity.class);
+                startActivity(i);
+            }
+        });
+        findViewById(R.id.goto_arslan_activity).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent();
+                i.setClass(getApplicationContext(), ArslanActivity.class);
                 startActivity(i);
             }
         });

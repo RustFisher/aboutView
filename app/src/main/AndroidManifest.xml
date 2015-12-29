@@ -22,6 +22,9 @@
         <activity android:name=".ResolutionRatioActivity" />
         <activity android:name=".MySwipeActivity" />
         <activity android:name=".DrawerActivity" />
+        <activity android:name="com.rust.arslan.ArslanActivity" />
+        <activity android:name="com.rust.arslan.SettingsActivity" />
+        <activity android:name="com.rust.arslan.NetworkActivity" />
     </application>
 
 </manifest>

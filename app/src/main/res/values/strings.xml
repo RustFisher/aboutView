@@ -13,4 +13,5 @@
     <string name="device_info">设备信息</string>
     <string name="swipe_refresh">下拉刷新 demo</string>
     <string name="drawer_activity">Drawer Layout</string>
+    <string name="arslan_activity">Arslan</string>
 </resources>
