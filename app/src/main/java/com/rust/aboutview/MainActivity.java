@@ -73,5 +73,13 @@ public class MainActivity extends Activity {
                         startActivity(i);
                     }
                 });
+        findViewById(R.id.goto_frame_anima_activity).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent();
+                i.setClass(getApplicationContext(), FrameAnimationActivity.class);
+                startActivity(i);
+            }
+        });
     }
 }

@@ -47,4 +47,10 @@
         android:layout_height="wrap_content"
         android:text="clip_children_activity" />
 
+    <Button
+        android:id="@+id/goto_frame_anima_activity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="anima" />
+
 </LinearLayout>
