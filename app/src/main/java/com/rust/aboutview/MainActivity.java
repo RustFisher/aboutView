@@ -81,5 +81,22 @@ public class MainActivity extends Activity {
                 startActivity(i);
             }
         });
+
+        fv(R.id.goto_circle_circle_activity).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent();
+                i.setClass(getApplicationContext(), CirclesActivity.class);
+                startActivity(i);
+            }
+        });
+
+    }
+
+    /**
+     * replace findViewById()
+     */
+    private <T extends View> T fv(int resId) {
+        return (T) super.findViewById(resId);
     }
 }

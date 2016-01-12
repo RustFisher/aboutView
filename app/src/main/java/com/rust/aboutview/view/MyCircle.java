@@ -1,4 +1,4 @@
-package com.rust.aboutview;
+package com.rust.aboutview.view;
 
 import android.content.Context;
 import android.graphics.Canvas;

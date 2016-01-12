@@ -29,6 +29,7 @@
         <activity android:name=".NotificationActivity" />
         <activity android:name="com.rust.aboutview.ClipChildrenActivity" />
         <activity android:name=".FrameAnimationActivity" />
+        <activity android:name=".CirclesActivity"/>
     </application>
 
 </manifest>

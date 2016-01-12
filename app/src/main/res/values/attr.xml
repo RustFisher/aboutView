@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="OvalView">
+        <attr name="ovalLeft" format="dimension" />
+        <attr name="ovalTop" format="dimension" />
+        <attr name="ovalRight" format="dimension" />
+        <attr name="ovalBottom" format="dimension" />
+    </declare-styleable>
+</resources>
