@@ -21,7 +21,7 @@ public class CirclesActivity extends Activity {
     private static final int UPDATE_ALL_CIRCLE = 99;
 
     int circleCenter_r;
-    public static final int circle0_r = 40;
+    public static final int circle0_r = 88;
     int circle1_r;
 
     OptionCircle centerCircle;
@@ -55,7 +55,7 @@ public class CirclesActivity extends Activity {
                         if (r >= 99) zoomDir = false;
                     } else {
                         r--;
-                        if (r <= 86) zoomDir = true;
+                        if (r <= circle0_r) zoomDir = true;
                     }
                     activity.circle0.invalidate();
                     activity.circle0.setRadius(r);
