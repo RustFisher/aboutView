@@ -5,13 +5,24 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.util.DisplayMetrics;
+import android.util.Log;
+import android.view.Display;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.WindowManager;
+import android.widget.RelativeLayout;
 
 import com.rust.aboutview.view.OptionCircle;
 
 public class CirclesActivity extends Activity {
 
+    public static final String TAG = "CirclesActivity";
     private static final int UPDATE_ALL_CIRCLE = 99;
+
+    int circleCenter_r;
+    public static final int circle0_r = 40;
+    int circle1_r;
 
     OptionCircle centerCircle;
     OptionCircle circle0;
@@ -25,7 +36,7 @@ public class CirclesActivity extends Activity {
     static class CircleHandler extends Handler {
         CirclesActivity activity;
         boolean zoomDir = true;
-        int r = 86;
+        int r = circle0_r;
 
         int moveDir = 0;// 4 directions : 0 ~ 3
         int circle1_x = 0;// offset value
@@ -104,18 +115,32 @@ public class CirclesActivity extends Activity {
         circle0 = (OptionCircle) findViewById(R.id.circle_0);
         circle1 = (OptionCircle) findViewById(R.id.circle_1);
 
-        centerCircle.setRadius(69);
+        DisplayMetrics dm = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(dm);
+        Log.d(TAG, "height : " + dm.heightPixels);
+        Log.d(TAG, "width : " + dm.widthPixels);
+
+        ViewGroup.LayoutParams lp;
+        lp = centerCircle.getLayoutParams();
+//        lp.width = 70;
+//        lp.height = 70;
+
+        circleCenter_r = 38;
+        circle1_r = 45;
+
+        centerCircle.setRadius(circleCenter_r);
         centerCircle.setColorText(Color.BLUE);
         centerCircle.setColorCircle(Color.BLUE);
         centerCircle.setText("点击圈圈");
 
         circle0.setColorText(Color.RED);
+        circle0.setRadius(circle0_r);
         circle0.setText("RED");
 
         circle1.setColorCircle(Color.GREEN);
         circle1.setColorText(Color.GREEN);
         circle1.setText("Green");
-        circle1.setRadius(95);
+        circle1.setRadius(circle1_r);
 
         circle0.setOnClickListener(new View.OnClickListener() {
             @Override
