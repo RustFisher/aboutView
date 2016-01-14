@@ -18,6 +18,7 @@
     <string name="arslan_activity">Arslan</string>
     <string name="notification_activity">notification demo</string>
     <string name="circle_activity">自定义view</string>
+    <string name="bluetooth_activity">蓝牙</string>
 
     <!-- circle activity string -->
     <string name="circles_top_title">选择你喜欢的圈圈</string>

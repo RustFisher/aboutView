@@ -91,6 +91,12 @@ public class MainActivity extends Activity {
             }
         });
 
+        fv(R.id.goto_bluetooth_activity).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
     }
 
     /**

@@ -14,11 +14,13 @@ public class CirclesActivity extends Activity {
     public static final String TAG = "CirclesActivity";
     public static final int circle0_r = 88;
 
+    private static final int SLEEPING_PERIOD = 100;
     private static final int UPDATE_ALL_CIRCLE = 99;
     int circleCenter_r;
     int circle1_r;
     boolean circle0Clicked = false;
     boolean circle1Clicked = false;
+
     OptionCircle centerCircle;
     OptionCircle circle0;
     OptionCircle circle1;
@@ -32,11 +34,14 @@ public class CirclesActivity extends Activity {
     static class CircleHandler extends Handler {
         CirclesActivity activity;
         boolean zoomDir = true;
+        boolean circle2Shaking = false;
         int r = circle0_r;
-
         int moveDir = 0;// 4 directions : 0 ~ 3
         int circle1_x = 0;// offset value
         int circle1_y = 0;
+        int circle2_x = 0;
+        int circle2ShakeTime = 0;
+        int circle2Offsets[] = {10, 15, -6, 12, 0};
 
         CircleHandler(CirclesActivity a) {
             activity = a;
@@ -58,6 +63,17 @@ public class CirclesActivity extends Activity {
                     calOffsetX();
                     activity.circle1.invalidate();
                     activity.circle1.setCenterOffset(circle1_x, circle1_y);
+
+                    if (circle2Shaking) {
+                        if (circle2ShakeTime < circle2Offsets.length - 1) {
+                            circle2ShakeTime++;
+                        } else {
+                            circle2Shaking = false;
+                            circle2ShakeTime = 0;
+                        }
+                        activity.circle2.invalidate();
+                        activity.circle2.setCenterOffset(circle2Offsets[circle2ShakeTime], 0);
+                    }
                 }
             }
         }
@@ -95,7 +111,7 @@ public class CirclesActivity extends Activity {
                 message.what = UPDATE_ALL_CIRCLE;
                 handler.sendEmptyMessage(message.what);
                 try {
-                    Thread.sleep(160); // pause
+                    Thread.sleep(SLEEPING_PERIOD); // pause
                 } catch (InterruptedException e) {
                     Thread.currentThread().interrupt();
                 }
@@ -147,6 +163,13 @@ public class CirclesActivity extends Activity {
                 circle1Clicked = !circle1Clicked;
                 circle1.setColorBackground(Color.GREEN);
                 circle1.setClicked(circle1Clicked);
+            }
+        });
+
+        circle2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                handler.circle2Shaking = true;
             }
         });
 
