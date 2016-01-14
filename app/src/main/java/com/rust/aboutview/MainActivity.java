@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.rust.aboutview.bluetooth.BluetoothActivity;
 import com.rust.arslan.ArslanActivity;
 
 public class MainActivity extends Activity {
@@ -94,7 +95,9 @@ public class MainActivity extends Activity {
         fv(R.id.goto_bluetooth_activity).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent i = new Intent();
+                i.setClass(getApplicationContext(), BluetoothActivity.class);
+                startActivity(i);
             }
         });
     }

@@ -23,4 +23,9 @@
     <!-- circle activity string -->
     <string name="circles_top_title">选择你喜欢的圈圈</string>
 
+    <!-- bluetooth activity string -->
+    <string name="enable_bt">蓝牙开启</string>
+    <string name="close_bt">蓝牙关闭</string>
+    <string name="find_device">刷新</string>
+
 </resources>
