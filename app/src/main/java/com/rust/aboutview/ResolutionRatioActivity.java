@@ -35,14 +35,16 @@ public class ResolutionRatioActivity extends Activity {
         float widthPixels = dm.widthPixels;
         float heightPixels = dm.heightPixels;
         float density = dm.density;
-        int screenWidth = (int) (widthPixels * density);
-        int screenHeight = (int) (heightPixels * density);
         String info = "屏幕像素:  " + widthPixels + "x" + heightPixels + " 密度 " + density;
-        float ppi = (int) Math.sqrt((float)
-                (widthPixels * widthPixels + heightPixels * heightPixels)) / 5f;
-        String PPI = "PPI  " + ppi;
+        float screenWidth = widthPixels / (160 * density);
+        float screenHeight = heightPixels / (160 * density);
+        float screenSize = (float) Math.sqrt(
+                screenHeight * screenHeight + screenWidth * screenWidth);
+
+        String size = "wid = " + screenWidth + "'" + "  height = " + screenHeight + "'" +
+                "\nsize = " + screenSize + "'";
         screenInfo.setText(info);
-        screenPPI.setText(PPI);
+        screenPPI.setText(size);
     }
 
     @Override

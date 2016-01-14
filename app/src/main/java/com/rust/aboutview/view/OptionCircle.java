@@ -1,22 +1,27 @@
 package com.rust.aboutview.view;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Typeface;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
-import android.view.View;
+import android.widget.ImageView;
 
-public class OptionCircle extends View {
+public class OptionCircle extends ImageView {
 
     private final Paint paint;
     private final Context context;
+    boolean clicked = false;
+    boolean addBackground = false;
     int radius = -1;
     int centerOffsetX = 0;
     int centerOffsetY = 0;
     int colorCircle;
-    int colorBackground = Color.WHITE;
+    int colorBackground;
     int colorText;
     String textCircle = "";
 
@@ -32,6 +37,7 @@ public class OptionCircle extends View {
         this.paint.setStyle(Paint.Style.STROKE);
         colorCircle = Color.argb(205, 245, 2, 51);
         colorText = colorCircle;
+        colorBackground = colorCircle;
     }
 
     public void setRadius(int r) {
@@ -59,6 +65,14 @@ public class OptionCircle extends View {
         this.textCircle = s;
     }
 
+    public void setClicked(boolean clicked) {
+        this.clicked = clicked;
+    }
+
+    public void setAddBackground(boolean add) {
+        this.addBackground = add;
+    }
+
     @Override
     protected void onDraw(Canvas canvas) {
         int center = getWidth() / 2;
@@ -67,18 +81,23 @@ public class OptionCircle extends View {
             innerCircle = dip2px(context, radius); //set inner radius
         }
 
-        // draw circle
-        this.paint.setStyle(Paint.Style.STROKE);
-        this.paint.setColor(colorCircle);
-        this.paint.setStrokeWidth(1.5f);
-        canvas.drawCircle(center + centerOffsetX, center + centerOffsetY, innerCircle, this.paint);
+        Drawable drawable = getDrawable();
+        if (addBackground) {
+        } else {
+            // draw circle
+            this.paint.setStyle(clicked ? Paint.Style.FILL : Paint.Style.STROKE);
+            this.paint.setColor(clicked ? colorBackground : colorCircle);
+            this.paint.setStrokeWidth(1.5f);
+            canvas.drawCircle(center + centerOffsetX, center + centerOffsetY,
+                    innerCircle, this.paint);
+        }
 
         // draw text
         this.paint.setStyle(Paint.Style.FILL);
         this.paint.setStrokeWidth(1);
         this.paint.setTextSize(22);
         this.paint.setTypeface(Typeface.MONOSPACE);
-        this.paint.setColor(colorText);
+        this.paint.setColor(clicked ? Color.WHITE : colorText);
         this.paint.setTextAlign(Paint.Align.CENTER);
         Paint.FontMetricsInt fontMetrics = paint.getFontMetricsInt();
         canvas.drawText(textCircle, center + centerOffsetX,

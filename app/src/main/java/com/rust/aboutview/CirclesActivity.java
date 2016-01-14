@@ -5,28 +5,24 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.util.DisplayMetrics;
-import android.util.Log;
-import android.view.Display;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.WindowManager;
-import android.widget.RelativeLayout;
 
 import com.rust.aboutview.view.OptionCircle;
 
 public class CirclesActivity extends Activity {
 
     public static final String TAG = "CirclesActivity";
-    private static final int UPDATE_ALL_CIRCLE = 99;
-
-    int circleCenter_r;
     public static final int circle0_r = 88;
-    int circle1_r;
 
+    private static final int UPDATE_ALL_CIRCLE = 99;
+    int circleCenter_r;
+    int circle1_r;
+    boolean circle0Clicked = false;
+    boolean circle1Clicked = false;
     OptionCircle centerCircle;
     OptionCircle circle0;
     OptionCircle circle1;
+    OptionCircle circle2;
 
     CircleHandler handler = new CircleHandler(this);
 
@@ -114,16 +110,7 @@ public class CirclesActivity extends Activity {
         centerCircle = (OptionCircle) findViewById(R.id.center_circle);
         circle0 = (OptionCircle) findViewById(R.id.circle_0);
         circle1 = (OptionCircle) findViewById(R.id.circle_1);
-
-        DisplayMetrics dm = new DisplayMetrics();
-        getWindowManager().getDefaultDisplay().getMetrics(dm);
-        Log.d(TAG, "height : " + dm.heightPixels);
-        Log.d(TAG, "width : " + dm.widthPixels);
-
-        ViewGroup.LayoutParams lp;
-        lp = centerCircle.getLayoutParams();
-//        lp.width = 70;
-//        lp.height = 70;
+        circle2 = (OptionCircle) findViewById(R.id.circle_2);
 
         circleCenter_r = 38;
         circle1_r = 45;
@@ -142,10 +129,24 @@ public class CirclesActivity extends Activity {
         circle1.setText("Green");
         circle1.setRadius(circle1_r);
 
+        circle2.setColorCircle(getResources().getColor(R.color.colorMagenta));
+        circle2.setColorText(getResources().getColor(R.color.colorMagenta));
+        circle2.setText("Frozen!");
+
         circle0.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                circle0Clicked = !circle0Clicked;
+                circle0.setClicked(circle0Clicked);
+            }
+        });
 
+        circle1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                circle1Clicked = !circle1Clicked;
+                circle1.setColorBackground(Color.GREEN);
+                circle1.setClicked(circle1Clicked);
             }
         });
 

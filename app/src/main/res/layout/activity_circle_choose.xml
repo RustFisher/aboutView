@@ -33,5 +33,10 @@
         android:layout_below="@+id/circle_0"
         android:layout_toEndOf="@+id/center_circle" />
 
+    <com.rust.aboutview.view.OptionCircle
+        android:id="@+id/circle_2"
+        android:layout_width="210dp"
+        android:layout_height="210dp"
+        android:layout_below="@id/center_circle" />
 
 </RelativeLayout>
