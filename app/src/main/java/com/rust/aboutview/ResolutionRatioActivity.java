@@ -1,16 +1,21 @@
 package com.rust.aboutview;
 
 import android.app.Activity;
+import android.content.ComponentName;
 import android.content.Intent;
+import android.content.ServiceConnection;
 import android.content.pm.ResolveInfo;
 import android.os.Bundle;
+import android.os.IBinder;
 import android.util.DisplayMetrics;
 import android.util.Log;
+import android.widget.Button;
 import android.widget.TextView;
 
 import java.util.List;
 
 public class ResolutionRatioActivity extends Activity {
+
     TextView screenInfo;
     TextView screenPPI;
 
