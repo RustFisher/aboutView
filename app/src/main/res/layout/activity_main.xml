@@ -64,4 +64,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/bluetooth_activity" />
+
+    <Button
+        android:id="@+id/goto_contact_activity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="go to contact"/>
 </LinearLayout>

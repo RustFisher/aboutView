@@ -7,6 +7,8 @@ import android.view.View;
 
 import com.rust.aboutview.bluetooth.BluetoothActivity;
 import com.rust.arslan.ArslanActivity;
+import com.rust.contactview.ContactPeopleActivity;
+import com.rust.contactview.PeopleMainActivity;
 
 public class MainActivity extends Activity {
     @Override
@@ -97,6 +99,16 @@ public class MainActivity extends Activity {
             public void onClick(View v) {
                 Intent i = new Intent();
                 i.setClass(getApplicationContext(), BluetoothActivity.class);
+                startActivity(i);
+
+            }
+        });
+
+        fv(R.id.goto_contact_activity).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent();
+                i.setClass(getApplicationContext(), PeopleMainActivity.class);
                 startActivity(i);
             }
         });

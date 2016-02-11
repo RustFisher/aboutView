@@ -27,5 +27,29 @@
     <string name="enable_bt">蓝牙开启</string>
     <string name="close_bt">蓝牙关闭</string>
     <string name="find_device">刷新</string>
+    <string name="action_delete_all">Delete all items</string>
+    <string name="note">All items here</string>
+    <string name="action_people_activity">go to people activity</string>
+
+    <!-- add number page -->
+    <string name="title_add_data_activity">Add Data</string>
+    <string name="title_edit_data">Edit Data</string>
+    <string name="hint_name">Name</string>
+    <string name="hint_phone_number">Phone</string>
+    <string name="hint_email">Email</string>
+    <string name="done_add_data">Add data</string>
+    <string name="done_edit_data">Finish</string>
+
+    <!-- dialog message and hint -->
+    <string name="delete_message">Delete this item?</string>
+    <string name="delete_all_message">Delete all?</string>
+    <string name="delete_all_yes">Yes, kill them all</string>
+    <string name="delete_all_cancel">NO</string>
+
+    <!-- contact activity -->
+    <string name="add_contact">add</string>
+
+    <string name="yes">Yes</string>
+    <string name="cancel">Cancel</string>
 
 </resources>

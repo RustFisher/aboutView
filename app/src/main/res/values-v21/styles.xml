@@ -1,0 +1,10 @@
+<resources>>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <!-- If set the statusBarColor, maybe u can't see status bar anymore-->
+        <!--<item name="android:statusBarColor">@android:color/transparent</item>-->
+    </style>
+</resources>
