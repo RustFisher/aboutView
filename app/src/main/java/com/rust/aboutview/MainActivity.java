@@ -2,19 +2,40 @@ package com.rust.aboutview;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Rect;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 import com.rust.aboutview.bluetooth.BluetoothActivity;
 import com.rust.arslan.ArslanActivity;
 import com.rust.contactview.ContactPeopleActivity;
 import com.rust.contactview.PeopleMainActivity;
+import com.rust.service.FloatingBarService;
 
 public class MainActivity extends Activity {
+
+    boolean mFloatBarShow = false;
+    public int statusBarHeight;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        fv(R.id.start_float_bar).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mFloatBarShow = !mFloatBarShow;
+                if (mFloatBarShow) {
+                    Intent floatBarIntent = new Intent(MainActivity.this, FloatingBarService.class);
+                    startService(floatBarIntent);
+                } else {
+                    Intent floatBarIntent = new Intent(MainActivity.this, FloatingBarService.class);
+                    stopService(floatBarIntent);
+                }
+            }
+        });
 
         findViewById(R.id.goto_image_processing_activity).setOnClickListener(
                 new View.OnClickListener() {

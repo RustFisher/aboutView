@@ -5,6 +5,12 @@
     android:dividerPadding="0dp"
     android:orientation="vertical">
 
+<ListView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+</ListView>
+
     <Button
         android:id="@+id/goto_image_processing_activity"
         android:layout_width="match_parent"
@@ -70,4 +76,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="go to contact"/>
+
+    <Button
+        android:id="@+id/start_float_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="start_float_bar"/>
+
 </LinearLayout>
