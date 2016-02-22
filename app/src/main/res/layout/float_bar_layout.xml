@@ -2,11 +2,15 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorRed"
     android:orientation="vertical">
 
     <Button
         android:id="@+id/float_btn1"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="float bar" />
+        android:layout_height="wrap_content"
+        android:background="@color/colorRed"
+        android:text="float bar"
+        android:textColor="@color/colorWhite"
+        android:textSize="18dp" />
 </LinearLayout>

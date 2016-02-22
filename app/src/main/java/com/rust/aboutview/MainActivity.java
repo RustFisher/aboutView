@@ -1,8 +1,10 @@
 package com.rust.aboutview;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -14,14 +16,18 @@ import com.rust.contactview.PeopleMainActivity;
 import com.rust.service.FloatingBarService;
 
 public class MainActivity extends AppCompatActivity {
-
-    boolean mFloatBarShow = false;
+    
     ListView demoList;
+    SharedPreferences mConfigs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        mConfigs = getSharedPreferences(AboutViewConfig.APP_CONFIG, MODE_PRIVATE);
+        SharedPreferences.Editor editor = mConfigs.edit();
+        editor.putBoolean(AboutViewConfig.SHOW_FLOAT_BAR, false);
+        editor.apply();
         String[] demoNames = {
                 getString(R.string.image_process),
                 getString(R.string.device_info),
@@ -103,8 +109,12 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     }
                     case 11: {
-                        mFloatBarShow = !mFloatBarShow;
-                        if (mFloatBarShow) {
+                        boolean mFloatBarShow =
+                                !mConfigs.getBoolean(AboutViewConfig.SHOW_FLOAT_BAR, false);
+                        SharedPreferences.Editor editor = mConfigs.edit();
+                        editor.putBoolean(AboutViewConfig.SHOW_FLOAT_BAR, mFloatBarShow);
+                        editor.apply();
+                        if (mConfigs.getBoolean(AboutViewConfig.SHOW_FLOAT_BAR, false)) {
                             Intent floatBarIntent =
                                     new Intent(MainActivity.this, FloatingBarService.class);
                             startService(floatBarIntent);

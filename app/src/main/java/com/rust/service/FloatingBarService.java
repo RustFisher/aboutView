@@ -2,6 +2,7 @@ package com.rust.service;
 
 import android.app.Service;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.IBinder;
 import android.util.Log;
 import android.view.Gravity;
@@ -12,6 +13,8 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.LinearLayout;
 
+import com.rust.aboutview.AboutViewConfig;
+import com.rust.aboutview.MainActivity;
 import com.rust.aboutview.R;
 
 /**
@@ -45,6 +48,9 @@ public class FloatingBarService extends Service {
         mWindowManager =
                 (WindowManager) getApplication().getSystemService(getApplication().WINDOW_SERVICE);
         Log.i(TAG, "mWindowManager ---> " + mWindowManager);
+
+        // TYPE_PHONE requires permission SYSTEM_ALERT_WINDOW
+        // TYPE_TOAST can pop floating window without any permission (TEST in API >= 19)
         wmParams.type = WindowManager.LayoutParams.TYPE_PHONE;
         // 设置浮动窗口不可聚焦（实现操作除浮动窗口外的其他可见窗口的操作）
         wmParams.flags = WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE;
@@ -56,7 +62,7 @@ public class FloatingBarService extends Service {
 
         wmParams.width = WindowManager.LayoutParams.MATCH_PARENT;
         wmParams.height = WindowManager.LayoutParams.WRAP_CONTENT;
-
+        wmParams.height = 40;
         LayoutInflater inflater = LayoutInflater.from(getApplication());
         //获取浮动窗口视图所在布局
         mFloatLayout = (LinearLayout) inflater.inflate(R.layout.float_bar_layout, null);
@@ -83,8 +89,9 @@ public class FloatingBarService extends Service {
                 wmParams.y = (int) event.getRawY() - floatViewButton.getMeasuredHeight() / 2 - 25;
                 Log.i(TAG, "RawY" + event.getRawY());
                 Log.i(TAG, "Y" + event.getY());
-                //刷新
-                mWindowManager.updateViewLayout(mFloatLayout, wmParams);
+
+                // refresh position
+//                mWindowManager.updateViewLayout(mFloatLayout, wmParams);
                 return false;  //此处必须返回false，否则OnClickListener获取不到监听
             }
         });
@@ -92,6 +99,12 @@ public class FloatingBarService extends Service {
         floatViewButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                SharedPreferences mConfig =
+                        getSharedPreferences(AboutViewConfig.APP_CONFIG, MODE_PRIVATE);
+                SharedPreferences.Editor editor = mConfig.edit();
+                editor.putBoolean(AboutViewConfig.SHOW_FLOAT_BAR, false);
+                editor.apply();
+                stopSelf();
             }
         });
     }
@@ -100,7 +113,7 @@ public class FloatingBarService extends Service {
     public void onDestroy() {
         super.onDestroy();
         if (mFloatLayout != null) {
-            //移除悬浮窗口
+            // remove floating window
             mWindowManager.removeView(mFloatLayout);
         }
     }
