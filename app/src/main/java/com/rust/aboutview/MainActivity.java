@@ -1,138 +1,126 @@
 package com.rust.aboutview;
 
-import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Rect;
 import android.os.Bundle;
-import android.util.Log;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
 import com.rust.aboutview.bluetooth.BluetoothActivity;
 import com.rust.arslan.ArslanActivity;
-import com.rust.contactview.ContactPeopleActivity;
 import com.rust.contactview.PeopleMainActivity;
 import com.rust.service.FloatingBarService;
 
-public class MainActivity extends Activity {
+public class MainActivity extends AppCompatActivity {
 
     boolean mFloatBarShow = false;
-    public int statusBarHeight;
+    ListView demoList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        fv(R.id.start_float_bar).setOnClickListener(new View.OnClickListener() {
+        String[] demoNames = {
+                getString(R.string.image_process),
+                getString(R.string.device_info),
+                getString(R.string.swipe_refresh),
+                getString(R.string.drawer_activity),
+                getString(R.string.arslan_activity),
+                getString(R.string.notification_activity),
+                getString(R.string.clip_children_activity),
+                getString(R.string.animation_activity),
+                getString(R.string.circle_activity),
+                getString(R.string.bluetooth_activity),
+                getString(R.string.contact_activity),
+                getString(R.string.float_bar_activity)};
+        demoList = (ListView) findViewById(R.id.demo_list_view);
+        ArrayAdapter<String> demoListAdapter =
+                new ArrayAdapter<String>(this, android.R.layout.simple_expandable_list_item_1);
+        for (String s : demoNames) {
+            demoListAdapter.add(s);
+        }
+        demoList.setAdapter(demoListAdapter);
+        demoList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onClick(View v) {
-                mFloatBarShow = !mFloatBarShow;
-                if (mFloatBarShow) {
-                    Intent floatBarIntent = new Intent(MainActivity.this, FloatingBarService.class);
-                    startService(floatBarIntent);
-                } else {
-                    Intent floatBarIntent = new Intent(MainActivity.this, FloatingBarService.class);
-                    stopService(floatBarIntent);
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent i = new Intent();
+                switch (position) {
+                    case 0: {
+                        i.setClass(getApplicationContext(), ImageProcessingActivity.class);
+                        startActivity(i);
+                        break;
+                    }
+                    case 1: {
+                        i.setClass(getApplicationContext(), ResolutionRatioActivity.class);
+                        startActivity(i);
+                        break;
+                    }
+                    case 2: {
+                        i.setClass(getApplicationContext(), MySwipeActivity.class);
+                        startActivity(i);
+                        break;
+                    }
+                    case 3: {
+                        i.setClass(getApplicationContext(), DrawerActivity.class);
+                        startActivity(i);
+                        break;
+                    }
+                    case 4: {
+                        i.setClass(getApplicationContext(), ArslanActivity.class);
+                        startActivity(i);
+                        break;
+                    }
+                    case 5: {
+                        i.setClass(getApplicationContext(), NotificationActivity.class);
+                        startActivity(i);
+                        break;
+                    }
+                    case 6: {
+                        i.setClass(getApplicationContext(), ClipChildrenActivity.class);
+                        startActivity(i);
+                        break;
+                    }
+                    case 7: {
+                        i.setClass(getApplicationContext(), FrameAnimationActivity.class);
+                        startActivity(i);
+                        break;
+                    }
+                    case 8: {
+                        i.setClass(getApplicationContext(), CirclesActivity.class);
+                        startActivity(i);
+                        break;
+                    }
+                    case 9: {
+                        i.setClass(getApplicationContext(), BluetoothActivity.class);
+                        startActivity(i);
+                        break;
+                    }
+                    case 10: {
+                        i.setClass(getApplicationContext(), PeopleMainActivity.class);
+                        startActivity(i);
+                        break;
+                    }
+                    case 11: {
+                        mFloatBarShow = !mFloatBarShow;
+                        if (mFloatBarShow) {
+                            Intent floatBarIntent =
+                                    new Intent(MainActivity.this, FloatingBarService.class);
+                            startService(floatBarIntent);
+                        } else {
+                            Intent floatBarIntent =
+                                    new Intent(MainActivity.this, FloatingBarService.class);
+                            stopService(floatBarIntent);
+                        }
+                        break;
+                    }
+                    default:
+                        break;
                 }
             }
         });
 
-        findViewById(R.id.goto_image_processing_activity).setOnClickListener(
-                new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Intent i = new Intent();
-                        i.setClass(getApplicationContext(), ImageProcessingActivity.class);
-                        startActivity(i);
-                    }
-                });
-        findViewById(R.id.goto_resolution_ratio_activity).setOnClickListener(
-                new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Intent i = new Intent();
-                        i.setClass(getApplicationContext(), ResolutionRatioActivity.class);
-                        startActivity(i);
-                    }
-                });
-        findViewById(R.id.goto_list_activity).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent();
-                i.setClass(getApplicationContext(), MySwipeActivity.class);
-                startActivity(i);
-            }
-        });
-        findViewById(R.id.goto_drawer_activity).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent();
-                i.setClass(getApplicationContext(), DrawerActivity.class);
-                startActivity(i);
-            }
-        });
-        findViewById(R.id.goto_arslan_activity).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent();
-                i.setClass(getApplicationContext(), ArslanActivity.class);
-                startActivity(i);
-            }
-        });
-        findViewById(R.id.goto_notification_demo_activity).setOnClickListener(
-                new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Intent i = new Intent();
-                        i.setClass(getApplicationContext(), NotificationActivity.class);
-                        startActivity(i);
-                    }
-                });
-        findViewById(R.id.goto_clip_children_activity).setOnClickListener(
-                new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Intent i = new Intent();
-                        i.setClass(getApplicationContext(), ClipChildrenActivity.class);
-                        startActivity(i);
-                    }
-                });
-        findViewById(R.id.goto_frame_anima_activity).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent();
-                i.setClass(getApplicationContext(), FrameAnimationActivity.class);
-                startActivity(i);
-            }
-        });
-
-        fv(R.id.goto_circle_circle_activity).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent();
-                i.setClass(getApplicationContext(), CirclesActivity.class);
-                startActivity(i);
-            }
-        });
-
-        fv(R.id.goto_bluetooth_activity).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent();
-                i.setClass(getApplicationContext(), BluetoothActivity.class);
-                startActivity(i);
-
-            }
-        });
-
-        fv(R.id.goto_contact_activity).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent();
-                i.setClass(getApplicationContext(), PeopleMainActivity.class);
-                startActivity(i);
-            }
-        });
     }
 
     /**

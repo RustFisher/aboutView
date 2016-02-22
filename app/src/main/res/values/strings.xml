@@ -17,8 +17,12 @@
     <string name="drawer_activity">Drawer Layout</string>
     <string name="arslan_activity">Arslan</string>
     <string name="notification_activity">notification demo</string>
-    <string name="circle_activity">自定义view</string>
+    <string name="clip_children_activity">clip children</string>
+    <string name="animation_activity">动画效果</string>
+    <string name="circle_activity">自定义view - Circle UI</string>
     <string name="bluetooth_activity">蓝牙</string>
+    <string name="contact_activity">Contact模块</string>
+    <string name="float_bar_activity">悬浮窗</string>
 
     <!-- circle activity string -->
     <string name="circles_top_title">选择你喜欢的圈圈</string>

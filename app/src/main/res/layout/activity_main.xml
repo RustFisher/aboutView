@@ -5,82 +5,11 @@
     android:dividerPadding="0dp"
     android:orientation="vertical">
 
-<ListView
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-
-</ListView>
-
-    <Button
-        android:id="@+id/goto_image_processing_activity"
+    <ListView
+        android:id="@+id/demo_list_view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/image_process" />
+        android:layout_height="wrap_content">
 
-    <Button
-        android:id="@+id/goto_resolution_ratio_activity"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/device_info" />
-
-    <Button
-        android:id="@+id/goto_list_activity"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/swipe_refresh" />
-
-    <Button
-        android:id="@+id/goto_drawer_activity"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/drawer_activity" />
-
-    <Button
-        android:id="@+id/goto_arslan_activity"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/arslan_activity" />
-
-    <Button
-        android:id="@+id/goto_notification_demo_activity"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/notification_activity" />
-
-    <Button
-        android:id="@+id/goto_clip_children_activity"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="clip_children_activity" />
-
-    <Button
-        android:id="@+id/goto_frame_anima_activity"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="anima" />
-
-    <Button
-        android:id="@+id/goto_circle_circle_activity"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/circle_activity" />
-
-    <Button
-        android:id="@+id/goto_bluetooth_activity"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/bluetooth_activity" />
-
-    <Button
-        android:id="@+id/goto_contact_activity"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="go to contact"/>
-
-    <Button
-        android:id="@+id/start_float_bar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="start_float_bar"/>
+    </ListView>
 
 </LinearLayout>
