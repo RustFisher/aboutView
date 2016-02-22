@@ -49,9 +49,9 @@ public class FloatingBarService extends Service {
                 (WindowManager) getApplication().getSystemService(getApplication().WINDOW_SERVICE);
         Log.i(TAG, "mWindowManager ---> " + mWindowManager);
 
-        // TYPE_PHONE requires permission SYSTEM_ALERT_WINDOW
+        // TYPE_PHONE requires permission SYSTEM_ALERT_WINDOW (can't be use in API 23)
         // TYPE_TOAST can pop floating window without any permission (TEST in API >= 19)
-        wmParams.type = WindowManager.LayoutParams.TYPE_PHONE;
+        wmParams.type = WindowManager.LayoutParams.TYPE_TOAST;
         // 设置浮动窗口不可聚焦（实现操作除浮动窗口外的其他可见窗口的操作）
         wmParams.flags = WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE;
         // show on the left and top
