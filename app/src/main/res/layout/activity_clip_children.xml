@@ -5,11 +5,16 @@
     android:clipChildren="false"
     android:orientation="vertical">
 
-    <android.support.v4.view.ViewPager
-        android:id="@+id/view_pager"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dip"
-        android:layout_weight="1.0" />
+        android:layout_weight="1.0">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Text1" />
+    </RelativeLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -18,6 +23,7 @@
         android:orientation="horizontal">
 
         <ImageView
+            android:id="@+id/child_far_left"
             android:layout_width="0dip"
             android:layout_height="fill_parent"
             android:layout_weight="1.0"
@@ -25,6 +31,7 @@
             android:src="@drawable/sixtraveltransportation" />
 
         <ImageView
+            android:id="@+id/child_left"
             android:layout_width="0dip"
             android:layout_height="fill_parent"
             android:layout_weight="1.0"
@@ -33,6 +40,7 @@
             android:src="@drawable/train" />
 
         <ImageView
+            android:id="@+id/child_middle"
             android:layout_width="0dip"
             android:layout_height="64dip"
             android:layout_gravity="bottom"
@@ -41,6 +49,7 @@
             android:src="@drawable/ecology" />
 
         <ImageView
+            android:id="@+id/child_right"
             android:layout_width="0dip"
             android:layout_height="fill_parent"
             android:layout_weight="1.0"
@@ -48,6 +57,7 @@
             android:src="@drawable/delicious_orange_01" />
 
         <ImageView
+            android:id="@+id/child_far_right"
             android:layout_width="0dip"
             android:layout_height="fill_parent"
             android:layout_weight="1.0"
