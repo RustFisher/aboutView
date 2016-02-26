@@ -60,6 +60,7 @@
             android:label="@string/title_add_data_activity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name="com.rust.contactview.ContactPeopleActivity"/>
+        <activity android:name=".DrawLineActivity"/>
     </application>
 
 </manifest>

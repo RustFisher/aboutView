@@ -16,7 +16,7 @@ import com.rust.contactview.PeopleMainActivity;
 import com.rust.service.FloatingBarService;
 
 public class MainActivity extends AppCompatActivity {
-    
+
     ListView demoList;
     SharedPreferences mConfigs;
 
@@ -40,7 +40,8 @@ public class MainActivity extends AppCompatActivity {
                 getString(R.string.circle_activity),
                 getString(R.string.bluetooth_activity),
                 getString(R.string.contact_activity),
-                getString(R.string.float_bar_activity)};
+                getString(R.string.float_bar_activity),
+                getString(R.string.drawer_line_activity)};
         demoList = (ListView) findViewById(R.id.demo_list_view);
         ArrayAdapter<String> demoListAdapter =
                 new ArrayAdapter<String>(this, android.R.layout.simple_expandable_list_item_1);
@@ -123,6 +124,11 @@ public class MainActivity extends AppCompatActivity {
                                     new Intent(MainActivity.this, FloatingBarService.class);
                             stopService(floatBarIntent);
                         }
+                        break;
+                    }
+                    case 12: {
+                        i.setClass(getApplicationContext(), DrawLineActivity.class);
+                        startActivity(i);
                         break;
                     }
                     default:
