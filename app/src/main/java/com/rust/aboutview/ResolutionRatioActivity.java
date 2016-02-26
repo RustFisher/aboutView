@@ -25,8 +25,8 @@ public class ResolutionRatioActivity extends Activity {
         setContentView(R.layout.activity_info);
         screenInfo = (TextView) findViewById(R.id.screen_info);
         screenPPI = (TextView) findViewById(R.id.screen_ppi);
-        // 设成1表示显示触摸位置，需要权限
-        android.provider.Settings.System.putInt(getContentResolver(), "show_touches", 1);
+        // 设成1表示显示触摸位置，需要权限;API23中不允许此操作
+//        android.provider.Settings.System.putInt(getContentResolver(), "show_touches", 1);
 
         Intent intent = new Intent(Intent.ACTION_MAIN);
         intent.addCategory(Intent.CATEGORY_LAUNCHER);
@@ -55,6 +55,6 @@ public class ResolutionRatioActivity extends Activity {
     @Override
     protected void onStop() {
         super.onStop();
-        android.provider.Settings.System.putInt(getContentResolver(), "show_touches", 0);
+//        android.provider.Settings.System.putInt(getContentResolver(), "show_touches", 0);
     }
 }
