@@ -28,7 +28,19 @@
             </intent-filter>
         </service>
 
-        <service android:name="com.rust.service.FloatingBarService"/>
+        <service android:name="com.rust.service.FloatingBarService" />
+
+        <service
+            android:name="com.rust.service.MyDayDream"
+            android:exported="true"
+            android:icon="@drawable/littleboygreen_x128"
+            android:label="@string/my_day_dream_label"
+            android:permission="android.permission.BIND_DREAM_SERVICE">
+            <intent-filter>
+                <action android:name="android.service.dreams.DreamService" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </service>
 
         <activity
             android:name=".MainActivity"
@@ -53,14 +65,13 @@
         <activity android:name=".bluetooth.BluetoothActivity" />
         <activity
             android:name="com.rust.contactview.PeopleMainActivity"
-            android:theme="@style/AppTheme.NoActionBar">
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
             android:name="com.rust.contactview.AddDataActivity"
             android:label="@string/title_add_data_activity"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name="com.rust.contactview.ContactPeopleActivity"/>
-        <activity android:name=".DrawLineActivity"/>
+        <activity android:name="com.rust.contactview.ContactPeopleActivity" />
+        <activity android:name=".DrawLineActivity" />
     </application>
 
 </manifest>
