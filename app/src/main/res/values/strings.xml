@@ -24,6 +24,7 @@
     <string name="contact_activity">Contact模块</string>
     <string name="float_bar_activity">悬浮窗</string>
     <string name="drawer_line_activity">十字坐标点击跟随</string>
+    <string name="fragment_tab_host_activity">FragmentTabHost</string>
 
     <!-- circle activity string -->
     <string name="circles_top_title">选择你喜欢的圈圈</string>

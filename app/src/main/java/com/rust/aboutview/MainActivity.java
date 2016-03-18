@@ -41,7 +41,8 @@ public class MainActivity extends AppCompatActivity {
                 getString(R.string.bluetooth_activity),
                 getString(R.string.contact_activity),
                 getString(R.string.float_bar_activity),
-                getString(R.string.drawer_line_activity)};
+                getString(R.string.drawer_line_activity),
+                getString(R.string.fragment_tab_host_activity)};
         demoList = (ListView) findViewById(R.id.demo_list_view);
         ArrayAdapter<String> demoListAdapter =
                 new ArrayAdapter<String>(this, android.R.layout.simple_expandable_list_item_1);
@@ -128,6 +129,11 @@ public class MainActivity extends AppCompatActivity {
                     }
                     case 12: {
                         i.setClass(getApplicationContext(), DrawLineActivity.class);
+                        startActivity(i);
+                        break;
+                    }
+                    case 13: {
+                        i.setClass(getApplicationContext(),FragmentTabHostDemo.class);
                         startActivity(i);
                         break;
                     }

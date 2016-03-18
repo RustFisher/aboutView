@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.rust.aboutview">
+<manifest package="com.rust.aboutview"
+          xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
-    <uses-permission android:name="android.permission.BLUETOOTH" />
-    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS"/>
+    <uses-permission android:name="android.permission.BLUETOOTH"/>
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
 
     <!-- in API 23, don't forget to enable permission in Settings-APP -->
-    <uses-permission android:name="android.permission.READ_CONTACTS" />
-    <uses-permission android:name="android.permission.WRITE_CONTACTS" />
-    <uses-permission android:name="android.permission.READ_SMS" />
+    <uses-permission android:name="android.permission.READ_CONTACTS"/>
+    <uses-permission android:name="android.permission.WRITE_CONTACTS"/>
+    <uses-permission android:name="android.permission.READ_SMS"/>
 
     <!-- floating bar needs this permission -->
-    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
 
     <application
         android:name="com.rust.aboutview.MyApplication"
@@ -24,11 +24,11 @@
 
         <service android:name="com.rust.service.MyService">
             <intent-filter>
-                <action android:name="com.rust.aidl.IMyService" />
+                <action android:name="com.rust.aidl.IMyService"/>
             </intent-filter>
         </service>
 
-        <service android:name="com.rust.service.FloatingBarService" />
+        <service android:name="com.rust.service.FloatingBarService"/>
 
         <service
             android:name="com.rust.service.MyDayDream"
@@ -37,8 +37,8 @@
             android:label="@string/my_day_dream_label"
             android:permission="android.permission.BIND_DREAM_SERVICE">
             <intent-filter>
-                <action android:name="android.service.dreams.DreamService" />
-                <category android:name="android.intent.category.DEFAULT" />
+                <action android:name="android.service.dreams.DreamService"/>
+                <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
         </service>
 
@@ -46,32 +46,35 @@
             android:name=".MainActivity"
             android:screenOrientation="nosensor">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.MAIN"/>
 
-                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".ImageProcessingActivity" />
-        <activity android:name=".ResolutionRatioActivity" />
-        <activity android:name=".MySwipeActivity" />
-        <activity android:name=".DrawerActivity" />
-        <activity android:name="com.rust.arslan.ArslanActivity" />
-        <activity android:name="com.rust.arslan.SettingsActivity" />
-        <activity android:name="com.rust.arslan.NetworkActivity" />
-        <activity android:name=".NotificationActivity" />
-        <activity android:name="com.rust.aboutview.ClipChildrenActivity" />
-        <activity android:name=".FrameAnimationActivity" />
-        <activity android:name=".CirclesActivity" />
-        <activity android:name=".bluetooth.BluetoothActivity" />
+        <activity android:name=".ImageProcessingActivity"/>
+        <activity android:name=".ResolutionRatioActivity"/>
+        <activity android:name=".MySwipeActivity"/>
+        <activity android:name=".DrawerActivity"/>
+        <activity android:name="com.rust.arslan.ArslanActivity"/>
+        <activity android:name="com.rust.arslan.SettingsActivity"/>
+        <activity android:name="com.rust.arslan.NetworkActivity"/>
+        <activity android:name=".NotificationActivity"/>
+        <activity android:name="com.rust.aboutview.ClipChildrenActivity"/>
+        <activity android:name=".FrameAnimationActivity"/>
+        <activity android:name=".CirclesActivity"/>
+        <activity android:name=".bluetooth.BluetoothActivity"/>
         <activity
             android:name="com.rust.contactview.PeopleMainActivity"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity
             android:name="com.rust.contactview.AddDataActivity"
             android:label="@string/title_add_data_activity"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name="com.rust.contactview.ContactPeopleActivity" />
-        <activity android:name=".DrawLineActivity" />
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name="com.rust.contactview.ContactPeopleActivity"/>
+        <activity android:name=".DrawLineActivity"/>
+        <activity
+            android:name=".FragmentTabHostDemo"
+            android:theme="@style/Theme.AppCompat.Light.DarkActionBar"/>
     </application>
 
 </manifest>
