@@ -4,6 +4,8 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorRed">#FF0000</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="colorRedUp">#CC3333</color>
+    <color name="colorRedDown">#55CC3333</color>
     <color name="colorMagenta">#CC3399</color>
     <color name="colorWhite">#FFFFFF</color>
 
