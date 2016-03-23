@@ -1,7 +1,5 @@
 package com.rust.aboutview;
 
-import android.content.res.ColorStateList;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTabHost;
@@ -19,7 +17,8 @@ import java.util.HashMap;
 
 public class FragmentTabHostDemo extends FragmentActivity {
 
-    public static final int COLOR_GRAY01 = 0xFFADADAD;
+    public static final int COLOR_GRAY_01 = 0xFFADADAD;
+    public static final int COLOR_GREEN_01 = 0xFF73BF00;
 
     public static final String TAB1 = "tab1";
     public static final String TAB2 = "tab2";
@@ -48,9 +47,10 @@ public class FragmentTabHostDemo extends FragmentActivity {
         TabHost.TabSpec tabSpec = mTabHost.newTabSpec(TABS[0]);
         View tabView1 = mLayoutInflater.inflate(R.layout.tab_item, null);
         final ImageView tabImage1 = (ImageView) tabView1.findViewById(R.id.tab_image);
-        tabImage1.setImageResource(R.drawable.a49);
         final TextView tabText1 = (TextView) tabView1.findViewById(R.id.tab_text);
-        tabText1.setText("Page1");
+        tabImage1.setImageResource(R.drawable.a4a);
+        tabText1.setText(getString(R.string.tab_label_1));
+        tabText1.setTextColor(COLOR_GREEN_01);
 
         tabSpec.setIndicator(tabView1);
         mTabHost.addTab(tabSpec, TabFragment1.class, null);
@@ -59,7 +59,7 @@ public class FragmentTabHostDemo extends FragmentActivity {
         final ImageView tabImage2 = (ImageView) tabView2.findViewById(R.id.tab_image);
         tabImage2.setImageResource(R.drawable.a49);
         final TextView tabText2 = (TextView) tabView2.findViewById(R.id.tab_text);
-        tabText2.setText("Page2");
+        tabText2.setText(getString(R.string.tab_label_2));
 
         mTabHost.addTab(mTabHost.newTabSpec(TABS[1]).setIndicator(tabView2),
                 TabFragment2.class, null);
@@ -68,14 +68,12 @@ public class FragmentTabHostDemo extends FragmentActivity {
         final ImageView tabImage3 = (ImageView) tabView3.findViewById(R.id.tab_image);
         tabImage3.setImageResource(R.drawable.a49);
         final TextView tabText3 = (TextView) tabView3.findViewById(R.id.tab_text);
-        tabText3.setText("Page3");
+        tabText3.setText(getString(R.string.tab_label_3));
 
         mTabHost.addTab(mTabHost.newTabSpec(TABS[2])
                 .setIndicator(tabView3), TabFragment3.class, null);
 
         mTabHost.setCurrentTab(0);
-        tabImage1.setImageResource(R.drawable.a4a);
-        tabText1.setTextColor(Color.GREEN);
 
         mTabHost.setOnTabChangedListener(new TabHost.OnTabChangeListener() {
             @Override
@@ -84,21 +82,21 @@ public class FragmentTabHostDemo extends FragmentActivity {
                 tabImage1.setImageResource(R.drawable.a49);
                 tabImage2.setImageResource(R.drawable.a49);
                 tabImage3.setImageResource(R.drawable.a49);
-                tabText1.setTextColor(COLOR_GRAY01);
-                tabText2.setTextColor(COLOR_GRAY01);
-                tabText3.setTextColor(COLOR_GRAY01);
+                tabText1.setTextColor(COLOR_GRAY_01);
+                tabText2.setTextColor(COLOR_GRAY_01);
+                tabText3.setTextColor(COLOR_GRAY_01);
                 switch (child) {
                     case 0:
                         tabImage1.setImageResource(R.drawable.a4a);
-                        tabText1.setTextColor(Color.GREEN);
+                        tabText1.setTextColor(COLOR_GREEN_01);
                         break;
                     case 1:
                         tabImage2.setImageResource(R.drawable.a4a);
-                        tabText2.setTextColor(Color.GREEN);
+                        tabText2.setTextColor(COLOR_GREEN_01);
                         break;
                     case 2:
                         tabImage3.setImageResource(R.drawable.a4a);
-                        tabText3.setTextColor(Color.GREEN);
+                        tabText3.setTextColor(COLOR_GREEN_01);
                         break;
                 }
             }

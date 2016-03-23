@@ -58,4 +58,8 @@
     <string name="yes">Yes</string>
     <string name="cancel">Cancel</string>
 
+    <!-- FragmentTabHostDemo-->
+    <string name="tab_label_1">Page1</string>
+    <string name="tab_label_2">Page2</string>
+    <string name="tab_label_3">Page3</string>
 </resources>
