@@ -1,19 +1,15 @@
 package com.rust.aboutview;
 
+import android.content.res.ColorStateList;
 import android.graphics.Color;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTabHost;
-import android.support.v4.content.ContextCompat;
-import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TabHost;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.rust.aboutview.fragment.TabFragment1;
 import com.rust.aboutview.fragment.TabFragment2;
@@ -22,6 +18,9 @@ import com.rust.aboutview.fragment.TabFragment3;
 import java.util.HashMap;
 
 public class FragmentTabHostDemo extends FragmentActivity {
+
+    public static final int COLOR_GRAY01 = 0xFFADADAD;
+
     public static final String TAB1 = "tab1";
     public static final String TAB2 = "tab2";
     public static final String TAB3 = "tab3";
@@ -43,52 +42,67 @@ public class FragmentTabHostDemo extends FragmentActivity {
 
         mTabHost = (FragmentTabHost) findViewById(android.R.id.tabhost);
         mTabHost.setup(this, getSupportFragmentManager(), R.id.realtabcontent);
+        mTabHost.getTabWidget().setMinimumHeight(120);// set the tab height
+        mTabHost.getTabWidget().setDividerDrawable(null);
 
         TabHost.TabSpec tabSpec = mTabHost.newTabSpec(TABS[0]);
         View tabView1 = mLayoutInflater.inflate(R.layout.tab_item, null);
-        ImageView tabImage1 = (ImageView) tabView1.findViewById(R.id.back_image);
-        ImageView tabBottom1 = (ImageView) tabView1.findViewById(R.id.bottom_line);
-        tabImage1.setImageResource(R.drawable.floppy_16px);
-        tabBottom1.setBackgroundColor(Color.BLUE);
-        TextView tabText1 = (TextView) tabView1.findViewById(R.id.tab_text);
+        final ImageView tabImage1 = (ImageView) tabView1.findViewById(R.id.tab_image);
+        tabImage1.setImageResource(R.drawable.a49);
+        final TextView tabText1 = (TextView) tabView1.findViewById(R.id.tab_text);
         tabText1.setText("Page1");
-        tabText1.setTextColor(Color.argb(255, 255, 255, 255));
+
         tabSpec.setIndicator(tabView1);
         mTabHost.addTab(tabSpec, TabFragment1.class, null);
-//        mTabHost.getTabWidget().getChildAt(0).setBackgroundResource(R.drawable.train);
-        Drawable d = ContextCompat.getDrawable(getApplicationContext(), R.drawable.horn_32px);
-        mTabHost.addTab(mTabHost.newTabSpec(TABS[1]).setIndicator("Page2", d),
+
+        View tabView2 = mLayoutInflater.inflate(R.layout.tab_item, null);
+        final ImageView tabImage2 = (ImageView) tabView2.findViewById(R.id.tab_image);
+        tabImage2.setImageResource(R.drawable.a49);
+        final TextView tabText2 = (TextView) tabView2.findViewById(R.id.tab_text);
+        tabText2.setText("Page2");
+
+        mTabHost.addTab(mTabHost.newTabSpec(TABS[1]).setIndicator(tabView2),
                 TabFragment2.class, null);
 
+        View tabView3 = mLayoutInflater.inflate(R.layout.tab_item, null);
+        final ImageView tabImage3 = (ImageView) tabView3.findViewById(R.id.tab_image);
+        tabImage3.setImageResource(R.drawable.a49);
+        final TextView tabText3 = (TextView) tabView3.findViewById(R.id.tab_text);
+        tabText3.setText("Page3");
+
         mTabHost.addTab(mTabHost.newTabSpec(TABS[2])
-                .setIndicator("Page3"), TabFragment3.class, null);
+                .setIndicator(tabView3), TabFragment3.class, null);
 
         mTabHost.setCurrentTab(0);
+        tabImage1.setImageResource(R.drawable.a4a);
+        tabText1.setTextColor(Color.GREEN);
 
         mTabHost.setOnTabChangedListener(new TabHost.OnTabChangeListener() {
             @Override
             public void onTabChanged(String tabId) {
                 int child = mTabMap.get(tabId);
-                mTabHost.getTabWidget().getChildAt(child)
-                        .findViewById(R.id.bottom_line).setVisibility(View.VISIBLE);
+                tabImage1.setImageResource(R.drawable.a49);
+                tabImage2.setImageResource(R.drawable.a49);
+                tabImage3.setImageResource(R.drawable.a49);
+                tabText1.setTextColor(COLOR_GRAY01);
+                tabText2.setTextColor(COLOR_GRAY01);
+                tabText3.setTextColor(COLOR_GRAY01);
+                switch (child) {
+                    case 0:
+                        tabImage1.setImageResource(R.drawable.a4a);
+                        tabText1.setTextColor(Color.GREEN);
+                        break;
+                    case 1:
+                        tabImage2.setImageResource(R.drawable.a4a);
+                        tabText2.setTextColor(Color.GREEN);
+                        break;
+                    case 2:
+                        tabImage3.setImageResource(R.drawable.a4a);
+                        tabText3.setTextColor(Color.GREEN);
+                        break;
+                }
             }
         });
-
-//        final View tab1 = mTabHost.getTabWidget().getChildAt(0);
-//        tab1.setOnTouchListener(new View.OnTouchListener() {
-//            @Override
-//            public boolean onTouch(View v, MotionEvent event) {
-//                switch (event.getAction()) {
-//                    case MotionEvent.ACTION_DOWN:
-//                        tab1.setBackgroundColor(Color.argb(155, 200, 200, 200));
-//                        break;
-//                    case MotionEvent.ACTION_UP:
-//                        tab1.setBackgroundColor(Color.argb(255, 200, 33, 33));
-//                        break;
-//                }
-//                return false;
-//            }
-//        });
 
     }
 }
