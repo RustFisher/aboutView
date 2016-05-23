@@ -4,12 +4,12 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.rust.aboutview.activity.FragmentCommunicationActivity;
 import com.rust.aboutview.bluetooth.BluetoothActivity;
 import com.rust.arslan.ArslanActivity;
 import com.rust.contactview.PeopleMainActivity;
@@ -42,7 +42,8 @@ public class MainActivity extends AppCompatActivity {
                 getString(R.string.contact_activity),
                 getString(R.string.float_bar_activity),
                 getString(R.string.drawer_line_activity),
-                getString(R.string.fragment_tab_host_activity)};
+                getString(R.string.fragment_tab_host_activity),
+                "fragment与activity通信"};
         demoList = (ListView) findViewById(R.id.demo_list_view);
         ArrayAdapter<String> demoListAdapter =
                 new ArrayAdapter<String>(this, android.R.layout.simple_expandable_list_item_1);
@@ -133,9 +134,13 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     }
                     case 13: {
-                        i.setClass(getApplicationContext(),FragmentTabHostDemo.class);
+                        i.setClass(getApplicationContext(), FragmentTabHostDemo.class);
                         startActivity(i);
                         break;
+                    }
+                    case 14: {
+                        i.setClass(getApplicationContext(), FragmentCommunicationActivity.class);
+                        startActivity(i);
                     }
                     default:
                         break;
