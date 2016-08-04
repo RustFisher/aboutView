@@ -5,3 +5,8 @@
 .DS_Store
 /build
 /captures
+/.idea/gradle.xml
+/.idea/misc.xml
+/.idea/modules.xml
+AboutView.iml
+app/app.iml
