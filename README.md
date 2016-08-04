@@ -1,4 +1,5 @@
 # aboutView
-not only about View  
-It is about Android practice
-A draft
+
+试验田
+
+![main view](https://raw.githubusercontent.com/RustFisher/BTMessage/master/pics/mainView.gif)

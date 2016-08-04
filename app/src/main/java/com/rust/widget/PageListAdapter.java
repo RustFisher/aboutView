@@ -10,9 +10,6 @@ import com.rust.aboutview.R;
 
 import java.util.ArrayList;
 
-/**
- * Adapter for showing toy list
- */
 public class PageListAdapter extends RecyclerView.Adapter<PageListAdapter.ViewHolder> {
 
     private ArrayList<DeviceItemViewEntity> mDataList;
@@ -87,7 +84,7 @@ public class PageListAdapter extends RecyclerView.Adapter<PageListAdapter.ViewHo
         }
     }
 
-    // Return the size of your dataset (invoked by the layout manager)
+    // Return the size of your data set (invoked by the layout manager)
     @Override
     public int getItemCount() {
         return mDataList.size();
