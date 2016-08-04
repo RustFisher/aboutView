@@ -18,9 +18,7 @@
     <string name="arslan_activity">Arslan</string>
     <string name="notification_activity">notification demo</string>
     <string name="clip_children_activity">clip children</string>
-    <string name="animation_activity">动画效果</string>
     <string name="circle_activity">自定义view - Circle UI</string>
-    <string name="bluetooth_activity">蓝牙</string>
     <string name="contact_activity">Contact模块</string>
     <string name="float_bar_activity">悬浮窗</string>
     <string name="drawer_line_activity">十字坐标点击跟随</string>
@@ -53,7 +51,6 @@
     <string name="delete_all_cancel">NO</string>
 
     <!-- contact activity -->
-    <string name="add_contact">add</string>
 
     <string name="yes">Yes</string>
     <string name="cancel">Cancel</string>

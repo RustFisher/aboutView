@@ -4,13 +4,10 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorRed">#FF0000</color>
     <color name="colorAccent">#FF4081</color>
-    <color name="colorRedUp">#CC3333</color>
-    <color name="colorRedDown">#55CC3333</color>
     <color name="colorMagenta">#CC3399</color>
     <color name="colorGray10">#FFADADAD</color>
     <color name="colorWhite">#FFFFFF</color>
 
-    <color name="colorYellow10">#C4C400</color>
     <color name="colorYellow01">#FFF8D7</color>
 
     <color name="colorLine">#99FF99</color>

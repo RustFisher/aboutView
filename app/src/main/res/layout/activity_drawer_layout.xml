@@ -6,7 +6,12 @@
     <FrameLayout
         android:id="@+id/drawer_activity_root"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Please pull left" />
 
     <!-- The left navigation drawer -->
     <RelativeLayout
@@ -34,7 +39,7 @@
             android:choiceMode="singleChoice"
             android:divider="@android:color/transparent"
             android:dividerHeight="10dp"
-            android:paddingTop="5dp"/>
+            android:paddingTop="5dp" />
 
         <Button
             android:id="@+id/btn_left_exit"
