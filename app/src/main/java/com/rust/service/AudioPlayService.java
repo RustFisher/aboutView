@@ -39,28 +39,28 @@ public class AudioPlayService extends Service {
     private static final String H_SOL = "h_sol";
     private static final String H_LA = "h_la";
     private static final String H_SI = "h_si";
-    private SoundPool mSoundPool;
-    private HashMap<String, Integer> mSpMap = new HashMap<>();
+    private SoundPool mPianoSp;
+    private HashMap<String, Integer> mPianoSpMap = new HashMap<>();
 
     @Override
     public void onCreate() {
         super.onCreate();
         EventBus.getDefault().register(this);
-        mSoundPool = new SoundPool(3, AudioManager.STREAM_MUSIC, 0);
-        mSpMap.put(DO, mSoundPool.load(getApplicationContext(), R.raw.do1, 1));
-        mSpMap.put(RE, mSoundPool.load(getApplicationContext(), R.raw.re2, 1));
-        mSpMap.put(MI, mSoundPool.load(getApplicationContext(), R.raw.mi3, 1));
-        mSpMap.put(FA, mSoundPool.load(getApplicationContext(), R.raw.fa4, 1));
-        mSpMap.put(SOL, mSoundPool.load(getApplicationContext(), R.raw.sol5, 1));
-        mSpMap.put(LA, mSoundPool.load(getApplicationContext(), R.raw.la6, 1));
-        mSpMap.put(SI, mSoundPool.load(getApplicationContext(), R.raw.si7, 1));
-        mSpMap.put(H_DO, mSoundPool.load(getApplicationContext(), R.raw.h_do1, 1));
-        mSpMap.put(H_RE, mSoundPool.load(getApplicationContext(), R.raw.h_re2, 1));
-        mSpMap.put(H_MI, mSoundPool.load(getApplicationContext(), R.raw.h_mi3, 1));
-        mSpMap.put(H_FA, mSoundPool.load(getApplicationContext(), R.raw.h_fa4, 1));
-        mSpMap.put(H_SOL, mSoundPool.load(getApplicationContext(), R.raw.h_sol5, 1));
-        mSpMap.put(H_LA, mSoundPool.load(getApplicationContext(), R.raw.h_la6, 1));
-        mSpMap.put(H_SI, mSoundPool.load(getApplicationContext(), R.raw.h_si7, 1));
+        mPianoSp = new SoundPool(10, AudioManager.STREAM_MUSIC, 0);
+        mPianoSpMap.put(DO, mPianoSp.load(getApplicationContext(), R.raw.do1, 1));
+        mPianoSpMap.put(RE, mPianoSp.load(getApplicationContext(), R.raw.re2, 1));
+        mPianoSpMap.put(MI, mPianoSp.load(getApplicationContext(), R.raw.mi3, 1));
+        mPianoSpMap.put(FA, mPianoSp.load(getApplicationContext(), R.raw.fa4, 1));
+        mPianoSpMap.put(SOL, mPianoSp.load(getApplicationContext(), R.raw.sol5, 1));
+        mPianoSpMap.put(LA, mPianoSp.load(getApplicationContext(), R.raw.la6, 1));
+        mPianoSpMap.put(SI, mPianoSp.load(getApplicationContext(), R.raw.si7, 1));
+        mPianoSpMap.put(H_DO, mPianoSp.load(getApplicationContext(), R.raw.h_do1, 1));
+        mPianoSpMap.put(H_RE, mPianoSp.load(getApplicationContext(), R.raw.h_re2, 1));
+        mPianoSpMap.put(H_MI, mPianoSp.load(getApplicationContext(), R.raw.h_mi3, 1));
+        mPianoSpMap.put(H_FA, mPianoSp.load(getApplicationContext(), R.raw.h_fa4, 1));
+        mPianoSpMap.put(H_SOL, mPianoSp.load(getApplicationContext(), R.raw.h_sol5, 1));
+        mPianoSpMap.put(H_LA, mPianoSp.load(getApplicationContext(), R.raw.h_la6, 1));
+        mPianoSpMap.put(H_SI, mPianoSp.load(getApplicationContext(), R.raw.h_si7, 1));
 
         registerReceiver(mAudioBroadcastReceiver, new IntentFilter(AboutConstants.STOP_ALL_SERVICES));
     }
@@ -87,46 +87,46 @@ public class AudioPlayService extends Service {
     public void onEvent(AudioPlayEventOnBus event) {
         switch (event.getType()) {
             case DO:
-                mSoundPool.play(mSpMap.get(DO), 1, 1, 1, 0, 1);
+                mPianoSp.play(mPianoSpMap.get(DO), 1, 1, 1, 0, 1);
                 break;
             case RE:
-                mSoundPool.play(mSpMap.get(RE), 1, 1, 1, 0, 1);
+                mPianoSp.play(mPianoSpMap.get(RE), 1, 1, 1, 0, 1);
                 break;
             case MI:
-                mSoundPool.play(mSpMap.get(MI), 1, 1, 1, 0, 1);
+                mPianoSp.play(mPianoSpMap.get(MI), 1, 1, 1, 0, 1);
                 break;
             case FA:
-                mSoundPool.play(mSpMap.get(FA), 1, 1, 1, 0, 1);
+                mPianoSp.play(mPianoSpMap.get(FA), 1, 1, 1, 0, 1);
                 break;
             case SOL:
-                mSoundPool.play(mSpMap.get(SOL), 1, 1, 1, 0, 1);
+                mPianoSp.play(mPianoSpMap.get(SOL), 1, 1, 1, 0, 1);
                 break;
             case LA:
-                mSoundPool.play(mSpMap.get(LA), 1, 1, 1, 0, 1);
+                mPianoSp.play(mPianoSpMap.get(LA), 1, 1, 1, 0, 1);
                 break;
             case SI:
-                mSoundPool.play(mSpMap.get(SI), 1, 1, 1, 0, 1);
+                mPianoSp.play(mPianoSpMap.get(SI), 1, 1, 1, 0, 1);
                 break;
             case H_DO:
-                mSoundPool.play(mSpMap.get(H_DO), 1, 1, 1, 0, 1);
+                mPianoSp.play(mPianoSpMap.get(H_DO), 1, 1, 1, 0, 1);
                 break;
             case H_RE:
-                mSoundPool.play(mSpMap.get(H_RE), 1, 1, 1, 0, 1);
+                mPianoSp.play(mPianoSpMap.get(H_RE), 1, 1, 1, 0, 1);
                 break;
             case H_MI:
-                mSoundPool.play(mSpMap.get(H_MI), 1, 1, 1, 0, 1);
+                mPianoSp.play(mPianoSpMap.get(H_MI), 1, 1, 1, 0, 1);
                 break;
             case H_FA:
-                mSoundPool.play(mSpMap.get(H_FA), 1, 1, 1, 0, 1);
+                mPianoSp.play(mPianoSpMap.get(H_FA), 1, 1, 1, 0, 1);
                 break;
             case H_SOL:
-                mSoundPool.play(mSpMap.get(H_SOL), 1, 1, 1, 0, 1);
+                mPianoSp.play(mPianoSpMap.get(H_SOL), 1, 1, 1, 0, 1);
                 break;
             case H_LA:
-                mSoundPool.play(mSpMap.get(H_LA), 1, 1, 1, 0, 1);
+                mPianoSp.play(mPianoSpMap.get(H_LA), 1, 1, 1, 0, 1);
                 break;
             case H_SI:
-                mSoundPool.play(mSpMap.get(H_SI), 1, 1, 1, 0, 1);
+                mPianoSp.play(mPianoSpMap.get(H_SI), 1, 1, 1, 0, 1);
                 break;
             default:
                 break;
@@ -138,7 +138,7 @@ public class AudioPlayService extends Service {
         public void onReceive(Context context, Intent intent) {
             final String action = intent.getAction();
             if (AboutConstants.STOP_ALL_SERVICES.equals(action)) {
-                mSoundPool.release();
+                mPianoSp.release();
                 stopSelf();
             }
         }
