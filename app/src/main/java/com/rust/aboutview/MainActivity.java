@@ -13,6 +13,7 @@ import com.rust.aboutview.activity.FragmentCommunicationActivity;
 import com.rust.aboutview.activity.WriteFileActivity;
 import com.rust.arslan.ArslanActivity;
 import com.rust.contactview.PeopleMainActivity;
+import com.rust.service.AudioPlayService;
 import com.rust.service.FloatingBarService;
 import com.rust.widget.PageItemDecoration;
 import com.rust.widget.PageListAdapter;
@@ -53,6 +54,13 @@ public class MainActivity extends AppCompatActivity {
 
         initPageList();
 
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Intent audioService = new Intent(getApplicationContext(), AudioPlayService.class);
+        startService(audioService);
     }
 
     private void initPageList() {
