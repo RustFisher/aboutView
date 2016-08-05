@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="write file to sd card" />
+
+    <EditText
+        android:id="@+id/et_num_1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="number"
+        android:inputType="number" />
+
+    <EditText
+        android:id="@+id/et_num_2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="number"
+        android:inputType="number" />
+
+    <EditText
+        android:id="@+id/et_num_3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="number"
+        android:inputType="number" />
+
+    <Button
+        android:id="@+id/write_bt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Write to file" />
+
+</LinearLayout>

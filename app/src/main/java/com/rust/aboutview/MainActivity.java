@@ -10,6 +10,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.rust.aboutview.activity.FragmentCommunicationActivity;
+import com.rust.aboutview.activity.WriteFileActivity;
 import com.rust.arslan.ArslanActivity;
 import com.rust.contactview.PeopleMainActivity;
 import com.rust.service.FloatingBarService;
@@ -33,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
     private static final String FOLLOW_CURSOR = "follow_cursor";
     private static final String FRAGMENT_TAB_HOST = "fragment_tab_host";
     private static final String FRAGMENT_COMMUNITY = "fragment_community";
+    private static final String WRITE_FILE = "write_file";
 
     private RecyclerView mPagesView;
 
@@ -68,6 +70,7 @@ public class MainActivity extends AppCompatActivity {
         pageItemViewEntities.add(new PageListAdapter.DeviceItemViewEntity(FOLLOW_CURSOR, getString(R.string.drawer_line_activity)));
         pageItemViewEntities.add(new PageListAdapter.DeviceItemViewEntity(FRAGMENT_TAB_HOST, getString(R.string.fragment_tab_host_activity)));
         pageItemViewEntities.add(new PageListAdapter.DeviceItemViewEntity(FRAGMENT_COMMUNITY, "fragment与activity通信"));
+        pageItemViewEntities.add(new PageListAdapter.DeviceItemViewEntity(WRITE_FILE, "写数据到文件"));
         GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 1);
         gridLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         mPagesView.setLayoutManager(gridLayoutManager);
@@ -141,6 +144,10 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case FRAGMENT_COMMUNITY:
                         i.setClass(getApplicationContext(), FragmentCommunicationActivity.class);
+                        startActivity(i);
+                        break;
+                    case WRITE_FILE:
+                        i.setClass(getApplicationContext(), WriteFileActivity.class);
                         startActivity(i);
                         break;
                     default:
