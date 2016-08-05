@@ -25,6 +25,10 @@ public class AudioPlayerActivity extends Activity implements View.OnClickListene
         findViewById(R.id.btn8).setOnClickListener(this);
         findViewById(R.id.btn9).setOnClickListener(this);
         findViewById(R.id.btn10).setOnClickListener(this);
+        findViewById(R.id.btn11).setOnClickListener(this);
+        findViewById(R.id.btn12).setOnClickListener(this);
+        findViewById(R.id.btn13).setOnClickListener(this);
+        findViewById(R.id.btn14).setOnClickListener(this);
     }
 
     @Override
@@ -60,6 +64,18 @@ public class AudioPlayerActivity extends Activity implements View.OnClickListene
                 break;
             case R.id.btn10:
                 EventBus.getDefault().post(new AudioPlayEventOnBus(AudioPlayEventOnBus.AudioType.H_MI));
+                break;
+            case R.id.btn11:
+                EventBus.getDefault().post(new AudioPlayEventOnBus(AudioPlayEventOnBus.AudioType.H_FA));
+                break;
+            case R.id.btn12:
+                EventBus.getDefault().post(new AudioPlayEventOnBus(AudioPlayEventOnBus.AudioType.H_SOL));
+                break;
+            case R.id.btn13:
+                EventBus.getDefault().post(new AudioPlayEventOnBus(AudioPlayEventOnBus.AudioType.H_LA));
+                break;
+            case R.id.btn14:
+                EventBus.getDefault().post(new AudioPlayEventOnBus(AudioPlayEventOnBus.AudioType.H_SI));
                 break;
         }
     }

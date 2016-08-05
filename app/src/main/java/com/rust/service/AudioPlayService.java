@@ -35,6 +35,10 @@ public class AudioPlayService extends Service {
     private static final String H_DO = "h_do";
     private static final String H_RE = "h_re";
     private static final String H_MI = "h_mi";
+    private static final String H_FA = "h_fa";
+    private static final String H_SOL = "h_sol";
+    private static final String H_LA = "h_la";
+    private static final String H_SI = "h_si";
     private SoundPool mSoundPool;
     private HashMap<String, Integer> mSpMap = new HashMap<>();
 
@@ -51,6 +55,12 @@ public class AudioPlayService extends Service {
         mSpMap.put(LA, mSoundPool.load(getApplicationContext(), R.raw.la6, 1));
         mSpMap.put(SI, mSoundPool.load(getApplicationContext(), R.raw.si7, 1));
         mSpMap.put(H_DO, mSoundPool.load(getApplicationContext(), R.raw.h_do1, 1));
+        mSpMap.put(H_RE, mSoundPool.load(getApplicationContext(), R.raw.h_re2, 1));
+        mSpMap.put(H_MI, mSoundPool.load(getApplicationContext(), R.raw.h_mi3, 1));
+        mSpMap.put(H_FA, mSoundPool.load(getApplicationContext(), R.raw.h_fa4, 1));
+        mSpMap.put(H_SOL, mSoundPool.load(getApplicationContext(), R.raw.h_sol5, 1));
+        mSpMap.put(H_LA, mSoundPool.load(getApplicationContext(), R.raw.h_la6, 1));
+        mSpMap.put(H_SI, mSoundPool.load(getApplicationContext(), R.raw.h_si7, 1));
 
         registerReceiver(mAudioBroadcastReceiver, new IntentFilter(AboutConstants.STOP_ALL_SERVICES));
     }
@@ -99,6 +109,24 @@ public class AudioPlayService extends Service {
                 break;
             case H_DO:
                 mSoundPool.play(mSpMap.get(H_DO), 1, 1, 1, 0, 1);
+                break;
+            case H_RE:
+                mSoundPool.play(mSpMap.get(H_RE), 1, 1, 1, 0, 1);
+                break;
+            case H_MI:
+                mSoundPool.play(mSpMap.get(H_MI), 1, 1, 1, 0, 1);
+                break;
+            case H_FA:
+                mSoundPool.play(mSpMap.get(H_FA), 1, 1, 1, 0, 1);
+                break;
+            case H_SOL:
+                mSoundPool.play(mSpMap.get(H_SOL), 1, 1, 1, 0, 1);
+                break;
+            case H_LA:
+                mSoundPool.play(mSpMap.get(H_LA), 1, 1, 1, 0, 1);
+                break;
+            case H_SI:
+                mSoundPool.play(mSpMap.get(H_SI), 1, 1, 1, 0, 1);
                 break;
             default:
                 break;
