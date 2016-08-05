@@ -9,7 +9,6 @@ import android.media.AudioManager;
 import android.media.SoundPool;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
-import android.util.Log;
 
 
 import com.rust.AboutConstants;
@@ -26,8 +25,16 @@ public class AudioPlayService extends Service {
 
     private static final String TAG = AudioPlayService.class.getSimpleName();
 
-    private static final String DING = "ding";
-    private static final String DING_DING_DING = "ding_ding_ding";
+    private static final String DO = "do";
+    private static final String RE = "re";
+    private static final String MI = "mi";
+    private static final String FA = "fa";
+    private static final String SOL = "sol";
+    private static final String LA = "la";
+    private static final String SI = "si";
+    private static final String H_DO = "h_do";
+    private static final String H_RE = "h_re";
+    private static final String H_MI = "h_mi";
     private SoundPool mSoundPool;
     private HashMap<String, Integer> mSpMap = new HashMap<>();
 
@@ -36,8 +43,14 @@ public class AudioPlayService extends Service {
         super.onCreate();
         EventBus.getDefault().register(this);
         mSoundPool = new SoundPool(3, AudioManager.STREAM_MUSIC, 0);
-        mSpMap.put(DING, mSoundPool.load(getApplicationContext(), R.raw.do1, 1));
-        mSpMap.put(DING_DING_DING, mSoundPool.load(getApplicationContext(), R.raw.re2, 1));
+        mSpMap.put(DO, mSoundPool.load(getApplicationContext(), R.raw.do1, 1));
+        mSpMap.put(RE, mSoundPool.load(getApplicationContext(), R.raw.re2, 1));
+        mSpMap.put(MI, mSoundPool.load(getApplicationContext(), R.raw.mi3, 1));
+        mSpMap.put(FA, mSoundPool.load(getApplicationContext(), R.raw.fa4, 1));
+        mSpMap.put(SOL, mSoundPool.load(getApplicationContext(), R.raw.sol5, 1));
+        mSpMap.put(LA, mSoundPool.load(getApplicationContext(), R.raw.la6, 1));
+        mSpMap.put(SI, mSoundPool.load(getApplicationContext(), R.raw.si7, 1));
+        mSpMap.put(H_DO, mSoundPool.load(getApplicationContext(), R.raw.h_do1, 1));
 
         registerReceiver(mAudioBroadcastReceiver, new IntentFilter(AboutConstants.STOP_ALL_SERVICES));
     }
@@ -64,10 +77,28 @@ public class AudioPlayService extends Service {
     public void onEvent(AudioPlayEventOnBus event) {
         switch (event.getType()) {
             case DO:
-                mSoundPool.play(mSpMap.get(DING), 1, 1, 1, 0, 1);
+                mSoundPool.play(mSpMap.get(DO), 1, 1, 1, 0, 1);
                 break;
             case RE:
-                mSoundPool.play(mSpMap.get(DING_DING_DING), 1, 1, 1, 0, 1);
+                mSoundPool.play(mSpMap.get(RE), 1, 1, 1, 0, 1);
+                break;
+            case MI:
+                mSoundPool.play(mSpMap.get(MI), 1, 1, 1, 0, 1);
+                break;
+            case FA:
+                mSoundPool.play(mSpMap.get(FA), 1, 1, 1, 0, 1);
+                break;
+            case SOL:
+                mSoundPool.play(mSpMap.get(SOL), 1, 1, 1, 0, 1);
+                break;
+            case LA:
+                mSoundPool.play(mSpMap.get(LA), 1, 1, 1, 0, 1);
+                break;
+            case SI:
+                mSoundPool.play(mSpMap.get(SI), 1, 1, 1, 0, 1);
+                break;
+            case H_DO:
+                mSoundPool.play(mSpMap.get(H_DO), 1, 1, 1, 0, 1);
                 break;
             default:
                 break;

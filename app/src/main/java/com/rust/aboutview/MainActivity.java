@@ -1,6 +1,7 @@
 package com.rust.aboutview;
 
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -9,6 +10,8 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
+import com.rust.AboutConstants;
+import com.rust.aboutview.activity.AudioPlayerActivity;
 import com.rust.aboutview.activity.FragmentCommunicationActivity;
 import com.rust.aboutview.activity.WriteFileActivity;
 import com.rust.arslan.ArslanActivity;
@@ -36,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
     private static final String FRAGMENT_TAB_HOST = "fragment_tab_host";
     private static final String FRAGMENT_COMMUNITY = "fragment_community";
     private static final String WRITE_FILE = "write_file";
+    private static final String AUDIO_PLAYER = "audio_player";
 
     private RecyclerView mPagesView;
 
@@ -79,6 +83,8 @@ public class MainActivity extends AppCompatActivity {
         pageItemViewEntities.add(new PageListAdapter.DeviceItemViewEntity(FRAGMENT_TAB_HOST, getString(R.string.fragment_tab_host_activity)));
         pageItemViewEntities.add(new PageListAdapter.DeviceItemViewEntity(FRAGMENT_COMMUNITY, "fragment与activity通信"));
         pageItemViewEntities.add(new PageListAdapter.DeviceItemViewEntity(WRITE_FILE, "写数据到文件"));
+        pageItemViewEntities.add(new PageListAdapter.DeviceItemViewEntity(AUDIO_PLAYER, "Audio player"));
+
         GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 1);
         gridLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         mPagesView.setLayoutManager(gridLayoutManager);
@@ -158,6 +164,10 @@ public class MainActivity extends AppCompatActivity {
                         i.setClass(getApplicationContext(), WriteFileActivity.class);
                         startActivity(i);
                         break;
+                    case AUDIO_PLAYER:
+                        i.setClass(getApplicationContext(), AudioPlayerActivity.class);
+                        startActivity(i);
+                        break;
                     default:
                         break;
                 }
@@ -170,6 +180,13 @@ public class MainActivity extends AppCompatActivity {
         });
         mPagesView.addItemDecoration(new PageItemDecoration(getApplicationContext()));
         mPagesView.setAdapter(pageListAdapter);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Intent stop = new Intent(AboutConstants.STOP_ALL_SERVICES);
+        sendBroadcast(stop);
     }
 
     /**

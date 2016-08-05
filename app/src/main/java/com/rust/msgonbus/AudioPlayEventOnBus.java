@@ -2,7 +2,7 @@ package com.rust.msgonbus;
 
 public class AudioPlayEventOnBus {
     public enum AudioType {
-        DO, RE
+        DO, RE, MI, FA, SOL, LA, SI, H_DO, H_RE, H_MI, H_FA, H_SOL, H_LA, H_SI
     }
 
     private AudioType type = AudioType.DO;

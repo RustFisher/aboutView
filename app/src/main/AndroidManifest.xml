@@ -81,6 +81,9 @@
         <activity
             android:name=".activity.WriteFileActivity"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.AudioPlayerActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>
