@@ -39,6 +39,8 @@ public class AudioPlayService extends Service {
     private static final String H_SOL = "h_sol";
     private static final String H_LA = "h_la";
     private static final String H_SI = "h_si";
+    private static final String GAI_ZI = "gai_zi";
+    private static final String WATER = "water";
     private SoundPool mPianoSp;
     private HashMap<String, Integer> mPianoSpMap = new HashMap<>();
 
@@ -61,6 +63,8 @@ public class AudioPlayService extends Service {
         mPianoSpMap.put(H_SOL, mPianoSp.load(getApplicationContext(), R.raw.h_sol5, 1));
         mPianoSpMap.put(H_LA, mPianoSp.load(getApplicationContext(), R.raw.h_la6, 1));
         mPianoSpMap.put(H_SI, mPianoSp.load(getApplicationContext(), R.raw.h_si7, 1));
+        mPianoSpMap.put(GAI_ZI, mPianoSp.load(getApplicationContext(), R.raw.gaizi, 1));
+        mPianoSpMap.put(WATER, mPianoSp.load(getApplicationContext(), R.raw.water, 1));
 
         registerReceiver(mAudioBroadcastReceiver, new IntentFilter(AboutConstants.STOP_ALL_SERVICES));
     }
@@ -127,6 +131,12 @@ public class AudioPlayService extends Service {
                 break;
             case H_SI:
                 mPianoSp.play(mPianoSpMap.get(H_SI), 1, 1, 1, 0, 1);
+                break;
+            case GAI_ZI:
+                mPianoSp.play(mPianoSpMap.get(GAI_ZI), 1, 1, 1, 0, 1);
+                break;
+            case WATER:
+                mPianoSp.play(mPianoSpMap.get(WATER), 1, 1, 1, 0, 1);
                 break;
             default:
                 break;

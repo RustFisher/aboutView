@@ -84,6 +84,19 @@
             android:id="@+id/btn14"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/gai_zi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="gaizi" />
+
+        <Button
+            android:id="@+id/water"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="water" />
+
     </LinearLayout>
 
 </RelativeLayout>
