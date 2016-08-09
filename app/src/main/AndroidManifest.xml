@@ -84,6 +84,10 @@
         <activity
             android:name=".activity.AudioPlayerActivity"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.ColorBoardActivity"
+            android:screenOrientation="portrait" />
+
     </application>
 
 </manifest>

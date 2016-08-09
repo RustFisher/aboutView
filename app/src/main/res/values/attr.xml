@@ -6,4 +6,8 @@
         <attr name="ovalRight" format="dimension" />
         <attr name="ovalBottom" format="dimension" />
     </declare-styleable>
+
+    <declare-styleable name="CircleImageView">
+        <attr name="CIVCircleRadius" format="dimension" /> <!-- radius of inner circle -->
+    </declare-styleable>
 </resources>

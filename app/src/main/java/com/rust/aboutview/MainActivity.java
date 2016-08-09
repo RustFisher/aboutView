@@ -12,6 +12,7 @@ import android.view.View;
 
 import com.rust.AboutConstants;
 import com.rust.aboutview.activity.AudioPlayerActivity;
+import com.rust.aboutview.activity.ColorBoardActivity;
 import com.rust.aboutview.activity.FragmentCommunicationActivity;
 import com.rust.aboutview.activity.WriteFileActivity;
 import com.rust.arslan.ArslanActivity;
@@ -40,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
     private static final String FRAGMENT_COMMUNITY = "fragment_community";
     private static final String WRITE_FILE = "write_file";
     private static final String AUDIO_PLAYER = "audio_player";
+    private static final String COLOR_BOARD_ACTIVITY = "color_board_act";
 
     private RecyclerView mPagesView;
 
@@ -69,6 +71,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void initPageList() {
         final ArrayList<PageListAdapter.DeviceItemViewEntity> pageItemViewEntities = new ArrayList<>();
+        pageItemViewEntities.add(new PageListAdapter.DeviceItemViewEntity(COLOR_BOARD_ACTIVITY, "颜色选择板"));
         pageItemViewEntities.add(new PageListAdapter.DeviceItemViewEntity(IMAGE_PROCESSING, getString(R.string.image_process)));
         pageItemViewEntities.add(new PageListAdapter.DeviceItemViewEntity(DEVICE_INFO, getString(R.string.device_info)));
         pageItemViewEntities.add(new PageListAdapter.DeviceItemViewEntity(PULL_TO_REFRESH, getString(R.string.swipe_refresh)));
@@ -166,6 +169,10 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case AUDIO_PLAYER:
                         i.setClass(getApplicationContext(), AudioPlayerActivity.class);
+                        startActivity(i);
+                        break;
+                    case COLOR_BOARD_ACTIVITY:
+                        i.setClass(getApplicationContext(), ColorBoardActivity.class);
                         startActivity(i);
                         break;
                     default:
