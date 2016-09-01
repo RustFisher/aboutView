@@ -42,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
     private static final String WRITE_FILE = "write_file";
     private static final String AUDIO_PLAYER = "audio_player";
     private static final String COLOR_BOARD_ACTIVITY = "color_board_act";
+    private static final String RX_ANDROID_DEMO_ACTIVITY = "rx_android_demo_act";
 
     private RecyclerView mPagesView;
 
@@ -87,6 +88,7 @@ public class MainActivity extends AppCompatActivity {
         pageItemViewEntities.add(new PageListAdapter.DeviceItemViewEntity(FRAGMENT_COMMUNITY, "fragment与activity通信"));
         pageItemViewEntities.add(new PageListAdapter.DeviceItemViewEntity(WRITE_FILE, "写数据到文件"));
         pageItemViewEntities.add(new PageListAdapter.DeviceItemViewEntity(AUDIO_PLAYER, "Audio player"));
+        pageItemViewEntities.add(new PageListAdapter.DeviceItemViewEntity(RX_ANDROID_DEMO_ACTIVITY, "RxAndroid demo"));
 
         GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 1);
         gridLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
@@ -174,6 +176,8 @@ public class MainActivity extends AppCompatActivity {
                     case COLOR_BOARD_ACTIVITY:
                         i.setClass(getApplicationContext(), ColorBoardActivity.class);
                         startActivity(i);
+                        break;
+                    case RX_ANDROID_DEMO_ACTIVITY:
                         break;
                     default:
                         break;
