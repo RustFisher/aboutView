@@ -59,4 +59,14 @@
         </RelativeLayout>
     </com.rust.aboutview.NestRadioGroup>
 
+    <SeekBar
+        android:id="@+id/seek_bar_1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:maxHeight="7dp"
+        android:minHeight="7dp"
+        android:progressDrawable="@drawable/seek_bar_progress_drawable_1"
+        android:thumb="@drawable/thumb_1" />
+
 </LinearLayout>
