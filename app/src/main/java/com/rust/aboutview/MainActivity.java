@@ -3,6 +3,7 @@ package com.rust.aboutview;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
+import android.graphics.Canvas;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
@@ -19,6 +20,7 @@ import com.rust.arslan.ArslanActivity;
 import com.rust.contactview.PeopleMainActivity;
 import com.rust.service.AudioPlayService;
 import com.rust.service.FloatingBarService;
+import com.rust.widget.DividerLine;
 import com.rust.widget.PageItemDecoration;
 import com.rust.widget.PageListAdapter;
 
@@ -93,6 +95,10 @@ public class MainActivity extends AppCompatActivity {
         GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 1);
         gridLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         mPagesView.setLayoutManager(gridLayoutManager);
+        DividerLine dividerLine = new DividerLine(DividerLine.VERTICAL);
+        dividerLine.setSize(1);
+        dividerLine.setColor(0xFFDDDDDD);
+        mPagesView.addItemDecoration(dividerLine);
 
         PageListAdapter pageListAdapter = new PageListAdapter(pageItemViewEntities);
         pageListAdapter.setOnItemClickListener(new PageListAdapter.OnItemClickListener() {
