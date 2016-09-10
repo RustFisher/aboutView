@@ -15,6 +15,7 @@ import com.rust.AboutConstants;
 import com.rust.aboutview.activity.AudioPlayerActivity;
 import com.rust.aboutview.activity.ColorBoardActivity;
 import com.rust.aboutview.activity.FragmentCommunicationActivity;
+import com.rust.aboutview.activity.RxAndroidActivity;
 import com.rust.aboutview.activity.WriteFileActivity;
 import com.rust.arslan.ArslanActivity;
 import com.rust.contactview.PeopleMainActivity;
@@ -74,6 +75,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void initPageList() {
         final ArrayList<PageListAdapter.DeviceItemViewEntity> pageItemViewEntities = new ArrayList<>();
+        pageItemViewEntities.add(new PageListAdapter.DeviceItemViewEntity(RX_ANDROID_DEMO_ACTIVITY, "RxAndroid demo"));
         pageItemViewEntities.add(new PageListAdapter.DeviceItemViewEntity(COLOR_BOARD_ACTIVITY, "颜色选择板"));
         pageItemViewEntities.add(new PageListAdapter.DeviceItemViewEntity(IMAGE_PROCESSING, getString(R.string.image_process)));
         pageItemViewEntities.add(new PageListAdapter.DeviceItemViewEntity(DEVICE_INFO, getString(R.string.device_info)));
@@ -90,7 +92,6 @@ public class MainActivity extends AppCompatActivity {
         pageItemViewEntities.add(new PageListAdapter.DeviceItemViewEntity(FRAGMENT_COMMUNITY, "fragment与activity通信"));
         pageItemViewEntities.add(new PageListAdapter.DeviceItemViewEntity(WRITE_FILE, "写数据到文件"));
         pageItemViewEntities.add(new PageListAdapter.DeviceItemViewEntity(AUDIO_PLAYER, "Audio player"));
-        pageItemViewEntities.add(new PageListAdapter.DeviceItemViewEntity(RX_ANDROID_DEMO_ACTIVITY, "RxAndroid demo"));
 
         GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 1);
         gridLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
@@ -184,6 +185,7 @@ public class MainActivity extends AppCompatActivity {
                         startActivity(i);
                         break;
                     case RX_ANDROID_DEMO_ACTIVITY:
+                        startActivity(new Intent(getApplicationContext(), RxAndroidActivity.class));
                         break;
                     default:
                         break;

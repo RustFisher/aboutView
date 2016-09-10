@@ -90,6 +90,10 @@
             android:name=".activity.ColorBoardActivity"
             android:screenOrientation="portrait" />
 
+        <activity
+            android:name=".activity.RxAndroidActivity"
+            android:screenOrientation="portrait" />
+
     </application>
 
 </manifest>
