@@ -26,6 +26,7 @@ public class RxAndroidActivity extends Activity {
     private TextView mTv1;
     private TextView mTv2;
     private TextView mTv3;
+    private TextView mTimerTv;
 
     private int mCount = 0;
 
@@ -41,6 +42,7 @@ public class RxAndroidActivity extends Activity {
         mTv1 = (TextView) findViewById(R.id.act_rx_tv1);
         mTv2 = (TextView) findViewById(R.id.act_rx_tv2);
         mTv3 = (TextView) findViewById(R.id.act_rx_tv3);
+        mTimerTv = (TextView) findViewById(R.id.act_rx_timer_tv);
 
         findViewById(R.id.act_rx_btn1).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,8 +55,8 @@ public class RxAndroidActivity extends Activity {
                 @SuppressWarnings("unchecked")
                 Observable<String> observable = Observable.create(mObservableAction)
                         .subscribeOn(AndroidSchedulers.mainThread());
-                observable.subscribe(mSubscriber1);
-                observable.subscribe(mActionTv2);// 这个可以一直执行下去
+                observable.subscribe(mSubscriber1);// 先通知一个，再通知另一个
+                observable.subscribe(mActionTv2);  // 这个可以一直执行下去
             }
         });
 
@@ -68,6 +70,29 @@ public class RxAndroidActivity extends Activity {
                 oba1.subscribe(mActionShowToast);
             }
         });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                int s = 0;
+                while (s <= 100) {
+                    Observable<String> timerOb = Observable.just(String.valueOf(s) + "s");
+                    timerOb.observeOn(AndroidSchedulers.mainThread());
+                    timerOb.subscribe(mActionTimer);
+                    try {
+                        Thread.sleep(1000L);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                        break;
+                    }
+                    s++;
+                }
+            }
+        }).start();
     }
 
     /**
@@ -128,6 +153,22 @@ public class RxAndroidActivity extends Activity {
         @Override
         public void call(String s) {
             Toast.makeText(RxAndroidActivity.this, s, Toast.LENGTH_SHORT).show();
+        }
+    };
+
+    private Action1<String> mActionTimer = new Action1<String>() {
+        @Override
+        public void call(String s) {
+            final String second = s;
+            /**
+             * 跑在UI线程里更新
+             */
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    mTimerTv.setText(second);
+                }
+            });
         }
     };
 
