@@ -17,8 +17,6 @@ import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;
 
-import static com.rust.aboutview.R.id.act_rx_btn2;
-
 public class RxAndroidActivity extends Activity {
 
     private static final String TAG = RxAndroidActivity.class.getSimpleName();
@@ -60,7 +58,7 @@ public class RxAndroidActivity extends Activity {
             }
         });
 
-        findViewById(act_rx_btn2).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.act_rx_btn2).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // 事件产生，分发给订阅者
