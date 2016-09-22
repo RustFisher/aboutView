@@ -3,6 +3,11 @@ apply plugin: 'com.github.dcendents.android-maven'
 
 group='com.github.RustFisher'
 
+ext {
+    libraryName = 'fisher-android-chart'
+    artifact = 'fisher-android-chart'
+}
+
 android {
     compileSdkVersion 24
     buildToolsVersion "24.0.2"
