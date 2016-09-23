@@ -20,12 +20,12 @@
         <attr name="maxValue" format="integer" /> <!--最大值-->
         <attr name="realTimeValue" format="float" /> <!--实时值-->
         <attr name="stripeWidth" format="dimension" /> <!--色带宽度-->
-        <attr name="stripeMode"> <!--色条显示位置-->
+        <attr name="stripeMode">
             <enum name="none" value="-1" />
-            <enum name="normal" value="0" />
+            <enum name="dot" value="0" />
             <enum name="rect" value="1" />
         </attr>
-        <attr name="bgColor" format="color" /> <!--背景颜色-->
+        <attr name="bgColor" format="color" />
         <attr name="arcWidth" format="dimension" />
     </declare-styleable>
 </resources>

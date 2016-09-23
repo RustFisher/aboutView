@@ -16,12 +16,13 @@ import android.view.View;
 public class DashboardProgressView extends View {
 
     private static final String TAG = DashboardProgressView.class.getSimpleName();
+
     private int mRadius; // 圆弧半径
     private int mStartAngle; // 起始角度
     private int mSweepAngle; // 绘制角度
     private int mBigSliceCount; // 大份数
     private int mSliceCountInOneBigSlice; // 划分一大份长的小份数
-    private int mBackgroundArcColor;
+    private int mBgArcColor;
     private int mBgOuterElementColor;
     private int mMeasureTextSize; // 刻度字体大小
     private int mTextColor; // 字体颜色
@@ -32,12 +33,13 @@ public class DashboardProgressView extends View {
     private int mMaxValue; // 最大值
     private float mRealTimeValue; // 实时值
     private int mStripeWidth; // 色条宽度
-    private StripeMode mStripeMode = StripeMode.DOT_BG;
     private int mBigSliceRadius; // 较长刻度半径
     private int mSmallSliceRadius; // 较短刻度半径
     private int mNumMeaRadius; // 数字刻度半径
+    private int mBgColor; // 整个View的背景色
+
+    private StripeMode mStripeMode = StripeMode.DOT_BG;
     private int mModeType;// 圆圈外的背景：点；条状；无
-    private int mBgColor; // 背景色
 
     private int mArcWidth = dpToPx(8);// Arc: bg and real time arc
     private int mProgressArcColor = Color.BLUE;
@@ -84,7 +86,7 @@ public class DashboardProgressView extends View {
         mSweepAngle = a.getInteger(R.styleable.DashboardProgressView_sweepAngle, 180);
         mBigSliceCount = a.getInteger(R.styleable.DashboardProgressView_bigSliceCount, 10);
         mSliceCountInOneBigSlice = a.getInteger(R.styleable.DashboardProgressView_sliceCountInOneBigSlice, 5);
-        mBackgroundArcColor = a.getColor(R.styleable.DashboardProgressView_bgArcColor, Color.BLACK);
+        mBgArcColor = a.getColor(R.styleable.DashboardProgressView_bgArcColor, Color.BLACK);
         mBgOuterElementColor = a.getColor(R.styleable.DashboardProgressView_bgOuterElementColor, Color.BLACK);
         mProgressArcColor = a.getColor(R.styleable.DashboardProgressView_progressArcColor, Color.BLUE);
         mMeasureTextSize = a.getDimensionPixelSize(R.styleable.DashboardProgressView_measureTextSize, spToPx(7));
@@ -124,7 +126,7 @@ public class DashboardProgressView extends View {
     private void initObjects() {
         mPaintArc = new Paint();
         mPaintArc.setAntiAlias(true);
-        mPaintArc.setColor(mBackgroundArcColor);
+        mPaintArc.setColor(mBgArcColor);
         mPaintArc.setStyle(Paint.Style.STROKE);
         mPaintArc.setStrokeCap(Paint.Cap.ROUND);
 
@@ -319,13 +321,13 @@ public class DashboardProgressView extends View {
     private void drawBackgroundArc(Canvas canvas) {
         mPaintArc.setStrokeWidth(mArcWidth);// Set arc width, don't be too thin
         if (mStripeMode == StripeMode.DOT_BG) {
-            mPaintArc.setColor(mBackgroundArcColor);
+            mPaintArc.setColor(mBgArcColor);
             canvas.drawArc(mBackgroundRectArc, mStartAngle, mSweepAngle, false, mPaintArc);
         } else if (StripeMode.RECT_BG.equals(mStripeMode)) {
-            mPaintArc.setColor(mBackgroundArcColor);
+            mPaintArc.setColor(mBgArcColor);
             canvas.drawArc(mBackgroundRectArc, mStartAngle, mSweepAngle, false, mPaintArc);
         } else if (StripeMode.NONE.equals(mStripeMode)) {
-            mPaintArc.setColor(mBackgroundArcColor);
+            mPaintArc.setColor(mBgArcColor);
             mPaintArc.setStrokeWidth((float) (mArcWidth / 2.0));// back arc is thinner
             canvas.drawArc(mBackgroundRectArc, mStartAngle, mSweepAngle, false, mPaintArc);
         }
@@ -501,11 +503,11 @@ public class DashboardProgressView extends View {
     }
 
     public int getArcColor() {
-        return mBackgroundArcColor;
+        return mBgArcColor;
     }
 
     public void setArcColor(int arcColor) {
-        mBackgroundArcColor = arcColor;
+        mBgArcColor = arcColor;
         mPaintArc.setColor(arcColor);
         invalidate();
     }
