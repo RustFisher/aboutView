@@ -8,7 +8,7 @@ android {
         applicationId "com.rust.aboutview"
         minSdkVersion 19
         targetSdkVersion 24
-        versionCode 1
+        versionCode 200
         versionName "2.0.0"
     }
     buildTypes {

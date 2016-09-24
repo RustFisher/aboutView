@@ -8,5 +8,6 @@
 /.idea/gradle.xml
 /.idea/misc.xml
 /.idea/modules.xml
+/.idea
 AboutView.iml
 app/app.iml
