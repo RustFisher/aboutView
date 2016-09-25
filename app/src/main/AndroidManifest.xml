@@ -94,6 +94,10 @@
             android:name=".activity.RxAndroidActivity"
             android:screenOrientation="portrait" />
 
+        <activity
+            android:name=".activity.DashboardActivity"
+            android:screenOrientation="portrait" />
+
     </application>
 
 </manifest>

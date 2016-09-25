@@ -12,6 +12,7 @@ import android.view.View;
 import com.rust.AboutConstants;
 import com.rust.aboutview.activity.AudioPlayerActivity;
 import com.rust.aboutview.activity.ColorBoardActivity;
+import com.rust.aboutview.activity.DashboardActivity;
 import com.rust.aboutview.activity.FragmentCommunicationActivity;
 import com.rust.aboutview.activity.RxAndroidActivity;
 import com.rust.aboutview.activity.WriteFileActivity;
@@ -27,6 +28,7 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
+    private static final String DASHBOARD_ACT = "dashboard_view_act";
     private static final String IMAGE_PROCESSING = "image_processing";
     private static final String DEVICE_INFO = "device_info";
     private static final String PULL_TO_REFRESH = "pull_to_refresh";
@@ -73,6 +75,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void initPageList() {
         final ArrayList<PageListAdapter.DeviceItemViewEntity> pageItemViewEntities = new ArrayList<>();
+        pageItemViewEntities.add(new PageListAdapter.DeviceItemViewEntity(DASHBOARD_ACT, "Dashboard view"));
         pageItemViewEntities.add(new PageListAdapter.DeviceItemViewEntity(RX_ANDROID_DEMO_ACTIVITY, "RxAndroid demo"));
         pageItemViewEntities.add(new PageListAdapter.DeviceItemViewEntity(COLOR_BOARD_ACTIVITY, "颜色选择板"));
         pageItemViewEntities.add(new PageListAdapter.DeviceItemViewEntity(IMAGE_PROCESSING, getString(R.string.image_process)));
@@ -184,6 +187,9 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case RX_ANDROID_DEMO_ACTIVITY:
                         startActivity(new Intent(getApplicationContext(), RxAndroidActivity.class));
+                        break;
+                    case DASHBOARD_ACT:
+                        startActivity(new Intent(getApplicationContext(), DashboardActivity.class));
                         break;
                     default:
                         break;
