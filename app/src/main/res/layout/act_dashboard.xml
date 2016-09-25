@@ -11,4 +11,16 @@
         android:layout_height="wrap_content"
         app:radius="100dp" />
 
+    <com.rustfisher.fisherandroidchart.DashboardProgressView
+        android:id="@+id/dashboard_2"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:headerTitle="dash2"
+        app:bgArcColor="@color/colorPrimaryDark"
+        app:headerTextSize="10sp"
+        app:progressArcColor="@color/colorPrimary"
+        app:radius="100dp" />
+
 </RelativeLayout>
