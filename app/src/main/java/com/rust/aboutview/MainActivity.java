@@ -11,6 +11,7 @@ import android.view.View;
 
 import com.rust.AboutConstants;
 import com.rust.aboutview.activity.AudioPlayerActivity;
+import com.rust.aboutview.activity.BulbViewActivity;
 import com.rust.aboutview.activity.ColorBoardActivity;
 import com.rust.aboutview.activity.DashboardActivity;
 import com.rust.aboutview.activity.FragmentCommunicationActivity;
@@ -28,6 +29,7 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
+    private static final String BULB_VIEW_ACT = "bulb_view_act";
     private static final String DASHBOARD_ACT = "dashboard_view_act";
     private static final String IMAGE_PROCESSING = "image_processing";
     private static final String DEVICE_INFO = "device_info";
@@ -75,6 +77,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void initPageList() {
         final ArrayList<PageListAdapter.DeviceItemViewEntity> pageItemViewEntities = new ArrayList<>();
+        pageItemViewEntities.add(new PageListAdapter.DeviceItemViewEntity(BULB_VIEW_ACT, "Bulb view"));
         pageItemViewEntities.add(new PageListAdapter.DeviceItemViewEntity(DASHBOARD_ACT, "Dashboard view"));
         pageItemViewEntities.add(new PageListAdapter.DeviceItemViewEntity(RX_ANDROID_DEMO_ACTIVITY, "RxAndroid demo"));
         pageItemViewEntities.add(new PageListAdapter.DeviceItemViewEntity(COLOR_BOARD_ACTIVITY, "颜色选择板"));
@@ -190,6 +193,9 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case DASHBOARD_ACT:
                         startActivity(new Intent(getApplicationContext(), DashboardActivity.class));
+                        break;
+                    case BULB_VIEW_ACT:
+                        startActivity(new Intent(getApplicationContext(), BulbViewActivity.class));
                         break;
                     default:
                         break;
