@@ -1,24 +1,26 @@
 package com.rustfisher.fisherandroidchart;
 
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.RectF;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.util.TypedValue;
 import android.widget.ImageView;
 
 public class BulbView extends ImageView {
 
-    private static final String TAG = BulbView.class.getSimpleName();
+//    private static final String TAG = BulbView.class.getSimpleName();
     private float lineWid;
     private float botArcR;
     private float botLineLen;
     private float midHeight;
     private float shineLen;
     private float wholeSizeRatio;
+    private int shineColor;
+    private int bulbOutlineColor;
 
     private Paint shinePaint = new Paint();
 
@@ -38,13 +40,16 @@ public class BulbView extends ImageView {
 
     public BulbView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-
-        lineWid = dpToPx(3);
-        botArcR = dpToPx(7);
-        botLineLen = dpToPx(14);
-        midHeight = dpToPx(28);
-        shineLen = (float) (botLineLen * 0.85);
-        wholeSizeRatio = 1.0f;
+        TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.BulbView, defStyleAttr, 0);
+        lineWid = a.getDimensionPixelSize(R.styleable.BulbView_lineWid, (int) dpToPx(3));
+        botArcR = a.getDimensionPixelSize(R.styleable.BulbView_botArcRadius, (int) dpToPx(7));
+        botLineLen = a.getDimensionPixelSize(R.styleable.BulbView_botLineLen, (int) dpToPx(14));
+        midHeight = a.getDimensionPixelSize(R.styleable.BulbView_midHeight, (int) dpToPx(28));
+        shineLen = a.getDimensionPixelSize(R.styleable.BulbView_shineLen, (int) (botLineLen * 0.85));
+        wholeSizeRatio = a.getFloat(R.styleable.BulbView_wholeSizeRatio, 1.0f);
+        bulbOutlineColor = a.getColor(R.styleable.BulbView_bulbOutlineColor, Color.WHITE);
+        shineColor = a.getColor(R.styleable.BulbView_shineColor, Color.BLUE);
+        a.recycle();
 
         initSize();
 
@@ -60,10 +65,10 @@ public class BulbView extends ImageView {
         bgPaint.setFlags(Paint.ANTI_ALIAS_FLAG);
         bgPaint.setStyle(Paint.Style.STROKE);
         bgPaint.setStrokeWidth(lineWid);
-        bgPaint.setColor(Color.WHITE);
+        bgPaint.setColor(bulbOutlineColor);
 
         shinePaint.setFlags(Paint.ANTI_ALIAS_FLAG);
-        shinePaint.setColor(Color.BLUE);
+        shinePaint.setColor(shineColor);
     }
 
     public void setWholeSizeRatio(float wholeSizeRatio) {
@@ -75,6 +80,18 @@ public class BulbView extends ImageView {
     public void setBotLineLenDp(float lenDp) {
         this.botLineLen = dpToPx(lenDp);
         initSize();
+        invalidate();
+    }
+
+    public void setShineColor(int shineColor) {
+        this.shineColor = shineColor;
+        shinePaint.setColor(shineColor);
+        invalidate();
+    }
+
+    public void setBulbOutlineColor(int bulbOutlineColor) {
+        this.bulbOutlineColor = bulbOutlineColor;
+        bgPaint.setColor(bulbOutlineColor);
         invalidate();
     }
 
@@ -120,6 +137,7 @@ public class BulbView extends ImageView {
 
         /**
          * Draw shining bulb head
+         * Draw an outline and then draw inner
          */
         shinePaint.setStyle(Paint.Style.STROKE);
         float shineLineWid = (float) (1.4 * lineWid);
@@ -129,7 +147,7 @@ public class BulbView extends ImageView {
                 (midP1_x - lineWid),
                 (float) (midP4_y + (midP1_x - midP4_x) / 2.0 - lineWid * 2));
         canvas.drawArc(headShineRectF, 180, 180, false, shinePaint);
-        shinePaint.setStyle(Paint.Style.FILL_AND_STROKE);
+        shinePaint.setStyle(Paint.Style.FILL_AND_STROKE);// Draw inner color
         headShineRectF.set((midP4_x + lineWid),
                 (float) (midP4_y - (midP1_x - midP4_x) / 2.0 + lineWid),
                 (midP1_x - lineWid),

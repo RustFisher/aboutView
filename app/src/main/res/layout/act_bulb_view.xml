@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#bbbbbb">
@@ -24,7 +25,15 @@
         android:layout_height="160dp"
         android:layout_below="@id/bulb_view_2"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="2dp" />
+        android:layout_marginTop="2dp"
+        app:botArcRadius="2dp"
+        app:botLineLen="30dp"
+        app:bulbOutlineColor="#efeffe"
+        app:lineWid="1dp"
+        app:midHeight="40dp"
+        app:shineColor="#990000"
+        app:shineLen="3dp"
+         />
 
 
 </RelativeLayout>

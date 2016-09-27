@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="BulbView">
+        <attr name="lineWid" format="dimension" />
+        <attr name="botArcRadius" format="dimension" />
+        <attr name="botLineLen" format="dimension" />
+        <attr name="midHeight" format="dimension" />
+        <attr name="shineLen" format="dimension" />
+        <attr name="wholeSizeRatio" format="float" />
+        <attr name="shineColor" format="color" />
+        <attr name="bulbOutlineColor" format="color" />
+    </declare-styleable>
+</resources>
