@@ -13,11 +13,11 @@ import android.widget.ImageView;
 public class BulbView extends ImageView {
 
     private static final String TAG = BulbView.class.getSimpleName();
-    private int lineWid;
-    private int botArcR;
+    private float lineWid;
+    private float botArcR;
     private float botLineLen;
-    private int midHeight;
-    private int shineLen;
+    private float midHeight;
+    private float shineLen;
     private float wholeSizeRatio;
 
     private Paint shinePaint = new Paint();
@@ -26,6 +26,7 @@ public class BulbView extends ImageView {
     RectF botLeftRect = new RectF();
     RectF botRightRect = new RectF();
     RectF headRect = new RectF();
+    RectF headShineRectF = new RectF();
 
     public BulbView(Context context) {
         this(context, null);
@@ -39,10 +40,10 @@ public class BulbView extends ImageView {
         super(context, attrs, defStyleAttr);
 
         lineWid = dpToPx(3);
-        botArcR = dpToPx(10);
+        botArcR = dpToPx(7);
         botLineLen = dpToPx(14);
         midHeight = dpToPx(28);
-        shineLen = dpToPx(15);
+        shineLen = (float) (botLineLen * 0.85);
         wholeSizeRatio = 1.0f;
 
         initSize();
@@ -71,7 +72,7 @@ public class BulbView extends ImageView {
         invalidate();
     }
 
-    public void setBotLineLenDp(int lenDp) {
+    public void setBotLineLenDp(float lenDp) {
         this.botLineLen = dpToPx(lenDp);
         initSize();
         invalidate();
@@ -81,33 +82,33 @@ public class BulbView extends ImageView {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
         int viewWid = getWidth();
-        int viewHeight = getHeight() - lineWid;
+        float viewHeight = getHeight() - lineWid;
 
         /**
          * Draw background
          */
-        int originX = viewWid / 2;
-        int originY = viewHeight;
-        int botP1_x = (int) (originX - botLineLen / 2);
-        int botP1_y = originY;
-        int botP2_x = (int) (originX + botLineLen / 2);
-        int botP2_y = originY;
-        int midP1_x = botP2_x + botArcR;
-        int midP1_y = botP2_y - botArcR - midHeight;
-        int midP2_x = botP2_x + botArcR;
-        int midP2_y = botP2_y - botArcR;
-        int midP3_x = (int) (originX - botLineLen / 2 - botArcR);
-        int midP3_y = originY - botArcR;
-        int midP4_x = (int) (originX - botLineLen / 2 - botArcR);
-        int midP4_y = originY - botArcR - midHeight;
+        float originX = viewWid / 2;
+        float originY = viewHeight;
+        float botP1_x = (float) (originX - botLineLen / 2.0);
+        float botP1_y = originY;
+        float botP2_x = (float) (originX + botLineLen / 2.0);
+        float botP2_y = originY;
+        float midP1_x = (float) (originX + botLineLen / 2.0 + botArcR);
+        float midP1_y = botP2_y - botArcR - midHeight;
+        float midP2_x = botP2_x + botArcR;
+        float midP2_y = botP2_y - botArcR;
+        float midP3_x = (float) (originX - botLineLen / 2.0 - botArcR);
+        float midP3_y = originY - botArcR;
+        float midP4_x = (float) (originX - botLineLen / 2.0 - botArcR);
+        float midP4_y = originY - botArcR - midHeight;
 
         canvas.drawLine(botP1_x, botP1_y, botP2_x, botP2_y, bgPaint);
 
         botLeftRect.set(midP3_x, viewHeight - 2 * botArcR, botP1_x + botArcR, botP1_y);
-        canvas.drawArc(botLeftRect, 90, 90, false, bgPaint);
+        canvas.drawArc(botLeftRect, 89, 91, false, bgPaint);
 
         botRightRect.set(botP2_x - botArcR, viewHeight - 2 * botArcR, midP1_x, botP2_y);
-        canvas.drawArc(botRightRect, 0, 90, false, bgPaint);
+        canvas.drawArc(botRightRect, -1, 91, false, bgPaint);
 
         canvas.drawLine(midP3_x, midP3_y, midP4_x, midP4_y, bgPaint);
         canvas.drawLine(midP2_x, midP2_y, midP1_x, midP1_y, bgPaint);
@@ -120,25 +121,31 @@ public class BulbView extends ImageView {
         /**
          * Draw shining bulb head
          */
+        shinePaint.setStyle(Paint.Style.STROKE);
+        float shineLineWid = (float) (1.4 * lineWid);
+        shinePaint.setStrokeWidth(shineLineWid);
+        headShineRectF.set((midP4_x + lineWid),
+                (float) (midP4_y - (midP1_x - midP4_x) / 2.0 + lineWid),
+                (midP1_x - lineWid),
+                (float) (midP4_y + (midP1_x - midP4_x) / 2.0 - lineWid * 2));
+        canvas.drawArc(headShineRectF, 180, 180, false, shinePaint);
         shinePaint.setStyle(Paint.Style.FILL_AND_STROKE);
-        headRect.set((float) (midP4_x + lineWid / 2.0),
-                (float) (midP4_y - (midP1_x - midP4_x) / 2.0 + lineWid / 2.0),
-                (float) (midP1_x - lineWid / 2.0),
-                (float) (midP4_y + (midP1_x - midP4_x) / 2.0 - lineWid));
-        canvas.drawArc(headRect, 180, 180, false, shinePaint);
+        headShineRectF.set((midP4_x + lineWid),
+                (float) (midP4_y - (midP1_x - midP4_x) / 2.0 + lineWid),
+                (midP1_x - lineWid),
+                (float) (midP4_y + (midP1_x - midP4_x) / 2.0 - lineWid * 2));
+        canvas.drawArc(headShineRectF, 180, 180, false, shinePaint);
 
         /**
          * Draw shining lines
          */
-        float shineLineWid = (float) (1.4 * lineWid);
-        shinePaint.setStrokeWidth(shineLineWid);
         int s2hGap1 = (int) (dpToPx(10) * wholeSizeRatio);
         int s2hGap2 = (int) (dpToPx(8) * wholeSizeRatio);
         int gap3 = (int) (dpToPx(2) * wholeSizeRatio);
 
         // Far left
-        int s1_x = midP4_x - s2hGap1;
-        int s1_y = midP4_y;
+        float s1_x = midP4_x - s2hGap1;
+        float s1_y = midP4_y;
         float s1Out_x = (float) (s1_x - shineLen * Math.cos(Math.toRadians(30)));
         float s1Out_y = (float) (s1_y - shineLen * Math.sin(Math.toRadians(30)));
         canvas.drawLine(s1_x, s1_y, s1Out_x, s1Out_y, shinePaint);
@@ -146,8 +153,8 @@ public class BulbView extends ImageView {
         canvas.drawCircle(s1Out_x, s1Out_y, 0, shinePaint);
 
         // Far right
-        int s2_x = midP1_x + s2hGap1;
-        int s2_y = midP1_y;
+        float s2_x = midP1_x + s2hGap1;
+        float s2_y = midP1_y;
         float s2Out_x = (float) (s2_x + shineLen * Math.cos(Math.toRadians(30)));
         float s2Out_y = (float) (s2_y - shineLen * Math.sin(Math.toRadians(30)));
         canvas.drawLine(s2_x, s2_y, s2Out_x, s2Out_y, shinePaint);
@@ -155,16 +162,16 @@ public class BulbView extends ImageView {
         canvas.drawCircle(s2Out_x, s2Out_y, 0, shinePaint);
 
         // Middle
-        int s3_x = (midP1_x + midP4_x) / 2;
-        int s3_y = midP1_y - (midP1_x - midP4_x) / 2 - s2hGap2;
+        float s3_x = (midP1_x + midP4_x) / 2;
+        float s3_y = midP1_y - (midP1_x - midP4_x) / 2 - s2hGap2;
         float s3Out_y = s3_y - shineLen;
         canvas.drawLine(s3_x, s3_y, s3_x, s3Out_y, shinePaint);
         canvas.drawCircle(s3_x, s3_y, 0, shinePaint);
         canvas.drawCircle(s3_x, s3Out_y, 0, shinePaint);
 
         // Left shine line
-        int s4_x = midP4_x - gap3;
-        int s4_y = midP4_y + gap3 / 2 - (midP1_x - midP4_x) / 2;
+        float s4_x = midP4_x - gap3;
+        float s4_y = midP4_y + gap3 / 2 - (midP1_x - midP4_x) / 2;
         float s4Out_x = (float) (s4_x - shineLen * Math.cos(Math.toRadians(60)));
         float s4Out_y = (float) (s4_y - shineLen * Math.sin(Math.toRadians(60)));
         canvas.drawLine(s4_x, s4_y, s4Out_x, s4Out_y, shinePaint);
@@ -172,8 +179,8 @@ public class BulbView extends ImageView {
         canvas.drawCircle(s4Out_x, s4Out_y, 0, shinePaint);
 
         // Left shine line
-        int s5_x = midP1_x + gap3;
-        int s5_y = midP1_y + gap3 / 2 - (midP1_x - midP4_x) / 2;
+        float s5_x = midP1_x + gap3;
+        float s5_y = midP1_y + gap3 / 2 - (midP1_x - midP4_x) / 2;
         float s5Out_x = (float) (s5_x + shineLen * Math.cos(Math.toRadians(60)));
         float s5Out_y = (float) (s5_y - shineLen * Math.sin(Math.toRadians(60)));
         canvas.drawLine(s5_x, s5_y, s5Out_x, s5Out_y, shinePaint);
@@ -181,7 +188,7 @@ public class BulbView extends ImageView {
         canvas.drawCircle(s5Out_x, s5Out_y, 0, shinePaint);
     }
 
-    private int dpToPx(int dp) {
-        return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, getResources().getDisplayMetrics());
+    private float dpToPx(float dp) {
+        return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, getResources().getDisplayMetrics());
     }
 }
