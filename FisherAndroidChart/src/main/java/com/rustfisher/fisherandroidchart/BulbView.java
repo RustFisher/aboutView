@@ -15,7 +15,7 @@ public class BulbView extends ImageView {
     private static final String TAG = BulbView.class.getSimpleName();
     private int lineWid;
     private int botArcR;
-    private int botLineLen;
+    private float botLineLen;
     private int midHeight;
     private int shineLen;
     private float wholeSizeRatio;
@@ -72,7 +72,7 @@ public class BulbView extends ImageView {
     }
 
     public void setBotLineLenDp(int lenDp) {
-        this.botLineLen = lenDp;
+        this.botLineLen = dpToPx(lenDp);
         initSize();
         invalidate();
     }
@@ -88,18 +88,18 @@ public class BulbView extends ImageView {
          */
         int originX = viewWid / 2;
         int originY = viewHeight;
-        int botP1_x = originX - botLineLen / 2;
+        int botP1_x = (int) (originX - botLineLen / 2);
         int botP1_y = originY;
-        int botP2_x = originX + botLineLen / 2;
+        int botP2_x = (int) (originX + botLineLen / 2);
         int botP2_y = originY;
         int midP1_x = botP2_x + botArcR;
         int midP1_y = botP2_y - botArcR - midHeight;
         int midP2_x = botP2_x + botArcR;
         int midP2_y = botP2_y - botArcR;
-        int midP3_x = botP1_x - botArcR;
-        int midP3_y = botP1_y - botArcR;
-        int midP4_x = botP1_x - botArcR;
-        int midP4_y = botP2_y - botArcR - midHeight;
+        int midP3_x = (int) (originX - botLineLen / 2 - botArcR);
+        int midP3_y = originY - botArcR;
+        int midP4_x = (int) (originX - botLineLen / 2 - botArcR);
+        int midP4_y = originY - botArcR - midHeight;
 
         canvas.drawLine(botP1_x, botP1_y, botP2_x, botP2_y, bgPaint);
 
@@ -121,9 +121,9 @@ public class BulbView extends ImageView {
          * Draw shining bulb head
          */
         shinePaint.setStyle(Paint.Style.FILL_AND_STROKE);
-        headRect.set(midP4_x + lineWid / 2,
+        headRect.set((float) (midP4_x + lineWid / 2.0),
                 (float) (midP4_y - (midP1_x - midP4_x) / 2.0 + lineWid / 2.0),
-                midP1_x - lineWid / 2,
+                (float) (midP1_x - lineWid / 2.0),
                 (float) (midP4_y + (midP1_x - midP4_x) / 2.0 - lineWid));
         canvas.drawArc(headRect, 180, 180, false, shinePaint);
 

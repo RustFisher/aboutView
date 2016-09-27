@@ -29,9 +29,9 @@ public class BulbViewActivity extends Activity {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                for (int i = 0; i < 10; i++) {
+                for (int i = 0; i < 20; i++) {
                     try {
-                        Thread.sleep(1000L);
+                        Thread.sleep(300L);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
