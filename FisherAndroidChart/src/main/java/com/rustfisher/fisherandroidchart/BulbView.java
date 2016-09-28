@@ -106,9 +106,9 @@ public class BulbView extends ImageView {
          */
         float originX = viewWid / 2;
         float originY = viewHeight;
-        float botP1_x = (float) (originX - botLineLen / 2.0);
+        float botP1_x = (float) (originX - botLineLen / 2.0);// Left
         float botP1_y = originY;
-        float botP2_x = (float) (originX + botLineLen / 2.0);
+        float botP2_x = (float) (originX + botLineLen / 2.0);// Right
         float botP2_y = originY;
         float midP1_x = (float) (originX + botLineLen / 2.0 + botArcR);
         float midP1_y = botP2_y - botArcR - midHeight;
@@ -119,7 +119,7 @@ public class BulbView extends ImageView {
         float midP4_x = (float) (originX - botLineLen / 2.0 - botArcR);
         float midP4_y = originY - botArcR - midHeight;
 
-        canvas.drawLine(botP1_x, botP1_y, botP2_x, botP2_y, bgPaint);
+        canvas.drawLine(botP1_x, botP1_y, botP2_x + 2, botP2_y, bgPaint); // Add offset
 
         botLeftRect.set(midP3_x, viewHeight - 2 * botArcR, botP1_x + botArcR, botP1_y);
         canvas.drawArc(botLeftRect, 89, 91, false, bgPaint);
@@ -151,7 +151,7 @@ public class BulbView extends ImageView {
         headShineRectF.set((midP4_x + lineWid),
                 (float) (midP4_y - (midP1_x - midP4_x) / 2.0 + lineWid),
                 (midP1_x - lineWid),
-                (float) (midP4_y + (midP1_x - midP4_x) / 2.0 - lineWid * 2));
+                (float) (midP4_y + (midP1_x - midP4_x) / 2.0 - lineWid * 2 + 2)); // Bottom add offset
         canvas.drawArc(headShineRectF, 180, 180, false, shinePaint);
 
         /**

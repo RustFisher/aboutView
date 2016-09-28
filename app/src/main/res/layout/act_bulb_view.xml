@@ -17,7 +17,8 @@
         android:layout_height="200dp"
         android:layout_below="@id/bulb_view_1"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="2dp" />
+        android:layout_marginTop="2dp"
+        app:lineWid="3dp" />
 
     <com.rustfisher.fisherandroidchart.BulbView
         android:id="@+id/bulb_view_3"
