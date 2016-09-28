@@ -41,7 +41,7 @@ public class BulbView extends ImageView {
     public BulbView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.BulbView, defStyleAttr, 0);
-        lineWid = a.getDimensionPixelSize(R.styleable.BulbView_lineWid, (int) dpToPx(3));
+        lineWid = a.getDimensionPixelSize(R.styleable.BulbView_lineWid, (int) dpToPx(2));
         botArcR = a.getDimensionPixelSize(R.styleable.BulbView_botArcRadius, (int) dpToPx(7));
         botLineLen = a.getDimensionPixelSize(R.styleable.BulbView_botLineLen, (int) dpToPx(14));
         midHeight = a.getDimensionPixelSize(R.styleable.BulbView_midHeight, (int) dpToPx(28));

@@ -32,8 +32,6 @@
         app:lineWid="1dp"
         app:midHeight="40dp"
         app:shineColor="#990000"
-        app:shineLen="3dp"
-         />
-
+        app:shineLen="3dp" />
 
 </RelativeLayout>
