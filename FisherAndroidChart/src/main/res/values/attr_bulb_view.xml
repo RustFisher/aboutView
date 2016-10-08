@@ -9,5 +9,6 @@
         <attr name="wholeSizeRatio" format="float" />
         <attr name="shineColor" format="color" />
         <attr name="bulbOutlineColor" format="color" />
+        <attr name="showShiningLines" format="boolean" />
     </declare-styleable>
 </resources>

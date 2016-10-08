@@ -12,7 +12,7 @@ import android.widget.ImageView;
 
 public class BulbView extends ImageView {
 
-//    private static final String TAG = BulbView.class.getSimpleName();
+    //    private static final String TAG = BulbView.class.getSimpleName();
     private float lineWid;
     private float botArcR;
     private float botLineLen;
@@ -21,6 +21,7 @@ public class BulbView extends ImageView {
     private float wholeSizeRatio;
     private int shineColor;
     private int bulbOutlineColor;
+    private boolean showShiningLines = false;
 
     private Paint shinePaint = new Paint();
 
@@ -49,6 +50,7 @@ public class BulbView extends ImageView {
         wholeSizeRatio = a.getFloat(R.styleable.BulbView_wholeSizeRatio, 1.0f);
         bulbOutlineColor = a.getColor(R.styleable.BulbView_bulbOutlineColor, Color.WHITE);
         shineColor = a.getColor(R.styleable.BulbView_shineColor, Color.BLUE);
+        showShiningLines = a.getBoolean(R.styleable.BulbView_showShiningLines, false);
         a.recycle();
 
         initSize();
@@ -154,9 +156,16 @@ public class BulbView extends ImageView {
                 (float) (midP4_y + (midP1_x - midP4_x) / 2.0 - lineWid * 2 + 2)); // Bottom add offset
         canvas.drawArc(headShineRectF, 180, 180, false, shinePaint);
 
-        /**
-         * Draw shining lines
-         */
+        drawShiningLines(canvas, midP1_x, midP1_y, midP4_x, midP4_y);
+    }
+
+    /**
+     * Draw shining lines
+     */
+    private void drawShiningLines(Canvas canvas, float midP1_x, float midP1_y, float midP4_x, float midP4_y) {
+        if (!showShiningLines) {
+            return;
+        }
         int s2hGap1 = (int) (dpToPx(10) * wholeSizeRatio);
         int s2hGap2 = (int) (dpToPx(8) * wholeSizeRatio);
         int gap3 = (int) (dpToPx(2) * wholeSizeRatio);
