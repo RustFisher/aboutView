@@ -34,7 +34,7 @@ public class BulbView extends ImageView {
     RectF headShineRectF = new RectF();
     RectF baseBotRectF = new RectF();
     SweepGradient outerSg;
-    int[] sgColors = {Color.BLUE, Color.GREEN, Color.YELLOW, Color.RED, Color.BLUE};
+    int[] sgColors = {Color.BLUE, Color.GREEN, Color.YELLOW, Color.RED, Color.parseColor("#f202ff"), Color.BLUE};
 
     public BulbView(Context context) {
         this(context, null);
