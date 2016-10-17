@@ -14,9 +14,13 @@ import com.rust.aboutview.activity.AudioPlayerActivity;
 import com.rust.aboutview.activity.BulbViewActivity;
 import com.rust.aboutview.activity.ColorBoardActivity;
 import com.rust.aboutview.activity.DashboardActivity;
+import com.rust.aboutview.activity.FlipPageActivity;
 import com.rust.aboutview.activity.FragmentCommunicationActivity;
+import com.rust.aboutview.activity.ReadWriteCSVActivity;
 import com.rust.aboutview.activity.RxAndroidActivity;
-import com.rust.aboutview.activity.WriteFileActivity;
+import com.rust.aboutview.activity.SurfaceViewDemoActivity;
+import com.rust.aboutview.activity.ThreadPoolActivity;
+import com.rust.aboutview.activity.WriteHexFileActivity;
 import com.rust.arslan.ArslanActivity;
 import com.rust.contactview.PeopleMainActivity;
 import com.rust.service.AudioPlayService;
@@ -29,6 +33,7 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
+    private static final String SURFACE_VIEW_DEMO_ACT = "surface_view_demo_act";
     private static final String BULB_VIEW_ACT = "bulb_view_act";
     private static final String DASHBOARD_ACT = "dashboard_view_act";
     private static final String IMAGE_PROCESSING = "image_processing";
@@ -44,10 +49,13 @@ public class MainActivity extends AppCompatActivity {
     private static final String FOLLOW_CURSOR = "follow_cursor";
     private static final String FRAGMENT_TAB_HOST = "fragment_tab_host";
     private static final String FRAGMENT_COMMUNITY = "fragment_community";
-    private static final String WRITE_FILE = "write_file";
+    private static final String WRITE_FILE = "write_hex_file";
+    private static final String WRITE_CSV = "write_CSV_file";
     private static final String AUDIO_PLAYER = "audio_player";
     private static final String COLOR_BOARD_ACTIVITY = "color_board_act";
     private static final String RX_ANDROID_DEMO_ACTIVITY = "rx_android_demo_act";
+    private static final String FLIP_PAGE_ACT = "flip_page_act";
+    private static final String THREAD_POOL_ACT = "thread_pool_demo";
 
     private RecyclerView mPagesView;
 
@@ -77,6 +85,11 @@ public class MainActivity extends AppCompatActivity {
 
     private void initPageList() {
         final ArrayList<PageListAdapter.DeviceItemViewEntity> pageItemViewEntities = new ArrayList<>();
+        pageItemViewEntities.add(new PageListAdapter.DeviceItemViewEntity(THREAD_POOL_ACT, "thread pool demo"));
+        pageItemViewEntities.add(new PageListAdapter.DeviceItemViewEntity(FLIP_PAGE_ACT, "左右滑动页"));
+        pageItemViewEntities.add(new PageListAdapter.DeviceItemViewEntity(WRITE_CSV, "读写CSV数据"));
+        pageItemViewEntities.add(new PageListAdapter.DeviceItemViewEntity(WRITE_FILE, "读写Hex数据"));
+        pageItemViewEntities.add(new PageListAdapter.DeviceItemViewEntity(SURFACE_VIEW_DEMO_ACT, "SurfaceView使用实例"));
         pageItemViewEntities.add(new PageListAdapter.DeviceItemViewEntity(BULB_VIEW_ACT, "Bulb view"));
         pageItemViewEntities.add(new PageListAdapter.DeviceItemViewEntity(DASHBOARD_ACT, "Dashboard view"));
         pageItemViewEntities.add(new PageListAdapter.DeviceItemViewEntity(RX_ANDROID_DEMO_ACTIVITY, "RxAndroid demo"));
@@ -94,7 +107,6 @@ public class MainActivity extends AppCompatActivity {
         pageItemViewEntities.add(new PageListAdapter.DeviceItemViewEntity(FOLLOW_CURSOR, getString(R.string.drawer_line_activity)));
         pageItemViewEntities.add(new PageListAdapter.DeviceItemViewEntity(FRAGMENT_TAB_HOST, getString(R.string.fragment_tab_host_activity)));
         pageItemViewEntities.add(new PageListAdapter.DeviceItemViewEntity(FRAGMENT_COMMUNITY, "fragment与activity通信"));
-        pageItemViewEntities.add(new PageListAdapter.DeviceItemViewEntity(WRITE_FILE, "写数据到文件"));
         pageItemViewEntities.add(new PageListAdapter.DeviceItemViewEntity(AUDIO_PLAYER, "Audio player"));
 
         GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 1);
@@ -177,7 +189,7 @@ public class MainActivity extends AppCompatActivity {
                         startActivity(i);
                         break;
                     case WRITE_FILE:
-                        i.setClass(getApplicationContext(), WriteFileActivity.class);
+                        i.setClass(getApplicationContext(), WriteHexFileActivity.class);
                         startActivity(i);
                         break;
                     case AUDIO_PLAYER:
@@ -196,6 +208,18 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case BULB_VIEW_ACT:
                         startActivity(new Intent(getApplicationContext(), BulbViewActivity.class));
+                        break;
+                    case SURFACE_VIEW_DEMO_ACT:
+                        startActivity(new Intent(getApplicationContext(), SurfaceViewDemoActivity.class));
+                        break;
+                    case WRITE_CSV:
+                        startActivity(new Intent(getApplicationContext(), ReadWriteCSVActivity.class));
+                        break;
+                    case FLIP_PAGE_ACT:
+                        startActivity(new Intent(getApplicationContext(), FlipPageActivity.class));
+                        break;
+                    case THREAD_POOL_ACT:
+                        startActivity(new Intent(getApplicationContext(), ThreadPoolActivity.class));
                         break;
                     default:
                         break;

@@ -81,7 +81,7 @@
             android:theme="@style/Theme.AppCompat.Light.DarkActionBar" />
         <activity android:name=".activity.FragmentCommunicationActivity" />
         <activity
-            android:name=".activity.WriteFileActivity"
+            android:name=".activity.WriteHexFileActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".activity.AudioPlayerActivity"
@@ -100,6 +100,22 @@
 
         <activity
             android:name=".activity.BulbViewActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".activity.SurfaceViewDemoActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".activity.ReadWriteCSVActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".activity.FlipPageActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".activity.ThreadPoolActivity"
             android:screenOrientation="portrait" />
 
     </application>

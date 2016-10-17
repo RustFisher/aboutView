@@ -31,4 +31,11 @@ dependencies {
     // explicitly depend on RxJava's latest version for bug fixes and new features.
     compile 'io.reactivex:rxjava:1.1.6'
     compile project(':FisherAndroidChart')
+
+    // view flipper
+    compile 'com.github.devlight:infinitecycleviewpager:1.0.2'
+    compile 'com.android.support:cardview-v7:24.2.1'
+
+    compile 'com.jakewharton:butterknife:8.4.0'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'
 }

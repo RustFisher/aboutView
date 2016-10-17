@@ -123,6 +123,7 @@ public class BulbView extends ImageView {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
         bgPaint.setShader(null);
+        bgPaint.setStrokeWidth(lineWid);
         int viewWid = getWidth();
         float viewHeight = getHeight() - lineWid;
         int outerR = (viewWid > viewHeight ? (int) viewHeight : viewWid) / 2;
