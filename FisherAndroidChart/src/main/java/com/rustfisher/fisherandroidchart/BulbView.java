@@ -57,7 +57,7 @@ public class BulbView extends ImageView {
         bulbOutlineColor = a.getColor(R.styleable.BulbView_bulbOutlineColor, Color.WHITE);
         shineColor = a.getColor(R.styleable.BulbView_shineColor, Color.BLUE);
         showShiningLines = a.getBoolean(R.styleable.BulbView_showShiningLines, false);
-        out2shineGap = a.getDimensionPixelSize(R.styleable.BulbView_out2ShineGap, (int) dpToPx(10));
+        out2shineGap = a.getDimensionPixelSize(R.styleable.BulbView_out2ShineGap, (int) dpToPx(20));
         a.recycle();
 
         initSize();
