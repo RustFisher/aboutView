@@ -10,5 +10,6 @@
         <attr name="shineColor" format="color" />
         <attr name="bulbOutlineColor" format="color" />
         <attr name="showShiningLines" format="boolean" />
+        <attr name="out2ShineGap" format="dimension" />
     </declare-styleable>
 </resources>

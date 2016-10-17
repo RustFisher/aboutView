@@ -23,6 +23,7 @@ public class BulbView extends ImageView {
     private float wholeSizeRatio;
     private int shineColor;
     private int bulbOutlineColor;
+    private int out2shineGap;
     private boolean showShiningLines = false;
 
     private Paint shinePaint = new Paint();
@@ -56,6 +57,7 @@ public class BulbView extends ImageView {
         bulbOutlineColor = a.getColor(R.styleable.BulbView_bulbOutlineColor, Color.WHITE);
         shineColor = a.getColor(R.styleable.BulbView_shineColor, Color.BLUE);
         showShiningLines = a.getBoolean(R.styleable.BulbView_showShiningLines, false);
+        out2shineGap = a.getDimensionPixelSize(R.styleable.BulbView_out2ShineGap, (int) dpToPx(10));
         a.recycle();
 
         initSize();
@@ -102,6 +104,15 @@ public class BulbView extends ImageView {
         invalidate();
     }
 
+    public int getOut2shineGap() {
+        return out2shineGap;
+    }
+
+    public void setOut2shineGap(int out2shineGap) {
+        this.out2shineGap = out2shineGap;
+        invalidate();
+    }
+
     @Override
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         super.onSizeChanged(w, h, oldw, oldh);
@@ -115,11 +126,15 @@ public class BulbView extends ImageView {
         int viewWid = getWidth();
         float viewHeight = getHeight() - lineWid;
         int outerR = (viewWid > viewHeight ? (int) viewHeight : viewWid) / 2;
+        int shineCircleR = (outerR - out2shineGap);
+
+        float center_x = viewWid / 2;
+        float center_y = viewHeight / 2;
 
         /**
          * Draw background
          */
-        float bulbOriginX = viewWid / 2;
+        float bulbOriginX = center_x;
         float bulbOriginY = viewHeight * 0.7f;
         float bulbBotP1_x = (float) (bulbOriginX - botLineLen / 2.0);// Left
         float bulbBotP1_y = bulbOriginY;
@@ -178,7 +193,7 @@ public class BulbView extends ImageView {
         bgPaint.setStrokeWidth(outerWidth);
         bgPaint.setStyle(Paint.Style.STROKE);
         bgPaint.setShader(outerSg);
-        canvas.drawCircle(viewWid / 2, viewHeight / 2, outerR - dpToPx(4), bgPaint);
+        canvas.drawCircle(center_x, center_y, outerR - dpToPx(4), bgPaint);
         bgPaint.setShader(null);
 
         /**
@@ -199,6 +214,22 @@ public class BulbView extends ImageView {
                 (bulbMidP1_x - lineWid),
                 (float) (bulbMidP4_y + (bulbMidP1_x - bulbMidP4_x) / 2.0 - lineWid * 2 + 2)); // Bottom add offset
         canvas.drawArc(headShineRectF, 180, 180, false, shinePaint);
+
+        /**
+         * Draw shining circle
+         */
+        shinePaint.setStyle(Paint.Style.STROKE);
+        shinePaint.setStrokeWidth(outerWidth);
+        canvas.drawCircle(center_x, center_y, shineCircleR, shinePaint);
+
+        // Draw lines
+        float shineLineStart = shineCircleR + dpToPx(2);
+        float shineLineEnd = shineCircleR + out2shineGap * 0.6f + dpToPx(2);
+
+        for (int ra = 0; ra <= 360; ra += 8) {
+            canvas.drawLine(getCirclePointX(center_x, shineLineStart, ra), getCirclePointY(center_y, shineLineStart, ra),
+                    getCirclePointX(center_x, shineLineEnd, ra), getCirclePointY(center_y, shineLineEnd, ra), shinePaint);
+        }
 
         drawShiningLines(canvas, bulbMidP1_x, bulbMidP1_y, bulbMidP4_x, bulbMidP4_y);
     }
@@ -257,6 +288,20 @@ public class BulbView extends ImageView {
         canvas.drawLine(s5_x, s5_y, s5Out_x, s5Out_y, shinePaint);
         canvas.drawCircle(s5_x, s5_y, 0, shinePaint);
         canvas.drawCircle(s5Out_x, s5Out_y, 0, shinePaint);
+    }
+
+    /**
+     * 获取圆上点的x值
+     */
+    private float getCirclePointX(float center_x, float r, int radians) {
+        return (float) (center_x + r * Math.sin(Math.toRadians(radians)));
+    }
+
+    /**
+     * 获取圆上点的y值
+     */
+    private float getCirclePointY(float center_y, float r, int radians) {
+        return (float) (center_y + r * Math.cos(Math.toRadians(radians)));
     }
 
     private float dpToPx(float dp) {
