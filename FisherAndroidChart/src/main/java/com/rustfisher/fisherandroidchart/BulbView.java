@@ -6,6 +6,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.RectF;
+import android.graphics.SweepGradient;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.util.TypedValue;
@@ -31,6 +32,9 @@ public class BulbView extends ImageView {
     RectF botRightRect = new RectF();
     RectF headRect = new RectF();
     RectF headShineRectF = new RectF();
+    RectF baseBotRectF = new RectF();
+    SweepGradient outerSg;
+    int[] sgColors = {Color.BLUE, Color.GREEN, Color.YELLOW, Color.RED, Color.BLUE};
 
     public BulbView(Context context) {
         this(context, null);
@@ -43,10 +47,10 @@ public class BulbView extends ImageView {
     public BulbView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.BulbView, defStyleAttr, 0);
-        lineWid = a.getDimensionPixelSize(R.styleable.BulbView_lineWid, (int) dpToPx(2));
+        lineWid = a.getDimensionPixelSize(R.styleable.BulbView_lineWid, (int) dpToPx(1.5f));
         botArcR = a.getDimensionPixelSize(R.styleable.BulbView_botArcRadius, (int) dpToPx(7));
-        botLineLen = a.getDimensionPixelSize(R.styleable.BulbView_botLineLen, (int) dpToPx(14));
-        midHeight = a.getDimensionPixelSize(R.styleable.BulbView_midHeight, (int) dpToPx(24));
+        botLineLen = a.getDimensionPixelSize(R.styleable.BulbView_botLineLen, (int) dpToPx(10));
+        midHeight = a.getDimensionPixelSize(R.styleable.BulbView_midHeight, (int) dpToPx(20));
         shineLen = a.getDimensionPixelSize(R.styleable.BulbView_shineLen, (int) (botLineLen * 0.85));
         wholeSizeRatio = a.getFloat(R.styleable.BulbView_wholeSizeRatio, 1.0f);
         bulbOutlineColor = a.getColor(R.styleable.BulbView_bulbOutlineColor, Color.WHITE);
@@ -101,20 +105,22 @@ public class BulbView extends ImageView {
     @Override
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         super.onSizeChanged(w, h, oldw, oldh);
-        Log.d(TAG, getId() + " onSizeChanged: [" + w + ", " + h + "]");
+        outerSg = new SweepGradient(w / 2, h / 2, sgColors, null);
     }
 
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
+        bgPaint.setShader(null);
         int viewWid = getWidth();
         float viewHeight = getHeight() - lineWid;
+        int outerR = (viewWid > viewHeight ? (int) viewHeight : viewWid) / 2;
 
         /**
          * Draw background
          */
         float bulbOriginX = viewWid / 2;
-        float bulbOriginY = viewHeight * 0.65f;
+        float bulbOriginY = viewHeight * 0.7f;
         float bulbBotP1_x = (float) (bulbOriginX - botLineLen / 2.0);// Left
         float bulbBotP1_y = bulbOriginY;
         float bulbBotP2_x = (float) (bulbOriginX + botLineLen / 2.0);// Right
@@ -143,6 +149,37 @@ public class BulbView extends ImageView {
         // Draw bulb head background
         headRect.set(bulbMidP4_x, (float) (bulbMidP4_y - (bulbMidP1_x - bulbMidP4_x) / 2.0), bulbMidP1_x, (float) (bulbMidP4_y + (bulbMidP1_x - bulbMidP4_x) / 2.0));
         canvas.drawArc(headRect, 180, 180, false, bgPaint);
+
+        // Draw bulb bottom
+        float botGap = 4;
+        float baseStart = bulbBotP1_x - 4;
+        float baseEnd = bulbBotP2_x + 6;
+        float baseBotLen = 10;
+        canvas.drawLine(baseStart, bulbBotP1_y + lineWid + botGap, baseEnd, bulbBotP2_y + lineWid + botGap, bgPaint);
+        canvas.drawLine(baseStart, bulbBotP1_y + (lineWid + botGap) * 2, baseEnd, bulbBotP2_y + (lineWid + botGap) * 2, bgPaint);
+        canvas.drawLine(baseStart, bulbBotP1_y + (lineWid + botGap) * 3, baseEnd, bulbBotP2_y + (lineWid + botGap) * 3, bgPaint);
+        canvas.drawLine(baseStart + baseBotLen, bulbBotP1_y + (lineWid + botGap) * 4, baseEnd - baseBotLen, bulbBotP2_y + (lineWid + botGap) * 4, bgPaint);
+        bgPaint.setStyle(Paint.Style.FILL);
+        canvas.drawCircle(baseStart, bulbBotP1_y + lineWid + botGap, lineWid / 2, bgPaint);
+        canvas.drawCircle(baseStart, bulbBotP1_y + (lineWid + botGap) * 2, lineWid / 2, bgPaint);
+        canvas.drawCircle(baseStart, bulbBotP1_y + (lineWid + botGap) * 3, lineWid / 2, bgPaint);
+        canvas.drawCircle(baseEnd, bulbBotP2_y + lineWid + botGap, lineWid / 2, bgPaint);
+        canvas.drawCircle(baseEnd, bulbBotP2_y + (lineWid + botGap) * 2, lineWid / 2, bgPaint);
+        canvas.drawCircle(baseEnd, bulbBotP2_y + (lineWid + botGap) * 3, lineWid / 2, bgPaint);
+
+        canvas.drawCircle(baseStart + baseBotLen, bulbBotP1_y + (lineWid + botGap) * 4, lineWid / 2, bgPaint);
+        canvas.drawCircle(baseEnd - baseBotLen, bulbBotP1_y + (lineWid + botGap) * 4, lineWid / 2, bgPaint);
+
+        baseBotRectF.set(baseStart + baseBotLen, bulbBotP1_y + (lineWid + botGap) * 4, baseEnd - baseBotLen, bulbBotP1_y + (lineWid + botGap) * 4 + lineWid);
+        canvas.drawOval(baseBotRectF, bgPaint);
+
+        // Draw outer circle
+        float outerWidth = 2.0f;
+        bgPaint.setStrokeWidth(outerWidth);
+        bgPaint.setStyle(Paint.Style.STROKE);
+        bgPaint.setShader(outerSg);
+        canvas.drawCircle(viewWid / 2, viewHeight / 2, outerR - dpToPx(4), bgPaint);
+        bgPaint.setShader(null);
 
         /**
          * Draw shining bulb head
