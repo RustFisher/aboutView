@@ -30,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
     private static final String FLOAT_WINDOW = "floating_window";
     private static final String FOLLOW_CURSOR = "follow_cursor";
     private static final String COLOR_BOARD_ACTIVITY = "color_board_act";
+    private static final String LINE_CHART_ACT = "line_chart_act";
 
     private RecyclerView mPagesView;
 
@@ -57,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void initPageList() {
         final ArrayList<PageListAdapter.DeviceItemViewEntity> pageItemViewEntities = new ArrayList<>();
+        pageItemViewEntities.add(new PageListAdapter.DeviceItemViewEntity(LINE_CHART_ACT, "折线图"));
         pageItemViewEntities.add(new PageListAdapter.DeviceItemViewEntity(SURFACE_VIEW_DEMO_ACT, "SurfaceView可伸缩图表"));
         pageItemViewEntities.add(new PageListAdapter.DeviceItemViewEntity(BULB_VIEW_ACT, "Bulb view"));
         pageItemViewEntities.add(new PageListAdapter.DeviceItemViewEntity(DASHBOARD_ACT, "Dashboard view"));
@@ -82,6 +84,10 @@ public class MainActivity extends AppCompatActivity {
                 String id = pageItemViewEntities.get(position).itemID;
                 Intent i = new Intent();
                 switch (id) {
+                    case LINE_CHART_ACT:
+                        i.setClass(getApplicationContext(), LineChartActivity.class);
+                        startActivity(i);
+                        break;
                     case IMAGE_PROCESSING:
                         i.setClass(getApplicationContext(), ImageProcessingActivity.class);
                         startActivity(i);

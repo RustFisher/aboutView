@@ -25,12 +25,12 @@ dependencies {
     compile 'com.android.support:appcompat-v7:24.2.1'
     compile 'com.android.support:recyclerview-v7:24.2.1'
     compile 'com.android.support:design:24.2.1'
+    compile project(':FisherView')
     compile 'org.greenrobot:eventbus:3.0.0'
     compile 'io.reactivex:rxandroid:1.2.1'
     // Because RxAndroid releases are few and far between, it is recommended you also
     // explicitly depend on RxJava's latest version for bug fixes and new features.
     compile 'io.reactivex:rxjava:1.1.6'
-    compile project(':FisherView')
 
     // view flipper
     compile 'com.github.devlight:infinitecycleviewpager:1.0.2'
