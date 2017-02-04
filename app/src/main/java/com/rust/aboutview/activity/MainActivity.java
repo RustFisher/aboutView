@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void initPageList() {
         final ArrayList<PageListAdapter.DeviceItemViewEntity> pageItemViewEntities = new ArrayList<>();
-        pageItemViewEntities.add(new PageListAdapter.DeviceItemViewEntity(LINE_CHART_ACT, "折线图"));
+        pageItemViewEntities.add(new PageListAdapter.DeviceItemViewEntity(LINE_CHART_ACT, "折线图和饼图"));
         pageItemViewEntities.add(new PageListAdapter.DeviceItemViewEntity(SURFACE_VIEW_DEMO_ACT, "SurfaceView可伸缩图表"));
         pageItemViewEntities.add(new PageListAdapter.DeviceItemViewEntity(BULB_VIEW_ACT, "Bulb view"));
         pageItemViewEntities.add(new PageListAdapter.DeviceItemViewEntity(DASHBOARD_ACT, "Dashboard view"));
@@ -85,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
                 Intent i = new Intent();
                 switch (id) {
                     case LINE_CHART_ACT:
-                        i.setClass(getApplicationContext(), LineChartActivity.class);
+                        i.setClass(getApplicationContext(), LineChartAndPieViewActivity.class);
                         startActivity(i);
                         break;
                     case IMAGE_PROCESSING:

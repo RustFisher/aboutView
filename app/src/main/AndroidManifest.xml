@@ -83,7 +83,7 @@
             android:name=".activity.SurfaceViewDemoActivity"
             android:screenOrientation="portrait" />
 
-        <activity android:name=".activity.LineChartActivity" />
+        <activity android:name=".activity.LineChartAndPieViewActivity" />
 
     </application>
 
