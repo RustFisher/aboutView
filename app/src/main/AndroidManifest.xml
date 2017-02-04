@@ -25,16 +25,15 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <service android:name="com.rust.service.MyService">
+        <service android:name=".service.MyService">
             <intent-filter>
                 <action android:name="com.rust.aidl.IMyService" />
             </intent-filter>
         </service>
 
-        <service android:name="com.rust.service.FloatingBarService" />
-        <service android:name="com.rust.service.AudioPlayService" />
+        <service android:name=".service.FloatingBarService" />
         <service
-            android:name="com.rust.service.MyDayDream"
+            android:name=".service.MyDayDream"
             android:exported="true"
             android:icon="@drawable/littleboygreen_x128"
             android:label="@string/my_day_dream_label"
@@ -46,7 +45,7 @@
         </service>
 
         <activity
-            android:name=".MainActivity"
+            android:name=".activity.MainActivity"
             android:screenOrientation="portrait"
             android:theme="@style/ActionBarTheme">
             <intent-filter>
@@ -56,42 +55,20 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".ImageProcessingActivity" />
-        <activity android:name=".ResolutionRatioActivity" />
-        <activity android:name=".MySwipeActivity" />
-        <activity android:name=".DrawerActivity" />
-        <activity android:name="com.rust.arslan.ArslanActivity" />
-        <activity android:name="com.rust.arslan.SettingsActivity" />
-        <activity android:name="com.rust.arslan.NetworkActivity" />
-        <activity android:name=".NotificationActivity" />
-        <activity android:name="com.rust.aboutview.ClipChildrenActivity" />
-        <activity android:name=".FrameAnimationActivity" />
-        <activity android:name=".CirclesActivity" />
+        <activity android:name=".activity.ImageProcessingActivity" />
+        <activity android:name=".activity.FrameAnimationActivity" />
+        <activity android:name=".activity.CirclesActivity" />
         <activity
-            android:name="com.rust.contactview.PeopleMainActivity"
+            android:name=".contactview.PeopleMainActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.rust.contactview.AddDataActivity"
+            android:name=".contactview.AddDataActivity"
             android:label="@string/title_add_data_activity"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name="com.rust.contactview.ContactPeopleActivity" />
-        <activity android:name=".DrawLineActivity" />
-        <activity
-            android:name=".FragmentTabHostDemo"
-            android:theme="@style/Theme.AppCompat.Light.DarkActionBar" />
-        <activity android:name=".activity.FragmentCommunicationActivity" />
-        <activity
-            android:name=".activity.WriteHexFileActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".activity.AudioPlayerActivity"
-            android:screenOrientation="portrait" />
+        <activity android:name=".contactview.ContactPeopleActivity" />
+        <activity android:name=".activity.DrawLineActivity" />
         <activity
             android:name=".activity.ColorBoardActivity"
-            android:screenOrientation="portrait" />
-
-        <activity
-            android:name=".activity.RxAndroidActivity"
             android:screenOrientation="portrait" />
 
         <activity
@@ -104,18 +81,6 @@
 
         <activity
             android:name=".activity.SurfaceViewDemoActivity"
-            android:screenOrientation="portrait" />
-
-        <activity
-            android:name=".activity.ReadWriteCSVActivity"
-            android:screenOrientation="portrait" />
-
-        <activity
-            android:name=".activity.FlipPageActivity"
-            android:screenOrientation="portrait" />
-
-        <activity
-            android:name=".activity.ThreadPoolActivity"
             android:screenOrientation="portrait" />
 
     </application>

@@ -1,11 +1,10 @@
 package com.rust.aboutview.activity;
 
 import android.app.Activity;
-import android.graphics.Color;
 import android.os.Bundle;
 
 import com.rust.aboutview.R;
-import com.rustfisher.fisherandroidchart.BulbView;
+import com.rustfisher.view.BulbView;
 
 public class BulbViewActivity extends Activity {
 
@@ -23,33 +22,7 @@ public class BulbViewActivity extends Activity {
         bulbView3 = (BulbView) findViewById(R.id.bulb_view_3);
 
         bulbView2.setWholeSizeRatio(1.6f);
-        bulbView3.setWholeSizeRatio(2.3f);
+        bulbView3.setWholeSizeRatio(1.3f);
 
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                for (int i = 0; i < 20; i++) {
-                    try {
-                        Thread.sleep(200L);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                    final int finalI = i;
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            bulbView1.setBotLineLenDp(20 + finalI);
-                            bulbView1.setShineColor(Color.rgb(20 + finalI * 6, 0, 0));
-                            bulbView1.setBulbOutlineColor(Color.rgb(0, 0, 20 + finalI * 6));
-                        }
-                    });
-                }
-            }
-        }).start();
     }
 }

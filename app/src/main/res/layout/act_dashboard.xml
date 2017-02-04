@@ -5,21 +5,22 @@
     android:layout_height="match_parent"
     android:background="#bbbbbb">
 
-    <com.rustfisher.fisherandroidchart.DashboardProgressView
+    <com.rustfisher.view.DashboardProgressView
         android:id="@+id/dashboard_1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
         app:radius="100dp" />
 
-    <com.rustfisher.fisherandroidchart.DashboardProgressView
+    <com.rustfisher.view.DashboardProgressView
         android:id="@+id/dashboard_2"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentTop="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:headerTitle="dash2"
+        android:layout_below="@id/dashboard_1"
+        android:layout_centerHorizontal="true"
         app:bgArcColor="@color/colorPrimaryDark"
         app:headerTextSize="10sp"
+        app:headerTitle="dash2"
         app:progressArcColor="@color/colorPrimary"
         app:radius="100dp" />
 

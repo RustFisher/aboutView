@@ -8,34 +8,18 @@
     <string name="rotate_effect_CCW">逆时针旋转</string>
     <string name="skew_effect">偏移效果</string>
 
-    <string name="talk_train">train image</string>
-
-    <!-- 首页按钮上的文字 -->
     <string name="image_process">图像处理</string>
-    <string name="device_info">设备信息</string>
-    <string name="swipe_refresh">下拉刷新 demo</string>
-    <string name="drawer_activity">Drawer Layout</string>
-    <string name="arslan_activity">Arslan</string>
-    <string name="notification_activity">notification demo</string>
-    <string name="clip_children_activity">clip children</string>
-    <string name="circle_activity">自定义view - Circle UI</string>
+    <string name="circle_activity">Circle UI</string>
     <string name="contact_activity">Contact模块</string>
     <string name="float_bar_activity">悬浮窗</string>
     <string name="drawer_line_activity">十字坐标点击跟随</string>
-    <string name="fragment_tab_host_activity">FragmentTabHost</string>
 
-    <!-- circle activity string -->
     <string name="circles_top_title">选择你喜欢的圈圈</string>
 
-    <!-- bluetooth activity string -->
-    <string name="enable_bt">蓝牙开启</string>
-    <string name="close_bt">蓝牙关闭</string>
-    <string name="find_device">刷新</string>
     <string name="action_delete_all">Delete all items</string>
     <string name="note">All items here</string>
     <string name="action_people_activity">go to people activity</string>
 
-    <!-- add number page -->
     <string name="title_add_data_activity">Add Data</string>
     <string name="title_edit_data">Edit Data</string>
     <string name="hint_name">Name</string>
@@ -44,19 +28,13 @@
     <string name="done_add_data">Add data</string>
     <string name="done_edit_data">Finish</string>
 
-    <!-- dialog message and hint -->
     <string name="delete_message">Delete this item?</string>
     <string name="delete_all_message">Delete all?</string>
     <string name="delete_all_yes">Yes, kill them all</string>
     <string name="delete_all_cancel">NO</string>
 
-    <!-- contact activity -->
 
     <string name="yes">Yes</string>
     <string name="cancel">Cancel</string>
 
-    <!-- FragmentTabHostDemo-->
-    <string name="tab_label_1">Page1</string>
-    <string name="tab_label_2">Page2</string>
-    <string name="tab_label_3">Page3</string>
 </resources>

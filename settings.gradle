@@ -1,1 +1,1 @@
-include ':app', ':FisherAndroidChart'
+include ':app', ':FisherView'

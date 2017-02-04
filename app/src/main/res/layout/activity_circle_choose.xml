@@ -12,28 +12,28 @@
         android:text="@string/circles_top_title"
         android:textSize="26sp" />
 
-    <com.rust.aboutview.view.OptionCircle
+    <com.rustfisher.view.OptionCircle
         android:id="@+id/center_circle"
         android:layout_width="140dp"
         android:layout_height="140dp"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true" />
 
-    <com.rust.aboutview.view.OptionCircle
+    <com.rustfisher.view.OptionCircle
         android:id="@+id/circle_0"
         android:layout_width="200dp"
         android:layout_height="200dp"
         android:layout_marginStart="130dp"
         android:layout_marginTop="53dp" />
 
-    <com.rust.aboutview.view.OptionCircle
+    <com.rustfisher.view.OptionCircle
         android:id="@+id/circle_1"
         android:layout_width="210dp"
         android:layout_height="210dp"
         android:layout_below="@+id/circle_0"
         android:layout_toEndOf="@+id/center_circle" />
 
-    <com.rust.aboutview.view.OptionCircle
+    <com.rustfisher.view.OptionCircle
         android:id="@+id/circle_2"
         android:layout_width="210dp"
         android:layout_height="210dp"

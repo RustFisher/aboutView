@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.rust.aboutview.R;
-import com.rustfisher.fisherandroidchart.MultiLinesChartSView;
+import com.rustfisher.view.MultiLinesChartSView;
 
 /**
  * 使用SurfaceView事例

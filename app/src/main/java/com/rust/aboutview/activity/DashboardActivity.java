@@ -6,7 +6,7 @@ import android.os.Handler;
 import android.os.Message;
 
 import com.rust.aboutview.R;
-import com.rustfisher.fisherandroidchart.DashboardProgressView;
+import com.rustfisher.view.DashboardProgressView;
 
 public class DashboardActivity extends Activity {
 
@@ -57,7 +57,7 @@ public class DashboardActivity extends Activity {
     private Thread dashThread2 = new Thread() {
         @Override
         public void run() {
-            for (int i = 104; i > -20; i--)
+            for (int i = 104; i > 0; i--)
                 try {
                     Thread.sleep(50L);
                     mDashHandler.obtainMessage(DashHandler.REFRESH_DASH_2, i, -1).sendToTarget();

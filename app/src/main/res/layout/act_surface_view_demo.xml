@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:background="@color/colorWhite">
 
-    <com.rustfisher.fisherandroidchart.MultiLinesChartSView
+    <com.rustfisher.view.MultiLinesChartSView
         android:id="@+id/multiLinesChart"
         android:layout_width="match_parent"
         android:layout_height="230dp"

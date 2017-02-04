@@ -5,13 +5,13 @@
     android:layout_height="match_parent"
     android:background="#bbbbbb">
 
-    <com.rustfisher.fisherandroidchart.BulbView
+    <com.rustfisher.view.BulbView
         android:id="@+id/bulb_view_1"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_centerHorizontal="true" />
 
-    <com.rustfisher.fisherandroidchart.BulbView
+    <com.rustfisher.view.BulbView
         android:id="@+id/bulb_view_2"
         android:layout_width="170dp"
         android:layout_height="200dp"
@@ -19,7 +19,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="2dp" />
 
-    <com.rustfisher.fisherandroidchart.BulbView
+    <com.rustfisher.view.BulbView
         android:id="@+id/bulb_view_3"
         android:layout_width="160dp"
         android:layout_height="160dp"

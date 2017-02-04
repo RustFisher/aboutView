@@ -8,8 +8,6 @@
     <color name="colorGray10">#FFADADAD</color>
     <color name="colorWhite">#FFFFFF</color>
 
-    <color name="colorYellow01">#FFF8D7</color>
-
     <color name="colorLine">#99FF99</color>
     <color name="colorDividerLine">#CCCCCC</color>
 </resources>
