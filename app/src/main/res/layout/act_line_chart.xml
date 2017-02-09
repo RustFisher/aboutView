@@ -5,15 +5,27 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <com.rustfisher.view.PolygonsTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="2dp"
+        android:paddingEnd="6dp"
+        android:paddingStart="2dp"
+        android:text="Random data"
+        app:PolygonsTv_bgColor="@color/colorRed" />
+
     <com.rustfisher.view.SingleLineChart
         android:id="@+id/lineChart1"
         android:layout_width="match_parent"
-        android:layout_height="100dp" />
+        android:layout_height="100dp"
+        android:layout_marginTop="2dp" />
 
     <com.rustfisher.view.PieView
         android:id="@+id/pieView1"
         android:layout_width="200dp"
-        android:layout_height="140dp" />
+        android:layout_height="140dp"
+        android:layout_marginTop="2dp" />
 
     <com.rustfisher.view.PieView
         android:id="@+id/pieView2"

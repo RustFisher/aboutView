@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="PolygonsTextView">
+        <attr name="PolygonsTv_bgColor" format="color" />
+        <attr name="PolygonsTv_strokeWid" format="dimension" />
+    </declare-styleable>
+</resources>
