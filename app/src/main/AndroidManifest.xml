@@ -47,14 +47,13 @@
         <activity
             android:name=".activity.MainActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/ActionBarTheme">
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity android:name=".activity.ImageProcessingActivity" />
         <activity android:name=".activity.FrameAnimationActivity" />
         <activity android:name=".activity.CirclesActivity" />

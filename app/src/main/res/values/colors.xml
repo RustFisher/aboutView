@@ -10,4 +10,7 @@
 
     <color name="colorLine">#99FF99</color>
     <color name="colorDividerLine">#CCCCCC</color>
+
+    <color name="colorBg1">#5c97e3</color>
+    <color name="colorBg2">#303F8F</color>
 </resources>

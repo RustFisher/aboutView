@@ -2,11 +2,14 @@ package com.rust.aboutview.activity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 import com.rust.aboutview.AboutViewConfig;
@@ -18,6 +21,9 @@ import com.rust.aboutview.widget.PageItemDecoration;
 import com.rust.aboutview.widget.PageListAdapter;
 
 import java.util.ArrayList;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -32,7 +38,12 @@ public class MainActivity extends AppCompatActivity {
     private static final String COLOR_BOARD_ACTIVITY = "color_board_act";
     private static final String LINE_CHART_ACT = "line_chart_act";
 
-    private RecyclerView mPagesView;
+    @BindView(R.id.toolbar)
+    Toolbar mToolbar;
+    @BindView(R.id.pagesReView)
+    RecyclerView mPagesView;
+    @BindView(R.id.collapsing_toolbar_layout)
+    CollapsingToolbarLayout mCollapsingToolbarLayout;
 
     SharedPreferences mConfigs;
 
@@ -40,15 +51,33 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        initUI();
+        initConfigs();
+
+    }
+
+    private void initUI() {
+        ButterKnife.bind(this);
+        setSupportActionBar(mToolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
+
+        mCollapsingToolbarLayout.setExpandedTitleColor(Color.WHITE);
+        mCollapsingToolbarLayout.setCollapsedTitleTextColor(Color.YELLOW);
+        initPageList();
+    }
+
+    private void initConfigs() {
         mConfigs = getSharedPreferences(AboutViewConfig.APP_CONFIG, MODE_PRIVATE);
         SharedPreferences.Editor editor = mConfigs.edit();
         editor.putBoolean(AboutViewConfig.SHOW_FLOAT_BAR, false);
         editor.apply();
-
-        mPagesView = (RecyclerView) findViewById(R.id.pages_view);
-
-        initPageList();
-
     }
 
     @Override
