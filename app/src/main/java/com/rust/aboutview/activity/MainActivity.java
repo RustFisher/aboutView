@@ -27,6 +27,7 @@ import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity {
 
+    private static final String FAN_DEMO_ACT = "fan_view_demo_act";
     private static final String SURFACE_VIEW_DEMO_ACT = "surface_view_demo_act";
     private static final String BULB_VIEW_ACT = "bulb_view_act";
     private static final String DASHBOARD_ACT = "dashboard_view_act";
@@ -87,6 +88,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void initPageList() {
         final ArrayList<PageListAdapter.DeviceItemViewEntity> pageItemViewEntities = new ArrayList<>();
+        pageItemViewEntities.add(new PageListAdapter.DeviceItemViewEntity(FAN_DEMO_ACT, "风力发电机视图"));
         pageItemViewEntities.add(new PageListAdapter.DeviceItemViewEntity(LINE_CHART_ACT, "折线图和饼图"));
         pageItemViewEntities.add(new PageListAdapter.DeviceItemViewEntity(SURFACE_VIEW_DEMO_ACT, "SurfaceView可伸缩图表"));
         pageItemViewEntities.add(new PageListAdapter.DeviceItemViewEntity(BULB_VIEW_ACT, "Bulb view"));
@@ -161,6 +163,9 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case SURFACE_VIEW_DEMO_ACT:
                         startActivity(new Intent(getApplicationContext(), SurfaceViewDemoActivity.class));
+                        break;
+                    case FAN_DEMO_ACT:
+                        startActivity(new Intent(getApplicationContext(), FanActivity.class));
                         break;
                     default:
                         break;
