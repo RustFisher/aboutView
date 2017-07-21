@@ -19,6 +19,9 @@ public class FanActivity extends Activity {
 
     private FanView mFan1;
     private FanView mFan2;
+    private FanView mFan3;
+    private FanView mFan4;
+    private FanView mFan5;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -26,6 +29,9 @@ public class FanActivity extends Activity {
         setContentView(R.layout.act_fan);
         mFan1 = (FanView) findViewById(R.id.fanView1);
         mFan2 = (FanView) findViewById(R.id.fanView2);
+        mFan3 = (FanView) findViewById(R.id.fanView3);
+        mFan4 = (FanView) findViewById(R.id.fanView4);
+        mFan5 = (FanView) findViewById(R.id.fanView5);
         mFanThread.start();
     }
 
@@ -38,6 +44,7 @@ public class FanActivity extends Activity {
     }
 
     private int mFanDegree = 0;
+    private int mFanDegree1 = 360;
 
     private Thread mFanThread = new Thread() {
         @Override
@@ -45,13 +52,23 @@ public class FanActivity extends Activity {
             super.run();
             while (!isInterrupted()) {
                 try {
-                    Thread.sleep(30);
+                    Thread.sleep(20);
                     mFanDegree--;
+                    mFanDegree1 -= 4;
+                    if (mFanDegree < 0) {
+                        mFanDegree = 360;
+                    }
+                    if (mFanDegree1 < 0) {
+                        mFanDegree1 = 360;
+                    }
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
                             mFan1.setFanDegreeNow(mFanDegree);
                             mFan2.setFanDegreeNow(mFanDegree);
+                            mFan3.setFanDegreeNow(mFanDegree1);
+                            mFan4.setFanDegreeNow(mFanDegree1);
+                            mFan5.setFanDegreeNow(mFanDegree - 100);
                         }
                     });
                 } catch (InterruptedException e) {

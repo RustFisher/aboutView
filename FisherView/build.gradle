@@ -9,8 +9,8 @@ android {
     defaultConfig {
         minSdkVersion 17
         targetSdkVersion 25
-        versionCode 15
-        versionName "0.1.5"
+        versionCode 16
+        versionName "0.1.6"
     }
     buildTypes {
         release {
@@ -33,7 +33,7 @@ dependencies {
     compile 'com.android.support:appcompat-v7:25.3.1'
 }
 
-version = "0.1.5"
+version = "0.1.6"
 
 def siteUrl = 'https://github.com/RustFisher/aboutView'
 def gitUrl = 'git@github.com:RustFisher/aboutView.git'
