@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/transparent">
+
+    <RelativeLayout
+        android:id="@+id/progress_layout"
+        android:layout_width="190dp"
+        android:layout_height="10dp"
+        android:layout_centerInParent="true">
+
+        <ImageView
+            android:id="@+id/p_bot_iv"
+            android:layout_width="190dp"
+            android:layout_height="10dp"
+            android:src="@drawable/shape_round_corner_bottom" />
+
+        <com.rustfisher.view.RoundCornerImageView
+            android:id="@+id/p_cover_iv"
+            android:layout_width="100dp"
+            android:layout_height="10dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/pic_cover_blue_white" />
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/percent_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="3dp"
+        android:layout_toEndOf="@id/progress_layout"
+        android:textSize="13sp" />
+
+    <TextView
+        android:id="@+id/note_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/progress_layout"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="6dp"
+        android:text="圆角进度条"
+        android:textSize="13sp" />
+
+</RelativeLayout>

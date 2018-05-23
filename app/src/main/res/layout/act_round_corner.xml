@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="6dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <com.rustfisher.view.RoundCornerImageView
+            android:id="@+id/r_iv_1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:scaleType="fitXY"
+            android:src="@drawable/ic_cube_blue" />
+
+        <com.rustfisher.view.RoundCornerImageView
+            android:id="@+id/r_iv_2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_cube_blue" />
+
+        <com.rustfisher.view.RoundCornerImageView
+            android:id="@+id/r_iv_3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:scaleType="fitXY"
+            android:src="@drawable/ic_cube_blue" />
+
+        <com.rustfisher.view.RoundCornerImageView
+            android:id="@+id/r_iv_4"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_cube_blue" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/pop_dialog_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="弹出进度条dialog" />
+
+</LinearLayout>

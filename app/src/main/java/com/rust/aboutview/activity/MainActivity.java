@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -38,6 +37,8 @@ public class MainActivity extends AppCompatActivity {
     private static final String FOLLOW_CURSOR = "follow_cursor";
     private static final String COLOR_BOARD_ACTIVITY = "color_board_act";
     private static final String LINE_CHART_ACT = "line_chart_act";
+    private static final String ACT_ROUND_CORNER_IV = "act_round_corner_image_view";
+    private static final String ACT_SELECT_RECT = "act_select_rect";
 
     @BindView(R.id.toolbar)
     Toolbar mToolbar;
@@ -70,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         mCollapsingToolbarLayout.setExpandedTitleColor(Color.WHITE);
-        mCollapsingToolbarLayout.setCollapsedTitleTextColor(Color.YELLOW);
+        mCollapsingToolbarLayout.setCollapsedTitleTextColor(Color.BLACK);
         initPageList();
     }
 
@@ -88,22 +89,23 @@ public class MainActivity extends AppCompatActivity {
 
     private void initPageList() {
         final ArrayList<PageListAdapter.DeviceItemViewEntity> pageItemViewEntities = new ArrayList<>();
-        pageItemViewEntities.add(new PageListAdapter.DeviceItemViewEntity(FAN_DEMO_ACT, "风力发电机视图"));
+        pageItemViewEntities.add(new PageListAdapter.DeviceItemViewEntity(ACT_ROUND_CORNER_IV, "圆角进度条", PageListAdapter.ItemType.WIDGET));
+        pageItemViewEntities.add(new PageListAdapter.DeviceItemViewEntity(ACT_SELECT_RECT, "框选", PageListAdapter.ItemType.WIDGET));
+        pageItemViewEntities.add(new PageListAdapter.DeviceItemViewEntity(FAN_DEMO_ACT, "风力发电机"));
         pageItemViewEntities.add(new PageListAdapter.DeviceItemViewEntity(LINE_CHART_ACT, "折线图和饼图"));
-        pageItemViewEntities.add(new PageListAdapter.DeviceItemViewEntity(SURFACE_VIEW_DEMO_ACT, "SurfaceView可伸缩图表"));
-        pageItemViewEntities.add(new PageListAdapter.DeviceItemViewEntity(BULB_VIEW_ACT, "Bulb view"));
-        pageItemViewEntities.add(new PageListAdapter.DeviceItemViewEntity(DASHBOARD_ACT, "Dashboard view"));
-        pageItemViewEntities.add(new PageListAdapter.DeviceItemViewEntity(COLOR_BOARD_ACTIVITY, "颜色选择板"));
-        pageItemViewEntities.add(new PageListAdapter.DeviceItemViewEntity(IMAGE_PROCESSING, getString(R.string.image_process)));
-        pageItemViewEntities.add(new PageListAdapter.DeviceItemViewEntity(CIRCLE_VIEW, getString(R.string.circle_activity)));
-        pageItemViewEntities.add(new PageListAdapter.DeviceItemViewEntity(FLOAT_WINDOW, getString(R.string.float_bar_activity)));
-        pageItemViewEntities.add(new PageListAdapter.DeviceItemViewEntity(FOLLOW_CURSOR, getString(R.string.drawer_line_activity)));
-        pageItemViewEntities.add(new PageListAdapter.DeviceItemViewEntity(CONTACT_PAGE, getString(R.string.contact_activity)));
+        pageItemViewEntities.add(new PageListAdapter.DeviceItemViewEntity(SURFACE_VIEW_DEMO_ACT, "可伸缩图表", PageListAdapter.ItemType.WIDGET));
+        pageItemViewEntities.add(new PageListAdapter.DeviceItemViewEntity(BULB_VIEW_ACT, "灯泡视图"));
+        pageItemViewEntities.add(new PageListAdapter.DeviceItemViewEntity(DASHBOARD_ACT, "仪表盘"));
+        pageItemViewEntities.add(new PageListAdapter.DeviceItemViewEntity(COLOR_BOARD_ACTIVITY, "颜色选择板", PageListAdapter.ItemType.WIDGET));
+        pageItemViewEntities.add(new PageListAdapter.DeviceItemViewEntity(IMAGE_PROCESSING, getString(R.string.image_process), PageListAdapter.ItemType.FUNCTION));
+        pageItemViewEntities.add(new PageListAdapter.DeviceItemViewEntity(CIRCLE_VIEW, "圈圈图", PageListAdapter.ItemType.WIDGET));
+        pageItemViewEntities.add(new PageListAdapter.DeviceItemViewEntity(FLOAT_WINDOW, getString(R.string.float_bar_activity), PageListAdapter.ItemType.FUNCTION));
+        pageItemViewEntities.add(new PageListAdapter.DeviceItemViewEntity(FOLLOW_CURSOR, getString(R.string.drawer_line_activity), PageListAdapter.ItemType.WIDGET));
+        pageItemViewEntities.add(new PageListAdapter.DeviceItemViewEntity(CONTACT_PAGE, getString(R.string.contact_activity), PageListAdapter.ItemType.FUNCTION));
 
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 1);
-        gridLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 2);
         mPagesView.setLayoutManager(gridLayoutManager);
-        DividerLine dividerLine = new DividerLine(DividerLine.VERTICAL);
+        DividerLine dividerLine = new DividerLine(DividerLine.TYPE_RECT);
         dividerLine.setSize(1);
         dividerLine.setColor(0xFFDDDDDD);
         mPagesView.addItemDecoration(dividerLine);
@@ -117,6 +119,14 @@ public class MainActivity extends AppCompatActivity {
                 switch (id) {
                     case LINE_CHART_ACT:
                         i.setClass(getApplicationContext(), LineChartAndPieViewActivity.class);
+                        startActivity(i);
+                        break;
+                    case ACT_SELECT_RECT:
+                        i.setClass(getApplicationContext(), SelectRectActivity.class);
+                        startActivity(i);
+                        break;
+                    case ACT_ROUND_CORNER_IV:
+                        i.setClass(getApplicationContext(), RoundCornerActivity.class);
                         startActivity(i);
                         break;
                     case IMAGE_PROCESSING:

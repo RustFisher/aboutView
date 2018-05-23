@@ -8,10 +8,6 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-    <style name="ActionBarTheme" parent="AppTheme">
-        <item name="android:windowBackground">@mipmap/bg_dark_1</item>
-    </style>
-
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
@@ -29,5 +25,10 @@
 
     <style name="ListItemStyle">
         <item name="android:paddingStart">5dp</item>
+    </style>
+
+    <style name="AppTranslucentOrigin">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
     </style>
 </resources>

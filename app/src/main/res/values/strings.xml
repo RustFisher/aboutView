@@ -9,8 +9,7 @@
     <string name="skew_effect">偏移效果</string>
 
     <string name="image_process">图像处理</string>
-    <string name="circle_activity">Circle UI</string>
-    <string name="contact_activity">Contact模块</string>
+    <string name="contact_activity">联系人模块</string>
     <string name="float_bar_activity">悬浮窗</string>
     <string name="drawer_line_activity">十字坐标点击跟随</string>
 

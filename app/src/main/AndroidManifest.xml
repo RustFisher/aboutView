@@ -55,7 +55,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".activity.ImageProcessingActivity" />
-        <activity android:name=".activity.FrameAnimationActivity" />
         <activity android:name=".activity.CirclesActivity" />
         <activity
             android:name=".contactview.PeopleMainActivity"
@@ -78,13 +77,10 @@
             android:name=".activity.BulbViewActivity"
             android:screenOrientation="portrait" />
 
-        <activity
-            android:name=".activity.SurfaceViewDemoActivity"
-            android:screenOrientation="portrait" />
-
-        <activity
-            android:name=".activity.FanActivity"
-            android:screenOrientation="portrait" />
+        <activity android:name=".activity.SurfaceViewDemoActivity" />
+        <activity android:name=".activity.FanActivity" />
+        <activity android:name=".activity.RoundCornerActivity" />
+        <activity android:name=".activity.SelectRectActivity" />
 
         <activity android:name=".activity.LineChartAndPieViewActivity" />
 
