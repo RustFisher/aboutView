@@ -81,7 +81,9 @@
         <activity android:name=".activity.FanActivity" />
         <activity android:name=".activity.RoundCornerActivity" />
         <activity android:name=".activity.SelectRectActivity" />
-
+        <activity
+            android:name=".activity.FragContainerActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".activity.LineChartAndPieViewActivity" />
 
     </application>

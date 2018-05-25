@@ -39,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
     private static final String LINE_CHART_ACT = "line_chart_act";
     private static final String ACT_ROUND_CORNER_IV = "act_round_corner_image_view";
     private static final String ACT_SELECT_RECT = "act_select_rect";
+    private static final String ACT_FRAME_CONTAINER = "act_frame_container";
 
     @BindView(R.id.toolbar)
     Toolbar mToolbar;
@@ -102,6 +103,7 @@ public class MainActivity extends AppCompatActivity {
         pageItemViewEntities.add(new PageListAdapter.DeviceItemViewEntity(FLOAT_WINDOW, getString(R.string.float_bar_activity), PageListAdapter.ItemType.FUNCTION));
         pageItemViewEntities.add(new PageListAdapter.DeviceItemViewEntity(FOLLOW_CURSOR, getString(R.string.drawer_line_activity), PageListAdapter.ItemType.WIDGET));
         pageItemViewEntities.add(new PageListAdapter.DeviceItemViewEntity(CONTACT_PAGE, getString(R.string.contact_activity), PageListAdapter.ItemType.FUNCTION));
+        pageItemViewEntities.add(new PageListAdapter.DeviceItemViewEntity(ACT_FRAME_CONTAINER, "示例视图", PageListAdapter.ItemType.FUNCTION));
 
         GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 2);
         mPagesView.setLayoutManager(gridLayoutManager);
@@ -117,6 +119,10 @@ public class MainActivity extends AppCompatActivity {
                 String id = pageItemViewEntities.get(position).itemID;
                 Intent i = new Intent();
                 switch (id) {
+                    case ACT_FRAME_CONTAINER:
+                        i.setClass(getApplicationContext(), FragContainerActivity.class);
+                        startActivity(i);
+                        break;
                     case LINE_CHART_ACT:
                         i.setClass(getApplicationContext(), LineChartAndPieViewActivity.class);
                         startActivity(i);

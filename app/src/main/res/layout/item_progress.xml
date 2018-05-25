@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingEnd="0dp"
+    android:paddingStart="6dp">
+
+    <ImageView
+        android:id="@+id/head_iv"
+        android:layout_width="62dp"
+        android:layout_height="62dp"
+        android:layout_marginBottom="6dp"
+        android:layout_marginTop="6dp"
+        android:scaleType="centerCrop" />
+
+    <TextView
+        android:id="@+id/name_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/head_iv"
+        android:layout_marginStart="6dp"
+        android:layout_toEndOf="@id/head_iv"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/progress_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/head_iv"
+        android:layout_marginStart="6dp"
+        android:layout_toEndOf="@id/head_iv"
+        android:textSize="12sp" />
+
+    <RelativeLayout
+        android:id="@+id/function_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/name_tv"
+        android:minHeight="50dp">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/grid_re_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="visible" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@id/grid_re_view"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/star_iv"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginEnd="8dp"
+                android:padding="3dp"
+                android:src="@drawable/ic_star_gray" />
+
+            <ImageView
+                android:id="@+id/func_iv"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginEnd="8dp"
+                android:padding="3dp"
+                android:src="@drawable/ic_4_cube_gray" />
+
+            <ImageView
+                android:id="@+id/tick_iv"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:padding="3dp"
+                android:src="@drawable/ic_tick_in_cube" />
+
+            <TextView
+                android:id="@+id/cur_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_marginEnd="2dp"
+                android:gravity="center_vertical"
+                android:minWidth="20dp"
+                android:text="--"
+                android:textColor="#666666"
+                android:textSize="12sp" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <ProgressBar
+        android:id="@+id/progress_pb"
+        style="@android:style/Widget.ProgressBar.Horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_below="@id/function_layout"
+        android:progressDrawable="@drawable/layer_progress" />
+
+</RelativeLayout>
