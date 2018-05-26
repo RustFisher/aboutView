@@ -22,7 +22,7 @@ import java.util.List;
  * Do not use ButterKnife here
  * Created by Rust on 2018/5/25.
  */
-public class ProgressFragment extends Fragment {
+public class DataProgressFragment extends Fragment {
 
     ProgressContentFragment mContentFragment1;
     ProgressContentFragment mContentFragment2;
@@ -62,8 +62,8 @@ public class ProgressFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        ViewPager viewPager = view.findViewById(R.id.view_pager);
-        TabLayout tabLayout = view.findViewById(R.id.tab_layout);
+        ViewPager viewPager = (ViewPager) view.findViewById(R.id.view_pager);
+        TabLayout tabLayout = (TabLayout) view.findViewById(R.id.tab_layout);
         final String[] tabNames = {"小英雄", "雄英", "地区", "天气", "预报！"};
         for (int i = 0; i < mContentFragList.size(); i++) {
             tabLayout.addTab(tabLayout.newTab().setText(tabNames[i]));

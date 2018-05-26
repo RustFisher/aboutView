@@ -66,7 +66,7 @@ public class ProgressContentFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         Log.d(TAG, "onViewCreated:  mShowType==" + mShowType);
-        RecyclerView reView = view.findViewById(R.id.re_view);
+        RecyclerView reView = (RecyclerView) view.findViewById(R.id.re_view);
         mProgressReAdapter = new ProgressReAdapter();
         reView.setLayoutManager(new LinearLayoutManager(getContext()));
         reView.setAdapter(mProgressReAdapter);

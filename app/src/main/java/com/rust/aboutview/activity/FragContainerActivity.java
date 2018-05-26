@@ -7,7 +7,7 @@ import android.util.Log;
 import android.view.View;
 
 import com.rust.aboutview.R;
-import com.rust.aboutview.fragment.ProgressFragment;
+import com.rust.aboutview.fragment.DataProgressFragment;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -18,7 +18,7 @@ import butterknife.OnClick;
  */
 public class FragContainerActivity extends AppCompatActivity implements View.OnClickListener {
     private static final String TAG = "rustAppFrag";
-    private ProgressFragment mProgressFragment;
+    private DataProgressFragment mDataProgressFragment;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -28,7 +28,7 @@ public class FragContainerActivity extends AppCompatActivity implements View.OnC
     }
 
     private void initUI() {
-        mProgressFragment = new ProgressFragment();
+        mDataProgressFragment = new DataProgressFragment();
         ButterKnife.bind(this);
     }
 
@@ -37,8 +37,8 @@ public class FragContainerActivity extends AppCompatActivity implements View.OnC
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.show_progress_data_btn:
-                Log.d(TAG, "show ProgressFragment");
-                getSupportFragmentManager().beginTransaction().replace(R.id.container, mProgressFragment).commit();
+                Log.d(TAG, "show DataProgressFragment");
+                getSupportFragmentManager().beginTransaction().replace(R.id.container, mDataProgressFragment).commit();
                 break;
         }
     }

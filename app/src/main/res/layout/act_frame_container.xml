@@ -12,7 +12,7 @@
             android:id="@+id/show_progress_data_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Progress summary" />
+            android:text="Fragment嵌套ViewPager" />
 
     </LinearLayout>
 

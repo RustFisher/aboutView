@@ -11,3 +11,5 @@
 /.idea
 AboutView.iml
 app/app.iml
+
+*.iml
