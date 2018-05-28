@@ -31,11 +31,13 @@ public class PageListAdapter extends RecyclerView.Adapter<PageListAdapter.ViewHo
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder {
+        View itemRoot;
         ImageView headIv;
         TextView nameTv;
 
         ViewHolder(View view) {
             super(view);
+            itemRoot = view;
         }
     }
 
@@ -86,13 +88,13 @@ public class PageListAdapter extends RecyclerView.Adapter<PageListAdapter.ViewHo
                 break;
         }
         if (mOnItemClickListener != null) {
-            holder.nameTv.setOnClickListener(new View.OnClickListener() {
+            holder.itemRoot.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     mOnItemClickListener.onItemClick(v, position);
                 }
             });
-            holder.nameTv.setOnLongClickListener(new View.OnLongClickListener() {
+            holder.itemRoot.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
                 public boolean onLongClick(View v) {
                     mOnItemClickListener.onItemLongClick(v, position);
