@@ -37,7 +37,7 @@ public class MultiItemAdapter extends BaseAdapter {
     }
 
     @Override
-    public Object getItem(int position) {
+    public DataBean getItem(int position) {
         return mDataList.get(position);
     }
 
