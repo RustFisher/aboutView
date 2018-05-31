@@ -14,6 +14,12 @@
             android:layout_height="wrap_content"
             android:text="Fragment嵌套ViewPager" />
 
+        <Button
+            android:id="@+id/multi_item_lv_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ListView装载多种item" />
+
     </LinearLayout>
 
     <FrameLayout
