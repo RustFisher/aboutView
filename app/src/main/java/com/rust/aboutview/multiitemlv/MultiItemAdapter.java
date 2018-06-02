@@ -20,10 +20,12 @@ import java.util.List;
  */
 public class MultiItemAdapter extends BaseAdapter {
 
+    private Context mContext;
     private LayoutInflater mLayoutInflater;
     private List<DataBean> mDataList = new ArrayList<>();
 
     public MultiItemAdapter(Context context) {
+        mContext = context;
         mLayoutInflater = LayoutInflater.from(context);
     }
 
@@ -88,12 +90,12 @@ public class MultiItemAdapter extends BaseAdapter {
                 BannerVH bannerVH;
                 if (null == convertView) {
                     convertView = mLayoutInflater.inflate(R.layout.item_banner, null);
-                    bannerVH = new BannerVH();
+                    bannerVH = new BannerVH(mContext, convertView);
                     convertView.setTag(bannerVH);
                 } else {
                     bannerVH = (BannerVH) convertView.getTag();
                 }
-
+                bannerVH.setDataBean(dataBean);
                 break;
         }
         return convertView;
@@ -106,15 +108,14 @@ public class MultiItemAdapter extends BaseAdapter {
 
     @Override
     public int getViewTypeCount() {
-        return 3;
+        return 4;
     }
 
     public static class DataBean {
         public MuType muType;
         public String str1;
-        public String str2;
         public int picRes1;
-        public int picRes2;
+        public ArrayList<Integer> picResIdList; // 存放资源id
 
         public DataBean() {
 
@@ -169,4 +170,13 @@ public class MultiItemAdapter extends BaseAdapter {
         return bean;
     }
 
+    public static DataBean newBannerBean(int... idList) {
+        DataBean bean = new DataBean();
+        bean.muType = MuType.BANNER;
+        bean.picResIdList = new ArrayList<>();
+        for (int i : idList) {
+            bean.picResIdList.add(i);
+        }
+        return bean;
+    }
 }

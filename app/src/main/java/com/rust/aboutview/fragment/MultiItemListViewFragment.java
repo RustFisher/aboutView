@@ -62,11 +62,11 @@ public class MultiItemListViewFragment extends Fragment {
 
     private List<MultiItemAdapter.DataBean> createTestData() {
         List<MultiItemAdapter.DataBean> list = new ArrayList<>();
+        list.add(MultiItemAdapter.newBannerBean(R.drawable.wallpaper_2018_04_14, R.drawable.wallpaper_2018_04_16, R.drawable.wallpaper_2018_04_19, R.drawable.wallpaper_2018_04_25));
         list.add(MultiItemAdapter.newOneLineBean("Android Activity 基础概念"));
         list.add(MultiItemAdapter.newOneLineBean("Android 横屏时 Activity 跳转显示问题"));
         list.add(MultiItemAdapter.newPicOneLineBean("Android 扫描WiFi，连接WiFi", R.drawable.ic_star_gray));
         list.add(MultiItemAdapter.newPicOneLineBean("Android Activity OOM bug", R.drawable.ic_tick_in_cube));
-        list.add(MultiItemAdapter.newOnePicBean(R.drawable.pic_my_little_hero));
         list.add(MultiItemAdapter.newPicOneLineBean("Android 属性动画使用", R.drawable.ic_4_cube_gray));
         list.add(MultiItemAdapter.newPicOneLineBean("Android ANR", R.drawable.ic_4_cube_gray));
         list.add(MultiItemAdapter.newPicOneLineBean("Android Fragment 基础概念", R.drawable.ic_4_cube_gray));
@@ -74,6 +74,7 @@ public class MultiItemListViewFragment extends Fragment {
         list.add(MultiItemAdapter.newPicOneLineBean("Android AsyncTask", R.drawable.ic_tick_in_cube));
         list.add(MultiItemAdapter.newPicOneLineBean("Android Bluetooth 简析", R.drawable.ic_4_cube_gray));
         list.add(MultiItemAdapter.newPicOneLineBean("Android 广播机制（Broadcast）介绍与使用", R.drawable.ic_star_gray));
+        list.add(MultiItemAdapter.newOnePicBean(R.drawable.pic_my_little_hero));
         list.add(MultiItemAdapter.newPicOneLineBean("Android Button selector 自定义背景", R.drawable.ic_star_gray));
         list.add(MultiItemAdapter.newPicOneLineBean("Android DialogFragment 自定义", R.drawable.ic_4_cube_gray));
         list.add(MultiItemAdapter.newPicOneLineBean("Android App 工程中的模块化", R.drawable.ic_4_cube_gray));
