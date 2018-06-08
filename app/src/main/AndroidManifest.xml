@@ -85,6 +85,9 @@
             android:name=".activity.FragContainerActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".activity.LineChartAndPieViewActivity" />
+        <activity
+            android:name=".activity.FragHolderActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
 
     </application>
 

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#2b3840"
+    android:orientation="vertical">
+
+    <com.rustfisher.view.ShadowLineChart
+        android:id="@+id/sc1"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <com.rustfisher.view.ShadowLineChart
+        android:id="@+id/sc2"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        app:dataColor="#17e6a1" />
+
+    <com.rustfisher.view.ShadowLineChart
+        android:id="@+id/sc3"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        app:dataColor="#fcb270" />
+
+    <com.rustfisher.view.ShadowLineChart
+        android:id="@+id/sc4"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        app:dataColor="#17a0e4" />
+
+    <com.rustfisher.view.ShadowLineChart
+        android:id="@+id/sc5"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        app:dataColor="#fcb270" />
+
+</LinearLayout>
