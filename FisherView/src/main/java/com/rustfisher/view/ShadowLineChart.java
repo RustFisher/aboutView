@@ -29,10 +29,10 @@ public class ShadowLineChart extends View {
     private int mDataColorInt = Color.parseColor("#fe6270");
     private int mAxisWid = 7;           // 坐标轴线条宽度
     private int mMarkLineLength = 88;   // 刻度长度
-    private float mDataMax = 800;
-    private float mDataMin = -800;      // 图表显示数据的下限
-    private float mTopDataCoor1 = 500;  // 上刻度1
-    private float mBotDataCoor1 = -500; // 下刻度1
+    private float mDataMax = 2048;
+    private float mDataMin = -2048;      // 图表显示数据的下限
+    private float mMark1 = 1000;  // 刻度1
+    private float mMark2 = -1000; // 刻度2
     private float mTextSizePx = 28;
     private float mMarkTextCoorGapPx = 15;// 坐标刻度文字和轴间距
     private Rect mTextTmpRect;
@@ -98,6 +98,14 @@ public class ShadowLineChart extends View {
         invalidate();
     }
 
+    public void setMark1(float mark) {
+        mMark1 = mark;
+    }
+
+    public void setMark2(float mark) {
+        mMark2 = mark;
+    }
+
     @Override
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         super.onSizeChanged(w, h, oldw, oldh);
@@ -139,8 +147,8 @@ public class ShadowLineChart extends View {
         mBgPaint.setStrokeWidth(mAxisWid);
         mBgPaint.setPathEffect(null);
         canvas.drawLine(mCoorOriginX, 0, mCoorOriginX, mViewHeight, mBgPaint); // y轴
-        float markY1 = mCoorOriginY * (1 - mTopDataCoor1 / mDataMax);
-        float markY2 = mCoorOriginY * (mBotDataCoor1 / mDataMin) + mCoorOriginY;
+        float markY1 = mCoorOriginY * (1 - mMark1 / mDataMax);
+        float markY2 = mCoorOriginY * (mMark2 / mDataMin) + mCoorOriginY;
         canvas.drawLine(mCoorOriginX, markY1, mCoorOriginX + mMarkLineLength, markY1, mBgPaint);
         canvas.drawLine(mCoorOriginX, markY2, mCoorOriginX + mMarkLineLength, markY2, mBgPaint);
 
@@ -158,9 +166,9 @@ public class ShadowLineChart extends View {
         // 绘制文字
         canvas.drawText("0", markTextX, calTextBaselineY(mTextTmpRect), mTextPaint);
         mTextTmpRect.set(0, (int) markY1 - mTextRectHeight, (int) markTextX, (int) markY1 + mTextRectHeight);
-        canvas.drawText(String.format(Locale.CHINA, "%.0f", mTopDataCoor1), markTextX, calTextBaselineY(mTextTmpRect), mTextPaint);
+        canvas.drawText(String.format(Locale.CHINA, "%.0f", mMark1), markTextX, calTextBaselineY(mTextTmpRect), mTextPaint);
         mTextTmpRect.set(0, (int) markY2 - mTextRectHeight, (int) markTextX, (int) markY2 + mTextRectHeight);
-        canvas.drawText(String.format(Locale.CHINA, "%.0f", mBotDataCoor1), markTextX, calTextBaselineY(mTextTmpRect), mTextPaint);
+        canvas.drawText(String.format(Locale.CHINA, "%.0f", mMark2), markTextX, calTextBaselineY(mTextTmpRect), mTextPaint);
     }
 
     private void drawData(Canvas canvas) {

@@ -48,6 +48,8 @@ public class ShadowLineChartFragment extends Fragment {
         mSc5 = view.findViewById(R.id.sc5);
         mSc3.setDataMax(30);
         mSc3.setDataMin(-30);
+        mSc3.setMark1(15);
+        mSc3.setMark2(-15);
 
         shutdownTestThread();
         mTestDataThread = new TestDataThread();
@@ -87,7 +89,7 @@ public class ShadowLineChartFragment extends Fragment {
             boolean increase = true;
             while (!isInterrupted()) {
                 try {
-                    Thread.sleep(33);
+                    Thread.sleep(20);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                     break;
@@ -111,10 +113,10 @@ public class ShadowLineChartFragment extends Fragment {
                     numberFlag1 *= -1;
                 }
                 for (int i = 0; i < rectWave1.length; i++) {
-                    rectWave1[i] = numberFlag1 * 600;
+                    rectWave1[i] = numberFlag1 * 1100;
                 }
                 sinWave[0] = (float) (Math.sin(4.0f * Math.toRadians(loopCount * 1.0f)) * mSc4.getDataMax() * 0.8f);
-                cosWave[0] = (float) (Math.cos(4 * Math.toRadians(loopCount)) * 500);
+                cosWave[0] = (float) (Math.cos(4 * Math.toRadians(loopCount)) * 1024);
                 final float[] data1 = randomData.clone(); // 使用副本避免多线程修改数据问题
                 final float[] waveData1 = rectWave1.clone();
                 final float[] sinWave1 = sinWave.clone();
