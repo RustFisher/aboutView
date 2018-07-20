@@ -38,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
     private static final String COLOR_BOARD_ACTIVITY = "color_board_act";
     private static final String LINE_CHART_ACT = "line_chart_act";
     private static final String ACT_ROUND_CORNER_IV = "act_round_corner_image_view";
+    private static final String CUSTOM_XML_PB = "custom_xml_pb";
     private static final String ACT_SELECT_RECT = "act_select_rect";
     private static final String ACT_FRAME_CONTAINER = "act_frame_container";
     private static final String SHOW_SHADOW_LINE_CHART_DEMO = "show_SHADOW_LINE_CHART_DEMO";
@@ -92,6 +93,7 @@ public class MainActivity extends AppCompatActivity {
     private void initPageList() {
         final ArrayList<PageListAdapter.DeviceItemViewEntity> pageItemViewEntities = new ArrayList<>();
         pageItemViewEntities.add(new PageListAdapter.DeviceItemViewEntity(ACT_ROUND_CORNER_IV, "圆角进度条", PageListAdapter.ItemType.WIDGET));
+        pageItemViewEntities.add(new PageListAdapter.DeviceItemViewEntity(CUSTOM_XML_PB, "drawable进度条", PageListAdapter.ItemType.WIDGET));
         pageItemViewEntities.add(new PageListAdapter.DeviceItemViewEntity(ACT_SELECT_RECT, "框选", PageListAdapter.ItemType.WIDGET));
         pageItemViewEntities.add(new PageListAdapter.DeviceItemViewEntity(FAN_DEMO_ACT, "风力发电机"));
         pageItemViewEntities.add(new PageListAdapter.DeviceItemViewEntity(LINE_CHART_ACT, "折线图和饼图"));
@@ -121,6 +123,9 @@ public class MainActivity extends AppCompatActivity {
                 String id = pageItemViewEntities.get(position).itemID;
                 Intent i = new Intent();
                 switch (id) {
+                    case CUSTOM_XML_PB:
+                        FragContainerActivity.goCustomPbPage(MainActivity.this);
+                        break;
                     case ACT_FRAME_CONTAINER:
                         i.setClass(getApplicationContext(), FragContainerActivity.class);
                         startActivity(i);

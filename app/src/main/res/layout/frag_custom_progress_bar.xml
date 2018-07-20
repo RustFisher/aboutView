@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fff"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="横版进度条 - Horizontal ProgressBar Cheat Sheet"
+        android:textColor="#000"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="通过xml定义drawable，得到各种各样的进度条"
+        android:textSize="13sp" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/progress_bar_demo_item_height"
+        android:layout_marginTop="4dp"
+        android:background="#fff"
+        android:gravity="center_vertical"
+        android:padding="6dp">
+
+        <ProgressBar
+            android:id="@+id/pb1"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:progressDrawable="@drawable/custom_progressbar_1" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/progress_bar_demo_item_height"
+        android:background="#ededed"
+        android:gravity="center_vertical"
+        android:padding="6dp">
+
+        <ProgressBar
+            android:id="@+id/pb2"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:progressDrawable="@drawable/custom_progressbar_2" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#fff"
+        android:gravity="center_vertical"
+        android:padding="6dp">
+
+        <ProgressBar
+            android:id="@+id/pb3"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:progressDrawable="@drawable/custom_progressbar_3" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/progress_bar_demo_item_height"
+        android:background="#ededed"
+        android:gravity="center_vertical"
+        android:padding="6dp">
+
+        <ProgressBar
+            android:id="@+id/pb4"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:progressDrawable="@drawable/custom_progressbar_4" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/progress_bar_demo_item_height"
+        android:background="#fff"
+        android:gravity="center_vertical"
+        android:padding="6dp">
+
+        <ProgressBar
+            android:id="@+id/pb5"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:progressDrawable="@drawable/custom_progressbar_5" />
+
+    </RelativeLayout>
+
+</LinearLayout>
