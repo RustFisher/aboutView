@@ -41,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
     private static final String CUSTOM_XML_PB = "custom_xml_pb";
     private static final String ACT_SELECT_RECT = "act_select_rect";
     private static final String ACT_FRAME_CONTAINER = "act_frame_container";
+    private static final String DIALOG_DEMO_ACT = "act_dialog_activity";
     private static final String SHOW_SHADOW_LINE_CHART_DEMO = "show_SHADOW_LINE_CHART_DEMO";
 
     @BindView(R.id.toolbar)
@@ -108,6 +109,7 @@ public class MainActivity extends AppCompatActivity {
         pageItemViewEntities.add(new PageListAdapter.DeviceItemViewEntity(CONTACT_PAGE, getString(R.string.contact_activity), PageListAdapter.ItemType.FUNCTION));
         pageItemViewEntities.add(new PageListAdapter.DeviceItemViewEntity(ACT_FRAME_CONTAINER, "示例视图", PageListAdapter.ItemType.FUNCTION));
         pageItemViewEntities.add(new PageListAdapter.DeviceItemViewEntity(SHOW_SHADOW_LINE_CHART_DEMO, "带阴影的折线图", PageListAdapter.ItemType.WIDGET));
+        pageItemViewEntities.add(new PageListAdapter.DeviceItemViewEntity(DIALOG_DEMO_ACT, "Dialog demos", PageListAdapter.ItemType.WIDGET));
 
         GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 2);
         mPagesView.setLayoutManager(gridLayoutManager);
@@ -192,6 +194,9 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case SHOW_SHADOW_LINE_CHART_DEMO:
                         FragHolderActivity.showShadowLineChart(MainActivity.this);
+                        break;
+                    case DIALOG_DEMO_ACT:
+                        startActivity(new Intent(getApplicationContext(), DialogDemoActivity.class));
                         break;
                     default:
                         break;
