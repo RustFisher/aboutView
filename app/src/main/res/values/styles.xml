@@ -57,4 +57,14 @@
         <item name="android:textSize">15sp</item>
         <item name="android:gravity">center_vertical</item>
     </style>
+
+    <!-- 弹出型按钮样式1 -->
+    <style name="PopUpButtonStyle1" parent="Widget.AppCompat.Button.Colored">
+        <item name="android:textColor">#fff</item>
+    </style>
+
+    <!-- 按钮样式1 -->
+    <style name="ButtonCommonStyle1" parent="Widget.AppCompat.Button.Colored">
+        <item name="android:textColor">#fff</item>
+    </style>
 </resources>

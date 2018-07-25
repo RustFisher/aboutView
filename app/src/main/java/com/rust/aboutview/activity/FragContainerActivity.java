@@ -59,7 +59,7 @@ public class FragContainerActivity extends AppCompatActivity implements View.OnC
         ButterKnife.bind(this);
     }
 
-    @OnClick({R.id.show_progress_data_btn, R.id.multi_item_lv_btn, R.id.custom_pb_btn})
+    @OnClick({R.id.show_progress_data_btn, R.id.multi_item_lv_btn})
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
@@ -70,9 +70,6 @@ public class FragContainerActivity extends AppCompatActivity implements View.OnC
             case R.id.multi_item_lv_btn:
                 Log.d(TAG, "show: mMultiItemListViewFragment");
                 getSupportFragmentManager().beginTransaction().replace(R.id.container, mMultiItemListViewFragment).commit();
-                break;
-            case R.id.custom_pb_btn:
-                getSupportFragmentManager().beginTransaction().replace(R.id.container, mCustomProgressBarFrag).commit();
                 break;
         }
     }

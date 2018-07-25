@@ -25,6 +25,9 @@ public class PopUpButtonsDialog extends Dialog implements View.OnClickListener {
     private View mItemView3;
     private int mWindowHeight = 1920;
     private static final int ITEM_MOVE_TIME_MM = 400; // 运动时间
+    private static final int ITEM2_MOVE_TIME_MM = ITEM_MOVE_TIME_MM + 40;
+    private static final int ITEM3_MOVE_TIME_MM = ITEM_MOVE_TIME_MM + 80;
+    private static final int ITEM4_MOVE_TIME_MM = ITEM_MOVE_TIME_MM + 120;
 
     public PopUpButtonsDialog(@NonNull Context context) {
         super(context, R.style.DialogFullScreen);
@@ -72,16 +75,22 @@ public class PopUpButtonsDialog extends Dialog implements View.OnClickListener {
                 int oneOffset = (int) (mItemView1.getHeight() * 1.5);
                 // 最底下那个先跑出来
                 if (val >= 0 && val <= ITEM_MOVE_TIME_MM) {
-                    updateItemView(val, 0, ITEM_MOVE_TIME_MM, midTargetY - oneOffset, mItemView3);
+                    updateItemView(val, ITEM_MOVE_TIME_MM, midTargetY - oneOffset, mItemView3);
+                } else if (val > ITEM_MOVE_TIME_MM) {
+                    updateItemView(ITEM_MOVE_TIME_MM, ITEM_MOVE_TIME_MM, midTargetY - oneOffset, mItemView3);
                 }
-                if (val >= 40 && val <= ITEM_MOVE_TIME_MM + 40) {
-                    updateItemView(val, 40, ITEM_MOVE_TIME_MM + 40, midTargetY, mItemView2);
+                if (val >= 40 && val <= ITEM2_MOVE_TIME_MM) {
+                    updateItemView(val, ITEM2_MOVE_TIME_MM, midTargetY, mItemView2);
+                } else if (val > ITEM2_MOVE_TIME_MM) {
+                    updateItemView(ITEM2_MOVE_TIME_MM, ITEM2_MOVE_TIME_MM, midTargetY, mItemView2);
                 }
-                if (val >= 80 && val <= ITEM_MOVE_TIME_MM + 80) {
-                    updateItemView(val, 80, ITEM_MOVE_TIME_MM + 80, midTargetY + oneOffset, mItemView1);
+                if (val >= 80 && val <= ITEM3_MOVE_TIME_MM) {
+                    updateItemView(val, ITEM3_MOVE_TIME_MM, midTargetY + oneOffset, mItemView1);
+                } else if (val > ITEM3_MOVE_TIME_MM) {
+                    updateItemView(ITEM3_MOVE_TIME_MM, ITEM3_MOVE_TIME_MM, midTargetY + oneOffset, mItemView1);
                 }
                 if (val >= 120) {
-                    updateItemView(val, 120, ITEM_MOVE_TIME_MM + 120, midTargetY + 2 * oneOffset, mTitleView);
+                    updateItemView(val, ITEM4_MOVE_TIME_MM, midTargetY + 2 * oneOffset, mTitleView);
                 }
 
             }
@@ -89,7 +98,7 @@ public class PopUpButtonsDialog extends Dialog implements View.OnClickListener {
         anim.start();
     }
 
-    private void updateItemView(int curVal, int startVal, int endVal, int targetY, View view) {
+    private void updateItemView(int curVal, int endVal, int targetY, View view) {
         view.setVisibility(View.VISIBLE);
         RelativeLayout.LayoutParams param = (RelativeLayout.LayoutParams) view.getLayoutParams();
         param.bottomMargin = targetY - (endVal - curVal);

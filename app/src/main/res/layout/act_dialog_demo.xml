@@ -4,16 +4,11 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <TextView
+    <Button
         android:id="@+id/pop_animate_dialog_btn"
-        style="@style/DialogDemoTvItem"
+        style="@style/ButtonCommonStyle1"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:text="从下往上弹选项的dialog" />
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="#888888" />
 
 </LinearLayout>

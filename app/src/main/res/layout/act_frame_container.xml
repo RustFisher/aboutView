@@ -20,12 +20,6 @@
             android:layout_height="wrap_content"
             android:text="ListView装载多种item" />
 
-        <Button
-            android:id="@+id/custom_pb_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="自定义ProgressBar" />
-
     </LinearLayout>
 
     <FrameLayout

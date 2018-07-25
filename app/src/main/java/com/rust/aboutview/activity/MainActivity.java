@@ -3,6 +3,7 @@ package com.rust.aboutview.activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.graphics.Rect;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -15,7 +16,6 @@ import com.rust.aboutview.AboutViewConfig;
 import com.rust.aboutview.R;
 import com.rust.aboutview.contactview.PeopleMainActivity;
 import com.rust.aboutview.service.FloatingBarService;
-import com.rust.aboutview.widget.DividerLine;
 import com.rust.aboutview.widget.PageItemDecoration;
 import com.rust.aboutview.widget.PageListAdapter;
 
@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
     @BindView(R.id.toolbar)
     Toolbar mToolbar;
     @BindView(R.id.pagesReView)
-    RecyclerView mPagesView;
+    RecyclerView mPagesReView;
     @BindView(R.id.collapsing_toolbar_layout)
     CollapsingToolbarLayout mCollapsingToolbarLayout;
 
@@ -112,11 +112,16 @@ public class MainActivity extends AppCompatActivity {
         pageItemViewEntities.add(new PageListAdapter.DeviceItemViewEntity(DIALOG_DEMO_ACT, "Dialog demos", PageListAdapter.ItemType.WIDGET));
 
         GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 2);
-        mPagesView.setLayoutManager(gridLayoutManager);
-        DividerLine dividerLine = new DividerLine(DividerLine.TYPE_RECT);
-        dividerLine.setSize(1);
-        dividerLine.setColor(0xFFDDDDDD);
-        mPagesView.addItemDecoration(dividerLine);
+        mPagesReView.setLayoutManager(gridLayoutManager);
+        mPagesReView.addItemDecoration(new RecyclerView.ItemDecoration() {
+            @Override
+            public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
+                outRect.left = 4;
+                outRect.right = 4;
+                outRect.bottom = 4;
+                outRect.top = 4;
+            }
+        });
 
         PageListAdapter pageListAdapter = new PageListAdapter(pageItemViewEntities);
         pageListAdapter.setOnItemClickListener(new PageListAdapter.OnItemClickListener() {
@@ -208,8 +213,8 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-        mPagesView.addItemDecoration(new PageItemDecoration(getApplicationContext()));
-        mPagesView.setAdapter(pageListAdapter);
+        mPagesReView.addItemDecoration(new PageItemDecoration(getApplicationContext()));
+        mPagesReView.setAdapter(pageListAdapter);
     }
 
     @Override
