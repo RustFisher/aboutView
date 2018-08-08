@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/algo_main_bg">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@color/colorBg2" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/toolbar"
+        android:orientation="vertical"
+        android:padding="12dp">
+
+        <com.rustfisher.view.DotBarChart
+            android:id="@+id/dbc1"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:background="@drawable/shape_round_top_white" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorDividerLine" />
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#fff"
+            android:orientation="horizontal"
+            android:paddingBottom="4dp"
+            android:paddingTop="4dp">
+
+            <RadioButton
+                android:id="@+id/dot_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="点图/DOT" />
+
+            <RadioButton
+                android:id="@+id/bar_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:text="柱形图/Bar" />
+
+        </RadioGroup>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="8dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingBottom="4dp"
+        android:paddingTop="4dp">
+
+        <ImageView
+            android:id="@+id/pre_iv"
+            android:layout_width="@dimen/algo_play_ic_size"
+            android:layout_height="@dimen/algo_play_ic_size"
+            android:background="@drawable/shape_icon_circle"
+            android:padding="12dp"
+            android:src="@drawable/ic_media_previous" />
+
+        <ImageView
+            android:id="@+id/play_iv"
+            android:layout_width="@dimen/algo_play_ic_size"
+            android:layout_height="@dimen/algo_play_ic_size"
+            android:layout_marginEnd="24dp"
+            android:layout_marginStart="24dp"
+            android:background="@drawable/shape_icon_circle"
+            android:padding="12dp"
+            android:src="@drawable/ic_media_play" />
+
+        <ImageView
+            android:id="@+id/next_iv"
+            android:layout_width="@dimen/algo_play_ic_size"
+            android:layout_height="@dimen/algo_play_ic_size"
+            android:background="@drawable/shape_icon_circle"
+            android:padding="12dp"
+            android:src="@drawable/ic_media_next" />
+
+    </LinearLayout>
+
+</RelativeLayout>

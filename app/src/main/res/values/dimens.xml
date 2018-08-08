@@ -6,4 +6,5 @@
     <!-- add view dimens -->
     <dimen name="add_view_text_size">22sp</dimen>
     <dimen name="progress_bar_demo_item_height">40dp</dimen>
+    <dimen name="algo_play_ic_size">42dp</dimen>
 </resources>

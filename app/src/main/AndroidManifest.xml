@@ -89,6 +89,9 @@
             android:name=".activity.FragHolderActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".activity.DialogDemoActivity" />
+        <activity
+            android:name=".algochart.AlgoChartActivity"
+            android:screenOrientation="portrait" />
 
     </application>
 
