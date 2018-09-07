@@ -1,1 +1,1 @@
-include ':app', ':FisherView'
+include ':app', ':FisherView', 'uijoystick'

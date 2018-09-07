@@ -92,6 +92,7 @@
         <activity
             android:name=".algochart.AlgoChartActivity"
             android:screenOrientation="portrait" />
+        <activity android:name=".activity.JoystickActivity" />
 
     </application>
 

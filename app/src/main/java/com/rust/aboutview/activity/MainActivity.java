@@ -44,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
     private static final String DIALOG_DEMO_ACT = "act_dialog_activity";
     private static final String K_ALGO_CHART_ACT = "key_algo_chart_activity";
     private static final String SHOW_SHADOW_LINE_CHART_DEMO = "show_SHADOW_LINE_CHART_DEMO";
+    private static final String SHOW_JOYSTICK_DEMO = "show_joystick_demo";
 
     @BindView(R.id.toolbar)
     Toolbar mToolbar;
@@ -112,6 +113,7 @@ public class MainActivity extends AppCompatActivity {
         pageItemViewEntities.add(new PageListAdapter.DeviceItemViewEntity(SHOW_SHADOW_LINE_CHART_DEMO, "带阴影的折线图", PageListAdapter.ItemType.WIDGET));
         pageItemViewEntities.add(new PageListAdapter.DeviceItemViewEntity(DIALOG_DEMO_ACT, "Dialog demos", PageListAdapter.ItemType.WIDGET));
         pageItemViewEntities.add(new PageListAdapter.DeviceItemViewEntity(K_ALGO_CHART_ACT, "Algo Chart", PageListAdapter.ItemType.FUNCTION));
+        pageItemViewEntities.add(new PageListAdapter.DeviceItemViewEntity(SHOW_JOYSTICK_DEMO, "Joystick", PageListAdapter.ItemType.WIDGET));
 
         GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 2);
         mPagesReView.setLayoutManager(gridLayoutManager);
@@ -207,6 +209,9 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case K_ALGO_CHART_ACT:
                         startActivity(new Intent(getApplicationContext(), AlgoChartActivity.class));
+                        break;
+                    case SHOW_JOYSTICK_DEMO:
+                        startActivity(new Intent(getApplicationContext(), JoystickActivity.class));
                         break;
                     default:
                         break;

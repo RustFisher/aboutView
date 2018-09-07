@@ -1,0 +1,3 @@
+[submodule "uijoystick"]
+	path = uijoystick
+	url = https://github.com/RustFisher/uijoystick.git
