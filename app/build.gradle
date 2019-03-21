@@ -8,8 +8,8 @@ android {
         applicationId "com.rust.aboutview"
         minSdkVersion 19
         targetSdkVersion 27
-        versionCode 201
-        versionName "2.0.1"
+        versionCode 2010
+        versionName "2.0.1.0"
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 

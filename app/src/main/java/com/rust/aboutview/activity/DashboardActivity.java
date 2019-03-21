@@ -7,12 +7,20 @@ import android.os.Message;
 
 import com.rust.aboutview.R;
 import com.rustfisher.view.DashboardProgressView;
+import com.rustfisher.view.DashboardRoundView;
+
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class DashboardActivity extends Activity {
 
     private DashboardProgressView mDash1;
     private DashboardProgressView mDash2;
+    private DashboardRoundView mDr1;
     private DashHandler mDashHandler;
+
+    private Timer mTimer1;
+    private int mVal3 = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,10 +28,24 @@ public class DashboardActivity extends Activity {
         setContentView(R.layout.act_dashboard);
         mDashHandler = new DashHandler(this);
 
-        mDash1 = (DashboardProgressView) findViewById(R.id.dashboard_1);
-        mDash2 = (DashboardProgressView) findViewById(R.id.dashboard_2);
+        mDash1 = findViewById(R.id.dashboard_1);
+        mDash2 = findViewById(R.id.dashboard_2);
+        mDr1 = findViewById(R.id.dash_r1);
 
-        mDash1.setHeaderTitle("dash1");
+        mDash1.setHeaderTitle("仪表盘1");
+        mDr1.setHeaderTitle("仪表盘3");
+
+        mTimer1 = new Timer();
+        mTimer1.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                mVal3 += Math.random() * 20;
+                if (mVal3 > 300) {
+                    mVal3 = 0;
+                }
+                mDr1.updateData(mVal3, true);
+            }
+        }, 200, 1000);
     }
 
     @Override
@@ -38,6 +60,8 @@ public class DashboardActivity extends Activity {
         dashThread1.interrupt();
         dashThread2.interrupt();
         super.onDestroy();
+        mTimer1.cancel();
+        mDr1.destroy();
     }
 
     private Thread dashThread1 = new Thread() {

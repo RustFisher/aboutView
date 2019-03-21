@@ -24,4 +24,12 @@
         app:progressArcColor="@color/colorPrimary"
         app:radius="100dp" />
 
+    <com.rustfisher.view.DashboardRoundView
+        android:id="@+id/dash_r1"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_below="@id/dashboard_2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="12dp" />
+
 </RelativeLayout>
