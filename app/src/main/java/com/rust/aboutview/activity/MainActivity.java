@@ -46,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
     private static final String SHOW_SHADOW_LINE_CHART_DEMO = "show_SHADOW_LINE_CHART_DEMO";
     private static final String SHOW_JOYSTICK_DEMO = "show_joystick_demo";
     private static final String ACT_PB1 = "ACT_PB1";
+    private static final String ACT_RADAR_1 = "act_radar_1";
 
     @BindView(R.id.toolbar)
     Toolbar mToolbar;
@@ -116,6 +117,7 @@ public class MainActivity extends AppCompatActivity {
         pageItemViewEntities.add(new PageListAdapter.DeviceItemViewEntity(K_ALGO_CHART_ACT, "Algo Chart", PageListAdapter.ItemType.FUNCTION));
         pageItemViewEntities.add(new PageListAdapter.DeviceItemViewEntity(SHOW_JOYSTICK_DEMO, "Joystick", PageListAdapter.ItemType.WIDGET));
         pageItemViewEntities.add(new PageListAdapter.DeviceItemViewEntity(ACT_PB1, "进度条1", PageListAdapter.ItemType.WIDGET));
+        pageItemViewEntities.add(new PageListAdapter.DeviceItemViewEntity(ACT_RADAR_1, "雷达图1", PageListAdapter.ItemType.WIDGET));
 
         GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 2);
         mPagesReView.setLayoutManager(gridLayoutManager);
@@ -141,6 +143,10 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case ACT_FRAME_CONTAINER:
                         i.setClass(getApplicationContext(), FragContainerActivity.class);
+                        startActivity(i);
+                        break;
+                    case ACT_RADAR_1:
+                        i.setClass(getApplicationContext(), RadarChart1Act.class);
                         startActivity(i);
                         break;
                     case LINE_CHART_ACT:
