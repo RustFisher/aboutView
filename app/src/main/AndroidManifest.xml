@@ -92,6 +92,7 @@
         <activity
             android:name=".activity.JoystickActivity"
             android:screenOrientation="landscape" />
+        <activity android:name=".activity.Pb1Act" />
 
     </application>
 

@@ -45,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
     private static final String K_ALGO_CHART_ACT = "key_algo_chart_activity";
     private static final String SHOW_SHADOW_LINE_CHART_DEMO = "show_SHADOW_LINE_CHART_DEMO";
     private static final String SHOW_JOYSTICK_DEMO = "show_joystick_demo";
+    private static final String ACT_PB1 = "ACT_PB1";
 
     @BindView(R.id.toolbar)
     Toolbar mToolbar;
@@ -114,6 +115,7 @@ public class MainActivity extends AppCompatActivity {
         pageItemViewEntities.add(new PageListAdapter.DeviceItemViewEntity(DIALOG_DEMO_ACT, "Dialog demos", PageListAdapter.ItemType.WIDGET));
         pageItemViewEntities.add(new PageListAdapter.DeviceItemViewEntity(K_ALGO_CHART_ACT, "Algo Chart", PageListAdapter.ItemType.FUNCTION));
         pageItemViewEntities.add(new PageListAdapter.DeviceItemViewEntity(SHOW_JOYSTICK_DEMO, "Joystick", PageListAdapter.ItemType.WIDGET));
+        pageItemViewEntities.add(new PageListAdapter.DeviceItemViewEntity(ACT_PB1, "进度条1", PageListAdapter.ItemType.WIDGET));
 
         GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 2);
         mPagesReView.setLayoutManager(gridLayoutManager);
@@ -163,6 +165,10 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case CONTACT_PAGE:
                         i.setClass(getApplicationContext(), PeopleMainActivity.class);
+                        startActivity(i);
+                        break;
+                    case ACT_PB1:
+                        i.setClass(getApplicationContext(), Pb1Act.class);
                         startActivity(i);
                         break;
                     case FLOAT_WINDOW:
