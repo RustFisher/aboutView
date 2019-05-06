@@ -14,13 +14,17 @@ import android.view.View;
  * 电池电量显示
  * 实际上这也是一个进度条
  * 左右2个半圆
- * Created by Rust on 2018-4-24
+ * Created by Rust on 2018-5-6
  */
 public class RoundHorBatteryView extends View {
     private static final String TAG = "RoundHorBatteryView";
+    private static final int MODE_DISABLE = 100; // 禁用状态
+    private static final int MODE_ABLE = 200;    // 正常工作状态
+    private int mode = MODE_DISABLE;
     private float powerValue = 100;
     private float maxValue = 100;
 
+    private int borderDisableColor = Color.parseColor("#747883");
     int borderColor = Color.WHITE;
     private int valueColor = Color.WHITE;
 
@@ -60,7 +64,10 @@ public class RoundHorBatteryView extends View {
                 vWidth - borderPaddingPx - valuePaddingPx, vHeight - borderPaddingPx - valuePaddingPx);
 
         drawBorder(canvas);
-        drawValue(canvas);
+        if (mode == MODE_ABLE) {
+            batteryPaint.setColor(valueColor);
+            drawValue(canvas);
+        }
     }
 
     /**
@@ -152,7 +159,11 @@ public class RoundHorBatteryView extends View {
      */
     private void drawBorder(Canvas canvas) {
         final float r = (vHeight - 2 * borderPaddingPx) / 2;
-        batteryPaint.setColor(borderColor);
+        if (mode == MODE_DISABLE) {
+            batteryPaint.setColor(borderDisableColor);
+        } else if (mode == MODE_ABLE) {
+            batteryPaint.setColor(borderColor);
+        }
         batteryPaint.setStyle(Paint.Style.STROKE);
         batteryPaint.setStrokeWidth(borderWidPx);
         borderRectF = new RectF(borderPaddingPx, borderPaddingPx, borderPaddingPx + 2 * r, vHeight - borderPaddingPx);
@@ -193,5 +204,22 @@ public class RoundHorBatteryView extends View {
 
     public void setMaxValue(float maxValue) {
         this.maxValue = maxValue;
+    }
+
+    public void setBorderDisableColor(int borderDisableColor) {
+        this.borderDisableColor = borderDisableColor;
+    }
+
+    public void setMode(int mode) {
+        this.mode = mode;
+        invalidate();
+    }
+
+    public void disableMode() {
+        setMode(MODE_DISABLE);
+    }
+
+    public void enableMode() {
+        setMode(MODE_ABLE);
     }
 }
