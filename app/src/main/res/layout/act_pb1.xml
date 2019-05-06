@@ -25,5 +25,19 @@
 
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:orientation="vertical"
+        android:padding="4dp">
+
+        <com.rustfisher.view.GridsProgressView
+            android:id="@+id/bat_2"
+            android:layout_width="250dp"
+            android:layout_height="50dp" />
+
+    </LinearLayout>
+
 
 </LinearLayout>
