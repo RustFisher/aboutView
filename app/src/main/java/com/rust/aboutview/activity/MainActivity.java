@@ -47,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
     private static final String SHOW_JOYSTICK_DEMO = "show_joystick_demo";
     private static final String ACT_PB1 = "ACT_PB1";
     private static final String ACT_RADAR_1 = "act_radar_1";
+    private static final String ACT_FULL_TEXT = "act_full_text";
 
     @BindView(R.id.toolbar)
     Toolbar mToolbar;
@@ -118,6 +119,7 @@ public class MainActivity extends AppCompatActivity {
         pageItemViewEntities.add(new PageListAdapter.DeviceItemViewEntity(SHOW_JOYSTICK_DEMO, "Joystick", PageListAdapter.ItemType.WIDGET));
         pageItemViewEntities.add(new PageListAdapter.DeviceItemViewEntity(ACT_PB1, "进度条1", PageListAdapter.ItemType.WIDGET));
         pageItemViewEntities.add(new PageListAdapter.DeviceItemViewEntity(ACT_RADAR_1, "雷达图1", PageListAdapter.ItemType.WIDGET));
+        pageItemViewEntities.add(new PageListAdapter.DeviceItemViewEntity(ACT_FULL_TEXT, "文字全屏", PageListAdapter.ItemType.FUNCTION));
 
         GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 2);
         mPagesReView.setLayoutManager(gridLayoutManager);
@@ -224,6 +226,9 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case SHOW_JOYSTICK_DEMO:
                         startActivity(new Intent(getApplicationContext(), JoystickActivity.class));
+                        break;
+                    case ACT_FULL_TEXT:
+                        startActivity(new Intent(getApplicationContext(), FullTextAct.class));
                         break;
                     default:
                         break;

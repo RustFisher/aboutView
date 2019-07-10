@@ -94,6 +94,7 @@
             android:screenOrientation="landscape" />
         <activity android:name=".activity.Pb1Act" />
         <activity android:name=".activity.RadarChart1Act" />
+        <activity android:name=".activity.FullTextAct" />
 
     </application>
 
