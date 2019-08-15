@@ -25,11 +25,13 @@ public class ColorLinesView extends View {
         public final int lineId;
         public int lineColor;
         public List<Float> dataList;
+        public int winnerBgColor;
 
-        public LineData(int lineId, int lineColor, List<Float> dataList) {
+        public LineData(int lineId, int lineColor, int winnerBgColor, List<Float> dataList) {
             this.lineId = lineId;
             this.lineColor = lineColor;
             this.dataList = dataList;
+            this.winnerBgColor = winnerBgColor;
         }
 
         @Override
@@ -58,10 +60,12 @@ public class ColorLinesView extends View {
     float viewYStart = 2; // 图表线条在view顶部留出的间距
     float axisLineWid = 1f; // 坐标轴线条宽度
     int dataLineWid = 3;
+    private boolean compare2 = false; // 当输入2组数据时，是否进行比较
 
     float axisTextSize;
     private int bgLineColor = Color.parseColor("#bfbfbf");
     private int bgTextColor = Color.parseColor("#595959");
+    private int bgFairGameColor = Color.parseColor("#dadada"); // 打平时候的颜色
 
     private float viewWidth;
     private float viewHeight;
@@ -103,6 +107,11 @@ public class ColorLinesView extends View {
         invalidate();
     }
 
+    public void setCompare2(boolean c) {
+        this.compare2 = c;
+        invalidate();
+    }
+
     public void setData(LineData data) {
         int i = lineDataList.indexOf(data);
         if (i < 0) {
@@ -113,6 +122,10 @@ public class ColorLinesView extends View {
             d.lineColor = data.lineColor;
         }
         invalidate();
+    }
+
+    public void setBgFairGameColor(int bgFairGameColor) {
+        this.bgFairGameColor = bgFairGameColor;
     }
 
     private void init(Context context) {
@@ -158,6 +171,8 @@ public class ColorLinesView extends View {
         final float textMarginRight = 5;
         final float zeroAxisTextMarginTop = 5;
 
+        drawBgCompareColor(canvas);
+
         // 画原点
         bgPaint.setTextSize(axisTextSize);
         final String zero = "0";
@@ -183,6 +198,44 @@ public class ColorLinesView extends View {
         }
     }
 
+    // 绘制变色的背景
+    private void drawBgCompareColor(Canvas canvas) {
+        if (!compare2 || lineDataList.size() != 2) {
+            return;
+        }
+        LineData d1 = lineDataList.get(0);
+        LineData d2 = lineDataList.get(1);
+        final int size1 = d1.dataList.size();
+        final int size2 = d2.dataList.size();
+        if (size1 != size2) {
+            return;
+        }
+        final float xStep = (viewWidth - botLeftXOnView) / (size2 - 1);
+        final float yDataRange = yMax - yMin;
+        final float yAxisRangeOnView = botLeftYOnView - viewYStart;
+        final float yDataStep = yAxisRangeOnView / yDataRange;
+        final float yMaxDataOnView = getYL(yMax, yDataStep);
+        final int compareIndex = 3;
+        bgPaint.setStyle(Paint.Style.FILL);
+
+        if (size1 >= compareIndex) {
+            canvas.drawRect(botLeftXOnView, yMaxDataOnView, botLeftXOnView + xStep * compareIndex, botLeftYOnView, bgPaint);
+        }
+
+        for (int i = compareIndex; i < size1 - compareIndex && i < size2 - compareIndex; i += compareIndex) {
+            float a1 = d1.dataList.get(i);
+            float a2 = d2.dataList.get(i);
+            int color = bgFairGameColor;
+            if (a1 > a2) {
+                color = d1.winnerBgColor;
+            } else if (a1 < a2) {
+                color = d2.winnerBgColor;
+            }
+            bgPaint.setColor(color);
+            canvas.drawRect(botLeftXOnView + i * xStep, yMaxDataOnView, botLeftXOnView + xStep * (i + compareIndex), botLeftYOnView, bgPaint);
+        }
+    }
+
     private void drawDataLine(Canvas canvas, LineData lineData) {
         List<Float> data = lineData.dataList;
         final int dataCount = data.size();
@@ -198,15 +251,11 @@ public class ColorLinesView extends View {
         linePath.moveTo(waveStartX, waveStartY);
 
         for (int i = 0; i < dataCount - 1; i++) {
-            float curData = data.get(i);
             float nextData = data.get(i + 1);
             linePath.lineTo(botLeftXOnView + (i + 1) * xStep, getYL(nextData, yDataStep));
-            canvas.drawLine(botLeftXOnView + (i) * xStep, getYL(curData, yDataStep),
-                    botLeftXOnView + (i + 1) * xStep, getYL(nextData, yDataStep),
-                    linePaint);
         }
         linePaint.setColor(lineData.lineColor);
-
+        linePaint.setStyle(Paint.Style.STROKE);
         canvas.drawPath(linePath, linePaint);
     }
 

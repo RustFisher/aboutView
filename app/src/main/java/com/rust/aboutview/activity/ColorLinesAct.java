@@ -27,8 +27,9 @@ public class ColorLinesAct extends Activity {
 
         mC1.setHorAxisEndText("End");
         mC1.setMarkList(150, 220, 300);
-        mC1.setData(new ColorLinesView.LineData(1, Color.parseColor("#ff8f22"), genData()));
-        mC1.setData(new ColorLinesView.LineData(2, Color.parseColor("#ff5722"), genData()));
+        mC1.setCompare2(true);
+        mC1.setData(new ColorLinesView.LineData(1, Color.parseColor("#ff8f22"), Color.parseColor("#66ff8f22"), genData()));
+        mC1.setData(new ColorLinesView.LineData(2, Color.parseColor("#ff5722"), Color.parseColor("#66ff5722"), genData()));
     }
 
     private List<Float> genData() {
