@@ -1,7 +1,7 @@
 package com.rust.aboutview.activity;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.rust.aboutview.R;
 import com.rust.aboutview.fragment.JoystickStyleOneFragment;

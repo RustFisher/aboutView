@@ -3,7 +3,7 @@ package com.rust.aboutview.activity;
 import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 
 import com.rust.aboutview.R;
 import com.rustfisher.view.fan.FanView;

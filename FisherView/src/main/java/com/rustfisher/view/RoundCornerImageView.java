@@ -11,7 +11,7 @@ import android.util.TypedValue;
 /**
  * 圆角图形
  */
-public class RoundCornerImageView extends android.support.v7.widget.AppCompatImageView {
+public class RoundCornerImageView extends androidx.appcompat.widget.AppCompatImageView {
     private float mRadius = 18;
     private Path mClipPath = new Path();
     private RectF mRect = new RectF();

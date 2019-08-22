@@ -3,7 +3,7 @@ package com.rust.aboutview.activity;
 import android.app.Activity;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 
 import com.rust.aboutview.R;
 import com.rust.aboutview.view.TrapezoidalPb;

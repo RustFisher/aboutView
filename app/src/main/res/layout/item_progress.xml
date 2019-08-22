@@ -39,7 +39,7 @@
         android:layout_below="@id/name_tv"
         android:minHeight="50dp">
 
-        <android.support.v7.widget.RecyclerView
+        <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/grid_re_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

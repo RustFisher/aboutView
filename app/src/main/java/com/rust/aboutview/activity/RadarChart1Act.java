@@ -2,17 +2,13 @@ package com.rust.aboutview.activity;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
 import com.rust.aboutview.R;
 import com.rust.aboutview.view.RadarUxChartView;
-import com.rust.aboutview.view.TrapezoidalPb;
-
-import java.util.Timer;
-import java.util.TimerTask;
 
 /**
  * 雷达图示例
