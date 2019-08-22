@@ -96,6 +96,7 @@
         <activity android:name=".activity.RadarChart1Act" />
         <activity android:name=".activity.FullTextAct" />
         <activity android:name=".activity.ColorLinesAct" />
+        <activity android:name=".activity.VKeyboardAct" />
 
     </application>
 

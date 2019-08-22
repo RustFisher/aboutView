@@ -49,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
     private static final String ACT_RADAR_1 = "act_radar_1";
     private static final String ACT_FULL_TEXT = "act_full_text";
     private static final String ACT_FULL_COLOR_LINES = "act_color_lines";
+    private static final String ACT_V_KEY_BOARD = "act_v_keyboard";
 
     @BindView(R.id.toolbar)
     Toolbar mToolbar;
@@ -99,6 +100,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void initPageList() {
         final ArrayList<PageListAdapter.DeviceItemViewEntity> pageItemViewEntities = new ArrayList<>();
+        pageItemViewEntities.add(new PageListAdapter.DeviceItemViewEntity(ACT_V_KEY_BOARD, "虚拟键盘", PageListAdapter.ItemType.WIDGET));
         pageItemViewEntities.add(new PageListAdapter.DeviceItemViewEntity(ACT_FULL_COLOR_LINES, "折线图-多线条", PageListAdapter.ItemType.WIDGET));
         pageItemViewEntities.add(new PageListAdapter.DeviceItemViewEntity(ACT_ROUND_CORNER_IV, "圆角进度条", PageListAdapter.ItemType.WIDGET));
         pageItemViewEntities.add(new PageListAdapter.DeviceItemViewEntity(CUSTOM_XML_PB, "drawable进度条", PageListAdapter.ItemType.WIDGET));
@@ -142,6 +144,10 @@ public class MainActivity extends AppCompatActivity {
                 String id = pageItemViewEntities.get(position).itemID;
                 Intent i = new Intent();
                 switch (id) {
+                    case ACT_V_KEY_BOARD:
+                        i.setClass(getApplicationContext(), VKeyboardAct.class);
+                        startActivity(i);
+                        break;
                     case ACT_FULL_COLOR_LINES:
                         i.setClass(getApplicationContext(), ColorLinesAct.class);
                         startActivity(i);
