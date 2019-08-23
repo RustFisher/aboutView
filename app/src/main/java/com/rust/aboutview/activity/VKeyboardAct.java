@@ -10,6 +10,9 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 
 import com.rust.aboutview.R;
+import com.rust.aboutview.widget.VKey;
+import com.rust.aboutview.widget.VKeyboard;
+import com.rust.aboutview.widget.VKeyboardListener;
 import com.rust.aboutview.widget.VKeyboardWidget;
 
 /**
@@ -18,25 +21,23 @@ import com.rust.aboutview.widget.VKeyboardWidget;
  */
 public class VKeyboardAct extends Activity {
     private static final String TAG = "rustAppVKeyboardAct";
-    private VKeyboardWidget mKeyboardWidget;
     private TextView mTv1;
-
+    private VKeyboard vKeyboard1;
     private Editable mEditable1;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.act_v_keyboard);
+        Log.d(TAG, "onCreate: 1");
 
         mTv1 = findViewById(R.id.vk_page_tv1);
         mEditable1 = new Editable.Factory().newEditable("");
+        vKeyboard1 = findViewById(R.id.vk_1);
 
-        LinearLayout linearLayout2 = findViewById(R.id.vk_2);
-        mKeyboardWidget = new VKeyboardWidget(linearLayout2, 1080);
-
-        mKeyboardWidget.setOnItemClickListener(new VKeyboardWidget.OnItemClickListener() {
+        vKeyboard1.setKeyboardListener(new VKeyboardListener() {
             @Override
-            public void onKeyClick(VKeyboardWidget.Key key) {
+            public void onKeyClick(VKey key) {
                 Log.d(TAG, "onKeyClick: " + key);
                 if (key.isBackSpace()) {
                     if (mEditable1.length() > 0) {
@@ -48,6 +49,19 @@ public class VKeyboardAct extends Activity {
                 updateTv1();
             }
         });
+        Log.d(TAG, "onCreate: end");
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.d(TAG, "onResume");
+    }
+
+    @Override
+    public void onWindowFocusChanged(boolean hasFocus) {
+        super.onWindowFocusChanged(hasFocus);
+        Log.d(TAG, "onWindowFocusChanged: hasFocus: " + hasFocus);
     }
 
     private void updateTv1() {

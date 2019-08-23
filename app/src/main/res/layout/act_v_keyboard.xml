@@ -12,10 +12,15 @@
         android:textColor="#000"
         android:textSize="16sp" />
 
-    <LinearLayout
+    <com.rust.aboutview.widget.VKeyboard
+        android:id="@+id/vk_1"
+        android:layout_width="340dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center" />
+
+    <com.rust.aboutview.widget.VKeyboard
         android:id="@+id/vk_2"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:layout_marginTop="12dp"
-        android:orientation="vertical" />
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp" />
 </LinearLayout>

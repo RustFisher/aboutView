@@ -7,8 +7,6 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
-
 import com.rust.aboutview.R;
 
 import java.util.Arrays;
@@ -20,9 +18,6 @@ import java.util.List;
 public class VKeyboardWidget {
     private static final String TAG = "rustAppVKeyboardWidget";
 
-    public static final char BACKSPACE_ASCII = 8;  // 退格
-    public static final char SPACE_ASCII = 32;     // 空格
-
     // 键盘默认宽度 一般我们用屏幕宽度来定
     // 用这个宽度来动态计算每个按钮的宽度
     private int keyboardWidthPx = 1080;
@@ -31,94 +26,24 @@ public class VKeyboardWidget {
 
     private int keyHeightPx = dp2Px(42); // 按键的高度
 
-    private List<Key> line1Keys = Arrays.asList(
-            Key.normal("q", 'q'), Key.normal("w", 'w'), Key.normal("e", 'e'),
-            Key.normal("r", 'r'), Key.normal("t", 't'), Key.normal("y", 'y'),
-            Key.normal("u", 'u'), Key.normal("i", 'i'), Key.normal("o", 'o'), Key.normal("p", 'p')
+    private List<VKey> line1Keys = Arrays.asList(
+            VKey.normal("q", 'q'), VKey.normal("w", 'w'), VKey.normal("e", 'e'),
+            VKey.normal("r", 'r'), VKey.normal("t", 't'), VKey.normal("y", 'y'),
+            VKey.normal("u", 'u'), VKey.normal("i", 'i'), VKey.normal("o", 'o'), VKey.normal("p", 'p')
     );
 
-    private List<Key> line2Keys = Arrays.asList(
-            Key.normal("a", 'a'), Key.normal("s", 's'), Key.normal("d", 'd'),
-            Key.normal("f", 'f'), Key.normal("g", 'g'), Key.normal("h", 'h'),
-            Key.normal("j", 'j'), Key.normal("k", 'k'), Key.normal("l", 'l')
+    private List<VKey> line2Keys = Arrays.asList(
+            VKey.normal("a", 'a'), VKey.normal("s", 's'), VKey.normal("d", 'd'),
+            VKey.normal("f", 'f'), VKey.normal("g", 'g'), VKey.normal("h", 'h'),
+            VKey.normal("j", 'j'), VKey.normal("k", 'k'), VKey.normal("l", 'l')
     );
 
-    private List<Key> line3Keys = Arrays.asList(
-            Key.normal("z", 'z'), Key.normal("x", 'x'), Key.normal("c", 'c'),
-            Key.normal("v", 'v'), Key.normal("b", 'b'), Key.normal("n", 'n'),
-            Key.normal("m", 'm'), Key.func("Back", BACKSPACE_ASCII)
+    private List<VKey> line3Keys = Arrays.asList(
+            VKey.normal("z", 'z'), VKey.normal("x", 'x'), VKey.normal("c", 'c'),
+            VKey.normal("v", 'v'), VKey.normal("b", 'b'), VKey.normal("n", 'n'),
+            VKey.normal("m", 'm'), VKey.backspace()
     );
 
-
-    // 按键
-    public static class Key {
-        static final int TYPE_NORMAL = 1; // 普通键
-        static final int TYPE_FUNC = 2;   // 功能键
-
-        static final int UI_TEXT_VIEW = 100; // 用TextView实现
-        static final int UI_IMAGE_VIEW = 200;// 用ImageView实现
-
-        private int keyType;
-        private int uiType = UI_TEXT_VIEW;
-        private String keyText;
-        private int asciiCode;
-
-        public Key(String keyText, int keyCode, int type) {
-            this.keyText = keyText;
-            this.asciiCode = keyCode;
-            this.keyType = type;
-        }
-
-        public int getAsciiCode() {
-            return asciiCode;
-        }
-
-        public String getKeyText() {
-            return keyText;
-        }
-
-        public static Key normal(String key, int keyCode) {
-            return new Key(key, keyCode, TYPE_NORMAL);
-        }
-
-        public static Key func(String key, int keyCode) {
-            return new Key(key, keyCode, TYPE_FUNC);
-        }
-
-        public boolean isNormal() {
-            return keyType == TYPE_NORMAL;
-        }
-
-        public boolean isFunc() {
-            return keyType == TYPE_FUNC;
-        }
-
-        public int getUiType() {
-            return uiType;
-        }
-
-        public void setUiType(int uiType) {
-            this.uiType = uiType;
-        }
-
-        public boolean useTextView() {
-            return uiType == UI_TEXT_VIEW;
-        }
-
-        public boolean useImageView() {
-            return uiType == UI_IMAGE_VIEW;
-        }
-
-        public boolean isBackSpace() {
-            return asciiCode == BACKSPACE_ASCII;
-        }
-
-        @NonNull
-        @Override
-        public String toString() {
-            return "keyText{" + keyText + ", " + asciiCode + "}";
-        }
-    }
 
     private LinearLayout rootView;
 
@@ -139,15 +64,15 @@ public class VKeyboardWidget {
         rootView.addView(line3);
     }
 
-    private LinearLayout genLine(List<Key> keys) {
+    private LinearLayout genLine(List<VKey> keys) {
         LinearLayout line = new LinearLayout(rootView.getContext(), null);
         line.setOrientation(LinearLayout.HORIZONTAL);
         line.setGravity(Gravity.CENTER);
         line.setPadding(dp2Px(5), dp2Px(5), dp2Px(5), 0);
-        for (final Key key : keys) {
-            if (key.useTextView()) {
+        for (final VKey VKey : keys) {
+            if (VKey.useTextView()) {
                 TextView tv = new TextView(rootView.getContext(), null);
-                tv.setText(key.getKeyText());
+                tv.setText(VKey.getKeyText());
                 tv.setTextColor(Color.BLACK);
                 LinearLayout.LayoutParams lp = (LinearLayout.LayoutParams) tv.getLayoutParams();
                 if (lp == null) {
@@ -163,7 +88,7 @@ public class VKeyboardWidget {
                     @Override
                     public void onClick(View v) {
                         if (onItemClickListener != null) {
-                            onItemClickListener.onKeyClick(key);
+                            onItemClickListener.onKeyClick(VKey);
                         }
                     }
                 });
@@ -179,7 +104,7 @@ public class VKeyboardWidget {
     }
 
     public interface OnItemClickListener {
-        void onKeyClick(Key key);
+        void onKeyClick(VKey VKey);
     }
 
     private static float px2Dp(float px) {
