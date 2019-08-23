@@ -69,6 +69,12 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onWindowFocusChanged(boolean hasFocus) {
+        super.onWindowFocusChanged(hasFocus);
+        VKeyboardAct.screenWidth = mToolbar.getWidth();
+    }
+
     private void initUI() {
         ButterKnife.bind(this);
         setSupportActionBar(mToolbar);

@@ -8,19 +8,27 @@
         android:id="@+id/vk_page_tv1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
+        android:layout_marginTop="8dp"
         android:textColor="#000"
         android:textSize="16sp" />
 
-    <com.rust.aboutview.widget.VKeyboard
+    <com.rust.aboutview.widget.vkeyboard.VKeyboard
         android:id="@+id/vk_1"
-        android:layout_width="340dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center" />
 
-    <com.rust.aboutview.widget.VKeyboard
+    <TextView
+        android:id="@+id/vk_page_tv2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:textColor="#000"
+        android:textSize="16sp" />
+
+    <com.rust.aboutview.widget.vkeyboard.VKeyboard
         android:id="@+id/vk_2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp" />
+        android:layout_marginTop="4dp" />
 </LinearLayout>

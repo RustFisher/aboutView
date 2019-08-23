@@ -8,12 +8,14 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.rust.aboutview.R;
+import com.rust.aboutview.widget.vkeyboard.VKey;
 
 import java.util.Arrays;
 import java.util.List;
 
 /**
  * 2019-8-22
+ * @deprecated
  */
 public class VKeyboardWidget {
     private static final String TAG = "rustAppVKeyboardWidget";
