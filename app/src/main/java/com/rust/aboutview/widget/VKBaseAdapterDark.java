@@ -1,9 +1,13 @@
-package com.rust.aboutview.widget.vkeyboard;
+package com.rust.aboutview.widget;
 
 import android.graphics.Color;
 import android.util.Log;
 
 import com.rust.aboutview.R;
+import com.rust.aboutview.widget.vkeyboard.VKey;
+import com.rust.aboutview.widget.vkeyboard.VKeyboard;
+import com.rust.aboutview.widget.vkeyboard.VKeyboardBody;
+import com.rust.aboutview.widget.vkeyboard.VRow;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -13,18 +17,18 @@ import java.util.List;
  * Sample adapter. Dark theme.
  * Created on 2019-8-25
  */
-public class BaseAdapterDark extends VKeyboard.Adapter {
-    private static String TAG = "rustApp";
+public class VKBaseAdapterDark extends VKeyboard.Adapter {
+    private static final String TAG = "rustApp";
     private static final int DEF_SCREEN_WID = 1080;
     private List<VRow> rows;
 
     private VKeyboardBody vKeyboardBody = new VKeyboardBody(Color.parseColor("#1b1a1e"));
 
-    public BaseAdapterDark() {
+    public VKBaseAdapterDark() {
         initKeys(DEF_SCREEN_WID);
     }
 
-    public BaseAdapterDark(int screenWidth) {
+    public VKBaseAdapterDark(int screenWidth) {
         initKeys(screenWidth);
     }
 
@@ -33,18 +37,19 @@ public class BaseAdapterDark extends VKeyboard.Adapter {
         List<VKey> line1Keys = Arrays.asList(
                 VKey.normal("q", 'q'), VKey.normal("w", 'w'), VKey.normal("e", 'e'),
                 VKey.normal("r", 'r'), VKey.normal("t", 't'), VKey.normal("y", 'y'),
-                VKey.normal("u", 'u'), VKey.normal("i", 'i'), VKey.normal("o", 'o'), VKey.normal("p", 'p')
+                VKey.normal("u", 'u'), VKey.normal("i", 'i'), VKey.normal("o", 'o'),
+                VKey.normal("p", 'p'), VKey.backspace()
         );
         List<VKey> line2Keys = Arrays.asList(
                 VKey.normal("a", 'a'), VKey.normal("s", 's'), VKey.normal("d", 'd'),
                 VKey.normal("f", 'f'), VKey.normal("g", 'g'), VKey.normal("h", 'h'),
                 VKey.normal("j", 'j'), VKey.normal("k", 'k'), VKey.normal("l", 'l'),
-                VKey.backspace()
+                VKey.ok()
         );
         List<VKey> line3Keys = Arrays.asList(
-                VKey.emptyNormal(), VKey.normal("z", 'z'), VKey.normal("x", 'x'), VKey.normal("c", 'c'),
+                VKey.normal("z", 'z'), VKey.normal("x", 'x'), VKey.normal("c", 'c'),
                 VKey.normal("v", 'v'), VKey.normal("b", 'b'), VKey.normal("n", 'n'),
-                VKey.normal("m", 'm'), VKey.ok()
+                VKey.normal("m", 'm'), VKey.space()
         );
 
         int line1Count = line1Keys.size();
@@ -61,6 +66,7 @@ public class BaseAdapterDark extends VKeyboard.Adapter {
         rows.add(row1);
         rows.add(row2);
         rows.add(row3);
+
         for (VRow row : rows) {
             for (VKey key : row.getKeys()) {
                 key.setTextColor(Color.WHITE);
@@ -68,19 +74,15 @@ public class BaseAdapterDark extends VKeyboard.Adapter {
                 key.setBackgroundResId(R.drawable.vk_se_tv_dark_1);
                 key.setUseBgRes(true);
                 if (key.isOk()) {
-                    key.setKeyViewWidthDp(keyWidDp);
                     key.setKeyViewWidthDp((int) (keyWidDp * 2f));
                 } else if (key.isBackSpace()) {
                     key.setTextSizeSp(11);
+                } else if (key.isSpace()) {
+                    key.setKeyViewWidthDp((int) (keyWidDp * 1.5f));
                 }
             }
         }
 
-    }
-
-    @Override
-    public int getRowsCount() {
-        return rows.size();
     }
 
     @Override

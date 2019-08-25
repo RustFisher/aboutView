@@ -28,8 +28,6 @@ import java.util.Locale;
 public class VKeyboard extends FrameLayout {
     private String TAG = "rustAppVKeyboard";
 
-    public static int screenWidth = 1000; // 屏幕宽度 在初始化界面前要设置好这个宽度值
-
     private List<TextView> cacheTvs;
     private Context ctx;
     private LinearLayout board1; // 26个字母
@@ -57,7 +55,6 @@ public class VKeyboard extends FrameLayout {
         final TypedArray a = context.obtainStyledAttributes(attrs, attrsArray);
         int viewId = a.getResourceId(0, View.NO_ID);
         TAG += ("[" + viewId + "]");
-        int layoutWidth = a.getLayoutDimension(2, ViewGroup.LayoutParams.MATCH_PARENT);
         a.recycle();
         initKeyboardUI(context);
     }
@@ -86,10 +83,6 @@ public class VKeyboard extends FrameLayout {
     protected void onDraw(Canvas canvas) {
         Log.d(TAG, "onDraw");
         super.onDraw(canvas);
-    }
-
-    public static void setScreenWidth(int screenWidth) {
-        VKeyboard.screenWidth = screenWidth;
     }
 
     private void initKeyboardUI(Context context) {
@@ -183,21 +176,15 @@ public class VKeyboard extends FrameLayout {
 
     public static abstract class Adapter {
 
-        /**
-         * @return How many rows in field.
-         */
-        public abstract int getRowsCount();
-
-
         public abstract List<VRow> getRows();
 
         public abstract VKeyboardBody getKeyboardBody();
 
-        float px2Dp(float px) {
+        public float px2Dp(float px) {
             return (px / Resources.getSystem().getDisplayMetrics().density);
         }
 
-        int dp2Px(float dp) {
+        public int dp2Px(float dp) {
             return (int) (dp * Resources.getSystem().getDisplayMetrics().density);
         }
 

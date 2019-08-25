@@ -10,7 +10,8 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 
 import com.rust.aboutview.R;
-import com.rust.aboutview.widget.vkeyboard.BaseAdapterDark;
+import com.rust.aboutview.widget.VKBaseAdapterDark;
+import com.rust.aboutview.widget.VKBaseAdapterWhite;
 import com.rust.aboutview.widget.vkeyboard.VKey;
 import com.rust.aboutview.widget.vkeyboard.VKeyboard;
 import com.rust.aboutview.widget.vkeyboard.VKeyboardListener;
@@ -24,7 +25,6 @@ public class VKeyboardAct extends Activity {
     public static int screenWidth = 1080;
     private TextView mTv1;
     private TextView mTv2;
-    private VKeyboard vKeyboard1;
     private Editable mEditable1;
     private Editable mEditable2;
 
@@ -38,8 +38,8 @@ public class VKeyboardAct extends Activity {
         mTv2 = findViewById(R.id.vk_page_tv2);
         mEditable1 = new Editable.Factory().newEditable("");
         mEditable2 = new Editable.Factory().newEditable("");
-        vKeyboard1 = findViewById(R.id.vk_1);
-
+        VKeyboard vKeyboard1 = findViewById(R.id.vk_1);
+        vKeyboard1.setAdapter(new VKBaseAdapterWhite(screenWidth));
         vKeyboard1.setKeyboardListener(new VKeyboardListener() {
             @Override
             public void onKeyClick(VKey key) {
@@ -50,7 +50,7 @@ public class VKeyboardAct extends Activity {
         });
 
         VKeyboard vk2 = findViewById(R.id.vk_2);
-        vk2.setAdapter(new BaseAdapterDark(screenWidth));
+        vk2.setAdapter(new VKBaseAdapterDark(screenWidth));
         vk2.setKeyboardListener(new VKeyboardListener() {
             @Override
             public void onKeyClick(VKey key) {
@@ -68,10 +68,11 @@ public class VKeyboardAct extends Activity {
             }
         } else if (key.isOk()) {
             Toast.makeText(this, "OK", Toast.LENGTH_SHORT).show();
+        } else if (key.isSpace()) {
+            editable.append(" ");
         } else {
             editable.append(key.getKeyText());
         }
-
     }
 
     @Override

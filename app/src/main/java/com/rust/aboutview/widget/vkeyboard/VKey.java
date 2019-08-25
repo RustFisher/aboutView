@@ -134,6 +134,10 @@ public class VKey {
         return keyCode == BACKSPACE_ASCII;
     }
 
+    public boolean isSpace() {
+        return keyCode == SPACE_ASCII;
+    }
+
     public boolean isEmptyNormalType() {
         return keyType == TYPE_NORMAL_EMPTY;
     }
@@ -224,6 +228,10 @@ public class VKey {
         VKey key = new VKey("OK", OK_CODE, TYPE_FUNC);
         key.setTextBold(true);
         return key;
+    }
+
+    public static VKey space() {
+        return new VKey("space", SPACE_ASCII, TYPE_FUNC);
     }
 
     public static VKey emptyNormal() {
