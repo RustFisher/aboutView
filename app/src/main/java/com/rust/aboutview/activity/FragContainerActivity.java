@@ -13,9 +13,6 @@ import com.rust.aboutview.fragment.CustomProgressBarFrag;
 import com.rust.aboutview.fragment.DataProgressFragment;
 import com.rust.aboutview.fragment.MultiItemListViewFragment;
 
-import butterknife.ButterKnife;
-import butterknife.OnClick;
-
 /**
  * Show fragment
  * Created by Rust on 2018/5/25.
@@ -56,10 +53,10 @@ public class FragContainerActivity extends AppCompatActivity implements View.OnC
         mDataProgressFragment = new DataProgressFragment();
         mMultiItemListViewFragment = new MultiItemListViewFragment();
         mCustomProgressBarFrag = new CustomProgressBarFrag();
-        ButterKnife.bind(this);
+        findViewById(R.id.show_progress_data_btn).setOnClickListener(this);
+        findViewById(R.id.multi_item_lv_btn).setOnClickListener(this);
     }
 
-    @OnClick({R.id.show_progress_data_btn, R.id.multi_item_lv_btn})
     @Override
     public void onClick(View v) {
         switch (v.getId()) {

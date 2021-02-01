@@ -5,11 +5,14 @@ import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.Rect;
 import android.os.Bundle;
+
 import com.google.android.material.appbar.CollapsingToolbarLayout;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.appcompat.widget.Toolbar;
+
 import android.view.View;
 
 import com.rust.aboutview.AboutViewConfig;
@@ -20,9 +23,6 @@ import com.rust.aboutview.service.FloatingBarService;
 import com.rust.aboutview.widget.PageListAdapter;
 
 import java.util.ArrayList;
-
-import butterknife.BindView;
-import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -51,11 +51,8 @@ public class MainActivity extends AppCompatActivity {
     private static final String ACT_FULL_COLOR_LINES = "act_color_lines";
     private static final String ACT_V_KEY_BOARD = "act_v_keyboard";
 
-    @BindView(R.id.toolbar)
     Toolbar mToolbar;
-    @BindView(R.id.pagesReView)
     RecyclerView mPagesReView;
-    @BindView(R.id.collapsing_toolbar_layout)
     CollapsingToolbarLayout mCollapsingToolbarLayout;
 
     SharedPreferences mConfigs;
@@ -76,7 +73,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initUI() {
-        ButterKnife.bind(this);
+        mToolbar = findViewById(R.id.toolbar);
+        mPagesReView = findViewById(R.id.pagesReView);
+        mCollapsingToolbarLayout = findViewById(R.id.collapsing_toolbar_layout);
+
         setSupportActionBar(mToolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         mToolbar.setNavigationIcon(R.drawable.ic_back_white);

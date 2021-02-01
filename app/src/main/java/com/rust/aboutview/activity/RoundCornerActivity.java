@@ -3,18 +3,17 @@ package com.rust.aboutview.activity;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 import androidx.appcompat.app.AppCompatActivity;
+
 import android.view.View;
 
 import com.rust.aboutview.R;
 import com.rust.aboutview.widget.RoundCornerProgressDialog;
 import com.rustfisher.view.RoundCornerImageView;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
 
 /**
  * 圆角图片示例
@@ -22,18 +21,14 @@ import butterknife.OnClick;
  */
 public class RoundCornerActivity extends AppCompatActivity implements View.OnClickListener {
 
-    @BindView(R.id.r_iv_1)
-    RoundCornerImageView mRIv1;
-    @BindView(R.id.r_iv_2)
-    RoundCornerImageView mRIv2;
-    @BindView(R.id.r_iv_3)
-    RoundCornerImageView mRIv3;
-    @BindView(R.id.r_iv_4)
-    RoundCornerImageView mRIv4;
-
     private Handler mMainHandler = new Handler(Looper.getMainLooper());
     private RoundCornerProgressDialog mRoundCornerProgressDialog;
     private ProgressThread mProgressThread;
+
+    RoundCornerImageView mRIv1;
+    RoundCornerImageView mRIv2;
+    RoundCornerImageView mRIv3;
+    RoundCornerImageView mRIv4;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -43,14 +38,17 @@ public class RoundCornerActivity extends AppCompatActivity implements View.OnCli
     }
 
     private void initUI() {
-        ButterKnife.bind(this);
+        mRIv1 = findViewById(R.id.r_iv_1);
+        mRIv2 = findViewById(R.id.r_iv_2);
+        mRIv3 = findViewById(R.id.r_iv_3);
+        mRIv4 = findViewById(R.id.r_iv_4);
         mRIv1.setRadiusDp(12);
         mRIv2.setRadiusDp(23);
         mRIv3.setRadiusPx(40);
         mRIv4.setRadiusPx(200);
+        findViewById(R.id.pop_dialog_btn).setOnClickListener(this);
     }
 
-    @OnClick(R.id.pop_dialog_btn)
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
